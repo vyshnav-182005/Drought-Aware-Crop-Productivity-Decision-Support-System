@@ -1,0 +1,4258 @@
+ <table border="2px" id="apyreport" class="table table-hover table-bordered text-center">
+
+      <thead>
+        <!--tr>
+          <th rowspan="3">S.No.</th>
+          <th rowspan="3">State</th>
+          <th rowspan="3">District</th>
+          <th rowspan="3">Year</th>
+          <pre>Array
+(
+    [14] => Array
+        (
+            [crop_name] => Arhar/Tur
+            [session] => Array
+                (
+                    [K] => Array
+                        (
+                            [session_id] => K
+                            [session_name] => Kharif
+                        )
+
+                )
+
+        )
+
+    [4] => Array
+        (
+            [crop_name] => Bajra
+            [session] => Array
+                (
+                    [K] => Array
+                        (
+                            [session_id] => K
+                            [session_name] => Kharif
+                        )
+
+                )
+
+        )
+
+    [3] => Array
+        (
+            [crop_name] => Jowar
+            [session] => Array
+                (
+                    [K] => Array
+                        (
+                            [session_id] => K
+                            [session_name] => Kharif
+                        )
+
+                    [R] => Array
+                        (
+                            [session_id] => R
+                            [session_name] => Rabi
+                        )
+
+                )
+
+        )
+
+    [24] => Array
+        (
+            [crop_name] => Soyabean
+            [session] => Array
+                (
+                    [K] => Array
+                        (
+                            [session_id] => K
+                            [session_name] => Kharif
+                        )
+
+                )
+
+        )
+
+    [23] => Array
+        (
+            [crop_name] => Sunflower
+            [session] => Array
+                (
+                    [K] => Array
+                        (
+                            [session_id] => K
+                            [session_name] => Kharif
+                        )
+
+                    [R] => Array
+                        (
+                            [session_id] => R
+                            [session_name] => Rabi
+                        )
+
+                )
+
+        )
+
+)
+</pre>          <th colspan="3" class="text-center">Arhar/Tur</th>
+
+                              <tr>
+                
+              <th colspan="3">Kharif</th>
+                            </tr>
+                          <tr>
+                <th>A</th>
+                <th>P</th>
+                <th>Y</th>
+              </tr>
+
+
+            
+
+            
+
+                  <th colspan="3" class="text-center">Bajra</th>
+
+                              <tr>
+                
+              <th colspan="3">Kharif</th>
+                            </tr>
+                          <tr>
+                <th>A</th>
+                <th>P</th>
+                <th>Y</th>
+              </tr>
+
+
+            
+
+            
+
+                  <th colspan="4" class="text-center">Jowar</th>
+
+                              <tr>
+                
+              <th colspan="3">Kharif</th>
+                            <tr>
+                <th>A</th>
+                <th>P</th>
+                <th>Y</th>
+              </tr>
+
+
+            
+              <th colspan="3">Rabi</th>
+                            </tr>
+                          <tr>
+                <th>A</th>
+                <th>P</th>
+                <th>Y</th>
+              </tr>
+
+
+            
+
+            
+
+                  <th colspan="3" class="text-center">Soyabean</th>
+
+                              <tr>
+                
+              <th colspan="3">Kharif</th>
+                            </tr>
+                          <tr>
+                <th>A</th>
+                <th>P</th>
+                <th>Y</th>
+              </tr>
+
+
+            
+
+            
+
+                  <th colspan="4" class="text-center">Sunflower</th>
+
+                              <tr>
+                
+              <th colspan="3">Kharif</th>
+                            <tr>
+                <th>A</th>
+                <th>P</th>
+                <th>Y</th>
+              </tr>
+
+
+            
+              <th colspan="3">Rabi</th>
+                            </tr>
+                          <tr>
+                <th>A</th>
+                <th>P</th>
+                <th>Y</th>
+              </tr>
+
+
+            
+
+            
+
+                </tr-->
+        <!-- tr>
+          <th colspan="3">Season 1</th>
+          <th colspan="3">Season 2</th>
+        </tr>
+        <tr scope="">
+          <th scope="colgroup">A</th>
+          <th scope="colgroup">P</th>
+          <th scope="colgroup">Y</th>
+
+          <th scope="colgroup">A</th>
+          <th scope="colgroup">P</th>
+          <th scope="colgroup">Y</th>
+        </tr -->
+		<tr>
+			<!-- th rowspan="3">S.No.</th -->
+			<th rowspan="3">State</th>
+			<th rowspan="3">District</th>
+			<th rowspan="3">Year</th>
+							<th colspan="3">Arhar/Tur</th><th colspan="3">Bajra</th><th colspan="6">Jowar</th><th colspan="3">Soyabean</th><th colspan="6">Sunflower</th>					  </tr>
+		  <tr>
+							<th colspan="3">Kharif</th><th colspan="3">Kharif</th><th colspan="3">Kharif</th><th colspan="3">Rabi</th><th colspan="3">Kharif</th><th colspan="3">Kharif</th><th colspan="3">Rabi</th>						</tr>
+			<tr>
+							<th count="1">Area (Hectare)</th><th count="1">Production (Tonnes)</th><th count="1">Yield (Tonne/Hectare)</th><th count="1">Area (Hectare)</th><th count="1">Production (Tonnes)</th><th count="1">Yield (Tonne/Hectare)</th><th count="1">Area (Hectare)</th><th count="1">Production (Tonnes)</th><th count="1">Yield (Tonne/Hectare)</th><th count="2">Area (Hectare)</th><th count="2">Production (Tonnes)</th><th count="2">Yield (Tonne/Hectare)</th><th count="1">Area (Hectare)</th><th count="1">Production (Tonnes)</th><th count="1">Yield (Tonne/Hectare)</th><th count="1">Area (Hectare)</th><th count="1">Production (Tonnes)</th><th count="1">Yield (Tonne/Hectare)</th><th count="2">Area (Hectare)</th><th count="2">Production (Tonnes)</th><th count="2">Yield (Tonne/Hectare)</th>						</tr>
+      </thead>
+
+      <tbody>
+        
+        <tr>
+          <!-- td rowspan="115">1</td -->
+          <td rowspan="115">1. Maharashtra</td>
+          <td rowspan="23">1. Ahilyanagar</td>
+
+          <td>2000 - 2001</td>
+                    <td>19,100.00</td>
+          <td>9,400.00</td>
+          <td>
+            0.49          </td>
+                  <td>326,100.00</td>
+          <td>187,300.00</td>
+          <td>
+            0.57          </td>
+                  <td>800.00</td>
+          <td>700.00</td>
+          <td>
+            0.88          </td>
+                  <td>518,700.00</td>
+          <td>160,800.00</td>
+          <td>
+            0.31          </td>
+                  <td>7,200.00</td>
+          <td>6,200.00</td>
+          <td>
+            0.86          </td>
+                  <td>10,500.00</td>
+          <td>5,300.00</td>
+          <td>
+            0.50          </td>
+                  <td>7,800.00</td>
+          <td>4,000.00</td>
+          <td>
+            0.51          </td>
+        
+
+        </tr>
+        
+
+          
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2001 - 2002</td>
+                            <td>16,700.00</td>
+              <td>5,400.00</td>
+              <td>
+                0.32              </td>
+                          <td>194,400.00</td>
+              <td>82,000.00</td>
+              <td>
+                0.42              </td>
+                          <td>200.00</td>
+              <td>100.00</td>
+              <td>
+                0.50              </td>
+                          <td>528,900.00</td>
+              <td>175,000.00</td>
+              <td>
+                0.33              </td>
+                          <td>7,600.00</td>
+              <td>9,000.00</td>
+              <td>
+                1.18              </td>
+                          <td>8,600.00</td>
+              <td>2,900.00</td>
+              <td>
+                0.34              </td>
+                          <td>5,400.00</td>
+              <td>7,000.00</td>
+              <td>
+                1.30              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2002 - 2003</td>
+                            <td>14,600.00</td>
+              <td>5,700.00</td>
+              <td>
+                0.39              </td>
+                          <td>218,400.00</td>
+              <td>158,900.00</td>
+              <td>
+                0.73              </td>
+                          <td>100.00</td>
+              <td>100.00</td>
+              <td>
+                1.00              </td>
+                          <td>494,900.00</td>
+              <td>117,300.00</td>
+              <td>
+                0.24              </td>
+                          <td>15,100.00</td>
+              <td>18,800.00</td>
+              <td>
+                1.25              </td>
+                          <td>9,300.00</td>
+              <td>3,500.00</td>
+              <td>
+                0.38              </td>
+                          <td>4,200.00</td>
+              <td>1,800.00</td>
+              <td>
+                0.43              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2003 - 2004</td>
+                            <td>9,000.00</td>
+              <td>3,000.00</td>
+              <td>
+                0.33              </td>
+                          <td>204,100.00</td>
+              <td>70,800.00</td>
+              <td>
+                0.35              </td>
+                          <td>100.00</td>
+              <td>200.00</td>
+              <td>
+                2.00              </td>
+                          <td>478,300.00</td>
+              <td>55,100.00</td>
+              <td>
+                0.12              </td>
+                          <td>17,900.00</td>
+              <td>18,500.00</td>
+              <td>
+                1.03              </td>
+                          <td>7,500.00</td>
+              <td>2,000.00</td>
+              <td>
+                0.27              </td>
+                          <td>2,100.00</td>
+              <td>700.00</td>
+              <td>
+                0.33              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2004 - 2005</td>
+                            <td>12,200.00</td>
+              <td>4,800.00</td>
+              <td>
+                0.39              </td>
+                          <td>240,500.00</td>
+              <td>143,400.00</td>
+              <td>
+                0.60              </td>
+                          <td>100.00</td>
+              <td>100.00</td>
+              <td>
+                1.00              </td>
+                          <td>555,000.00</td>
+              <td>263,300.00</td>
+              <td>
+                0.47              </td>
+                          <td>35,500.00</td>
+              <td>51,800.00</td>
+              <td>
+                1.46              </td>
+                          <td>11,000.00</td>
+              <td>5,800.00</td>
+              <td>
+                0.53              </td>
+                          <td>2,600.00</td>
+              <td>1,500.00</td>
+              <td>
+                0.58              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2005 - 2006</td>
+                            <td>11,100.00</td>
+              <td>3,800.00</td>
+              <td>
+                0.34              </td>
+                          <td>217,700.00</td>
+              <td>54,800.00</td>
+              <td>
+                0.25              </td>
+                          <td>100.00</td>
+              <td>100.00</td>
+              <td>
+                1.00              </td>
+                          <td>569,900.00</td>
+              <td>258,800.00</td>
+              <td>
+                0.45              </td>
+                          <td>37,500.00</td>
+              <td>38,800.00</td>
+              <td>
+                1.03              </td>
+                          <td>10,100.00</td>
+              <td>5,900.00</td>
+              <td>
+                0.58              </td>
+                          <td>2,500.00</td>
+              <td>1,000.00</td>
+              <td>
+                0.40              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2006 - 2007</td>
+                            <td>13,000.00</td>
+              <td>6,600.00</td>
+              <td>
+                0.51              </td>
+                          <td>243,900.00</td>
+              <td>148,900.00</td>
+              <td>
+                0.61              </td>
+                          <td>100.00</td>
+              <td>100.00</td>
+              <td>
+                1.00              </td>
+                          <td>528,400.00</td>
+              <td>274,000.00</td>
+              <td>
+                0.52              </td>
+                          <td>49,000.00</td>
+              <td>64,500.00</td>
+              <td>
+                1.32              </td>
+                          <td>11,800.00</td>
+              <td>6,000.00</td>
+              <td>
+                0.51              </td>
+                          <td>2,800.00</td>
+              <td>1,100.00</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2007 - 2008</td>
+                            <td>14,600.00</td>
+              <td>7,900.00</td>
+              <td>
+                0.54              </td>
+                          <td>232,600.00</td>
+              <td>174,100.00</td>
+              <td>
+                0.75              </td>
+                          <td>100.00</td>
+              <td>100.00</td>
+              <td>
+                1.00              </td>
+                          <td>503,400.00</td>
+              <td>284,000.00</td>
+              <td>
+                0.56              </td>
+                          <td>55,400.00</td>
+              <td>84,500.00</td>
+              <td>
+                1.53              </td>
+                          <td>9,400.00</td>
+              <td>6,900.00</td>
+              <td>
+                0.73              </td>
+                          <td>2,500.00</td>
+              <td>2,900.00</td>
+              <td>
+                1.16              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2008 - 2009</td>
+                            <td>2,700.00</td>
+              <td>1,300.00</td>
+              <td>
+                0.48              </td>
+                          <td>128,200.00</td>
+              <td>92,400.00</td>
+              <td>
+                0.72              </td>
+                          <td>100.00</td>
+              <td>100.00</td>
+              <td>
+                1.00              </td>
+                          <td>507,200.00</td>
+              <td>327,800.00</td>
+              <td>
+                0.65              </td>
+                          <td>55,500.00</td>
+              <td>40,100.00</td>
+              <td>
+                0.72              </td>
+                          <td>3,900.00</td>
+              <td>2,100.00</td>
+              <td>
+                0.54              </td>
+                          <td>2,500.00</td>
+              <td>1,700.00</td>
+              <td>
+                0.68              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2009 - 2010</td>
+                            <td>12,100.00</td>
+              <td>6,200.00</td>
+              <td>
+                0.51              </td>
+                          <td>190,700.00</td>
+              <td>115,400.00</td>
+              <td>
+                0.61              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>520,500.00</td>
+              <td>350,600.00</td>
+              <td>
+                0.67              </td>
+                          <td>58,000.00</td>
+              <td>53,200.00</td>
+              <td>
+                0.92              </td>
+                          <td>7,500.00</td>
+              <td>2,500.00</td>
+              <td>
+                0.33              </td>
+                          <td>2,200.00</td>
+              <td>1,200.00</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2010 - 2011</td>
+                            <td>17,600.00</td>
+              <td>11,300.00</td>
+              <td>
+                0.64              </td>
+                          <td>196,000.00</td>
+              <td>186,800.00</td>
+              <td>
+                0.95              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>540,000.00</td>
+              <td>318,000.00</td>
+              <td>
+                0.59              </td>
+                          <td>50,700.00</td>
+              <td>90,800.00</td>
+              <td>
+                1.79              </td>
+                          <td>8,200.00</td>
+              <td>3,400.00</td>
+              <td>
+                0.41              </td>
+                          <td>1,000.00</td>
+              <td>800.00</td>
+              <td>
+                0.80              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2011 - 2012</td>
+                            <td>12,800.00</td>
+              <td>6,400.00</td>
+              <td>
+                0.50              </td>
+                          <td>184,700.00</td>
+              <td>179,500.00</td>
+              <td>
+                0.97              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>434,600.00</td>
+              <td>123,200.00</td>
+              <td>
+                0.28              </td>
+                          <td>58,600.00</td>
+              <td>122,700.00</td>
+              <td>
+                2.09              </td>
+                          <td>3,200.00</td>
+              <td>1,500.00</td>
+              <td>
+                0.47              </td>
+                          <td>400.00</td>
+              <td>200.00</td>
+              <td>
+                0.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2012 - 2013</td>
+                            <td>9,500.00</td>
+              <td>2,200.00</td>
+              <td>
+                0.23              </td>
+                          <td>160,500.00</td>
+              <td>55,400.00</td>
+              <td>
+                0.35              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>444,800.00</td>
+              <td>67,000.00</td>
+              <td>
+                0.15              </td>
+                          <td>56,800.00</td>
+              <td>28,100.00</td>
+              <td>
+                0.49              </td>
+                          <td>1,400.00</td>
+              <td>500.00</td>
+              <td>
+                0.36              </td>
+                          <td>200.00</td>
+              <td>50.00</td>
+              <td>
+                0.25              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2013 - 2014</td>
+                            <td>11,000.00</td>
+              <td>9,200.00</td>
+              <td>
+                0.84              </td>
+                          <td>181,800.00</td>
+              <td>188,200.00</td>
+              <td>
+                1.04              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>503,900.00</td>
+              <td>354,500.00</td>
+              <td>
+                0.70              </td>
+                          <td>65,900.00</td>
+              <td>74,500.00</td>
+              <td>
+                1.13              </td>
+                          <td>1,300.00</td>
+              <td>800.00</td>
+              <td>
+                0.62              </td>
+                          <td>100.00</td>
+              <td></td>
+              <td>
+                0.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2014 - 2015</td>
+                            <td>9,100.00</td>
+              <td>1,800.00</td>
+              <td>
+                0.20              </td>
+                          <td>186,000.00</td>
+              <td>107,700.00</td>
+              <td>
+                0.58              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>443,600.00</td>
+              <td>279,800.00</td>
+              <td>
+                0.63              </td>
+                          <td>58,200.00</td>
+              <td>35,900.00</td>
+              <td>
+                0.62              </td>
+                          <td>800.00</td>
+              <td>400.00</td>
+              <td>
+                0.50              </td>
+                          <td>100.00</td>
+              <td></td>
+              <td>
+                0.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2015 - 2016</td>
+                            <td>9,300.00</td>
+              <td>2,200.00</td>
+              <td>
+                0.24              </td>
+                          <td>122,000.00</td>
+              <td>30,400.00</td>
+              <td>
+                0.25              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>463,900.00</td>
+              <td>105,900.00</td>
+              <td>
+                0.23              </td>
+                          <td>40,900.00</td>
+              <td>19,800.00</td>
+              <td>
+                0.48              </td>
+                          <td>500.00</td>
+              <td>100.00</td>
+              <td>
+                0.20              </td>
+                          <td>40.00</td>
+              <td>10.00</td>
+              <td>
+                0.25              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2016 - 2017</td>
+                            <td>21,968.00</td>
+              <td>22,038.00</td>
+              <td>
+                1.00              </td>
+                          <td>146,400.00</td>
+              <td>149,800.00</td>
+              <td>
+                1.02              </td>
+                          <td>1,400.00</td>
+              <td>300.00</td>
+              <td>
+                0.21              </td>
+                          <td>492,800.00</td>
+              <td>245,700.00</td>
+              <td>
+                0.50              </td>
+                          <td>52,000.00</td>
+              <td>41,700.00</td>
+              <td>
+                0.80              </td>
+                          <td>423.00</td>
+              <td>351.00</td>
+              <td>
+                0.83              </td>
+                          <td>50.00</td>
+              <td>40.00</td>
+              <td>
+                0.80              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2017 - 2018</td>
+                            <td>15,700.00</td>
+              <td>15,600.00</td>
+              <td>
+                0.99              </td>
+                          <td>119,500.00</td>
+              <td>120,100.00</td>
+              <td>
+                1.01              </td>
+                          <td>1,600.00</td>
+              <td>1,000.00</td>
+              <td>
+                0.63              </td>
+                          <td>548,900.00</td>
+              <td>298,300.00</td>
+              <td>
+                0.54              </td>
+                          <td>59,284.00</td>
+              <td>86,900.00</td>
+              <td>
+                1.47              </td>
+                          <td>509.00</td>
+              <td>292.00</td>
+              <td>
+                0.57              </td>
+                          <td>200.00</td>
+              <td>100.00</td>
+              <td>
+                0.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2018 - 2019</td>
+                            <td>19,058.00</td>
+              <td>4,757.00</td>
+              <td>
+                0.25              </td>
+                          <td>130,478.00</td>
+              <td>84,115.00</td>
+              <td>
+                0.64              </td>
+                          <td>1,578.00</td>
+              <td>468.00</td>
+              <td>
+                0.30              </td>
+                          <td>435,308.00</td>
+              <td>54,800.00</td>
+              <td>
+                0.13              </td>
+                          <td>60,627.00</td>
+              <td>38,254.00</td>
+              <td>
+                0.63              </td>
+                          <td>57.00</td>
+              <td>10.00</td>
+              <td>
+                0.18              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2019 - 2020</td>
+                            <td>19,747.00</td>
+              <td>9,948.00</td>
+              <td>
+                0.50              </td>
+                          <td>146,822.00</td>
+              <td>127,713.00</td>
+              <td>
+                0.87              </td>
+                          <td>1,541.00</td>
+              <td>430.00</td>
+              <td>
+                0.28              </td>
+                          <td>362,789.00</td>
+              <td>188,248.00</td>
+              <td>
+                0.52              </td>
+                          <td>70,951.00</td>
+              <td>40,505.00</td>
+              <td>
+                0.57              </td>
+                          <td>399.00</td>
+              <td>504.00</td>
+              <td>
+                1.26              </td>
+                          <td>26.00</td>
+              <td>8.00</td>
+              <td>
+                0.31              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2020 - 2021</td>
+                            <td>20,664.59</td>
+              <td>15,667.30</td>
+              <td>
+                0.76              </td>
+                          <td>150,957.97</td>
+              <td>229,822.23</td>
+              <td>
+                1.52              </td>
+                          <td>1,080.76</td>
+              <td>667.26</td>
+              <td>
+                0.62              </td>
+                          <td>336,386.53</td>
+              <td>196,522.75</td>
+              <td>
+                0.58              </td>
+                          <td>84,480.32</td>
+              <td>141,300.37</td>
+              <td>
+                1.67              </td>
+                          <td>322.15</td>
+              <td>405.74</td>
+              <td>
+                1.26              </td>
+                          <td>80.59</td>
+              <td>31.46</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2021 - 2022</td>
+                            <td>22,874.75</td>
+              <td>18,530.84</td>
+              <td>
+                0.81              </td>
+                          <td>147,501.90</td>
+              <td>151,916.36</td>
+              <td>
+                1.03              </td>
+                          <td>921.41</td>
+              <td>1,040.33</td>
+              <td>
+                1.13              </td>
+                          <td>324,627.56</td>
+              <td>221,379.77</td>
+              <td>
+                0.68              </td>
+                          <td>99,300.03</td>
+              <td>157,052.93</td>
+              <td>
+                1.58              </td>
+                          <td>265.04</td>
+              <td>178.24</td>
+              <td>
+                0.67              </td>
+                          <td>87.92</td>
+              <td>115.94</td>
+              <td>
+                1.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Ahilyanagar</td -->
+              <td>2022 - 2023</td>
+                            <td>23,881.00</td>
+              <td>22,018.00</td>
+              <td>
+                0.92              </td>
+                          <td>110,862.00</td>
+              <td>136,744.00</td>
+              <td>
+                1.23              </td>
+                          <td>426.97</td>
+              <td>243.89</td>
+              <td>
+                0.57              </td>
+                          <td>142,520.05</td>
+              <td>118,049.36</td>
+              <td>
+                0.83              </td>
+                          <td>110,629.00</td>
+              <td>200,692.00</td>
+              <td>
+                1.81              </td>
+                          <td>62.00</td>
+              <td>37.00</td>
+              <td>
+                0.60              </td>
+                          <td>35.17</td>
+              <td>21.24</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="23">2. Beed</td>
+                      <td>2000 - 2001</td>
+                        <td>53,400.00</td>
+            <td>19,200.00</td>
+            <td>
+              0.36            </td>
+                      <td>213,600.00</td>
+            <td>170,500.00</td>
+            <td>
+              0.80            </td>
+                      <td>80,200.00</td>
+            <td>104,700.00</td>
+            <td>
+              1.31            </td>
+                      <td>265,800.00</td>
+            <td>130,600.00</td>
+            <td>
+              0.49            </td>
+                      <td>3,300.00</td>
+            <td>4,400.00</td>
+            <td>
+              1.33            </td>
+                      <td>15,100.00</td>
+            <td>7,200.00</td>
+            <td>
+              0.48            </td>
+                      <td>15,500.00</td>
+            <td>7,500.00</td>
+            <td>
+              0.48            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2001 - 2002</td>
+                            <td>44,300.00</td>
+              <td>11,200.00</td>
+              <td>
+                0.25              </td>
+                          <td>151,400.00</td>
+              <td>74,400.00</td>
+              <td>
+                0.49              </td>
+                          <td>67,600.00</td>
+              <td>43,400.00</td>
+              <td>
+                0.64              </td>
+                          <td>263,700.00</td>
+              <td>134,000.00</td>
+              <td>
+                0.51              </td>
+                          <td>6,900.00</td>
+              <td>7,400.00</td>
+              <td>
+                1.07              </td>
+                          <td>4,100.00</td>
+              <td>1,400.00</td>
+              <td>
+                0.34              </td>
+                          <td>17,500.00</td>
+              <td>7,500.00</td>
+              <td>
+                0.43              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2002 - 2003</td>
+                            <td>49,100.00</td>
+              <td>17,200.00</td>
+              <td>
+                0.35              </td>
+                          <td>187,100.00</td>
+              <td>156,900.00</td>
+              <td>
+                0.84              </td>
+                          <td>68,900.00</td>
+              <td>83,300.00</td>
+              <td>
+                1.21              </td>
+                          <td>247,900.00</td>
+              <td>145,800.00</td>
+              <td>
+                0.59              </td>
+                          <td>16,500.00</td>
+              <td>22,500.00</td>
+              <td>
+                1.36              </td>
+                          <td>8,300.00</td>
+              <td>3,900.00</td>
+              <td>
+                0.47              </td>
+                          <td>18,900.00</td>
+              <td>7,900.00</td>
+              <td>
+                0.42              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2003 - 2004</td>
+                            <td>44,900.00</td>
+              <td>10,100.00</td>
+              <td>
+                0.22              </td>
+                          <td>180,500.00</td>
+              <td>100,200.00</td>
+              <td>
+                0.56              </td>
+                          <td>68,500.00</td>
+              <td>53,500.00</td>
+              <td>
+                0.78              </td>
+                          <td>253,100.00</td>
+              <td>68,300.00</td>
+              <td>
+                0.27              </td>
+                          <td>25,500.00</td>
+              <td>25,900.00</td>
+              <td>
+                1.02              </td>
+                          <td>12,900.00</td>
+              <td>4,800.00</td>
+              <td>
+                0.37              </td>
+                          <td>18,300.00</td>
+              <td>5,800.00</td>
+              <td>
+                0.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2004 - 2005</td>
+                            <td>44,300.00</td>
+              <td>23,900.00</td>
+              <td>
+                0.54              </td>
+                          <td>176,200.00</td>
+              <td>109,100.00</td>
+              <td>
+                0.62              </td>
+                          <td>55,900.00</td>
+              <td>33,700.00</td>
+              <td>
+                0.60              </td>
+                          <td>256,700.00</td>
+              <td>184,300.00</td>
+              <td>
+                0.72              </td>
+                          <td>27,900.00</td>
+              <td>24,400.00</td>
+              <td>
+                0.87              </td>
+                          <td>11,200.00</td>
+              <td>5,700.00</td>
+              <td>
+                0.51              </td>
+                          <td>18,200.00</td>
+              <td>8,500.00</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2005 - 2006</td>
+                            <td>52,100.00</td>
+              <td>51,600.00</td>
+              <td>
+                0.99              </td>
+                          <td>191,300.00</td>
+              <td>129,300.00</td>
+              <td>
+                0.68              </td>
+                          <td>53,000.00</td>
+              <td>42,800.00</td>
+              <td>
+                0.81              </td>
+                          <td>255,000.00</td>
+              <td>151,100.00</td>
+              <td>
+                0.59              </td>
+                          <td>36,100.00</td>
+              <td>39,700.00</td>
+              <td>
+                1.10              </td>
+                          <td>11,100.00</td>
+              <td>6,500.00</td>
+              <td>
+                0.59              </td>
+                          <td>18,200.00</td>
+              <td>8,700.00</td>
+              <td>
+                0.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2006 - 2007</td>
+                            <td>53,200.00</td>
+              <td>44,800.00</td>
+              <td>
+                0.84              </td>
+                          <td>184,100.00</td>
+              <td>154,100.00</td>
+              <td>
+                0.84              </td>
+                          <td>50,800.00</td>
+              <td>55,200.00</td>
+              <td>
+                1.09              </td>
+                          <td>251,100.00</td>
+              <td>178,700.00</td>
+              <td>
+                0.71              </td>
+                          <td>42,100.00</td>
+              <td>34,500.00</td>
+              <td>
+                0.82              </td>
+                          <td>11,300.00</td>
+              <td>6,100.00</td>
+              <td>
+                0.54              </td>
+                          <td>15,300.00</td>
+              <td>7,200.00</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2007 - 2008</td>
+                            <td>51,100.00</td>
+              <td>31,800.00</td>
+              <td>
+                0.62              </td>
+                          <td>162,100.00</td>
+              <td>116,500.00</td>
+              <td>
+                0.72              </td>
+                          <td>41,000.00</td>
+              <td>36,000.00</td>
+              <td>
+                0.88              </td>
+                          <td>242,600.00</td>
+              <td>196,300.00</td>
+              <td>
+                0.81              </td>
+                          <td>46,500.00</td>
+              <td>21,000.00</td>
+              <td>
+                0.45              </td>
+                          <td>11,100.00</td>
+              <td>5,600.00</td>
+              <td>
+                0.50              </td>
+                          <td>12,800.00</td>
+              <td>7,800.00</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2008 - 2009</td>
+                            <td>47,800.00</td>
+              <td>22,600.00</td>
+              <td>
+                0.47              </td>
+                          <td>135,000.00</td>
+              <td>98,100.00</td>
+              <td>
+                0.73              </td>
+                          <td>34,800.00</td>
+              <td>23,500.00</td>
+              <td>
+                0.68              </td>
+                          <td>276,300.00</td>
+              <td>227,600.00</td>
+              <td>
+                0.82              </td>
+                          <td>71,400.00</td>
+              <td>14,500.00</td>
+              <td>
+                0.20              </td>
+                          <td>8,200.00</td>
+              <td>3,800.00</td>
+              <td>
+                0.46              </td>
+                          <td>8,000.00</td>
+              <td>4,400.00</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2009 - 2010</td>
+                            <td>56,100.00</td>
+              <td>25,600.00</td>
+              <td>
+                0.46              </td>
+                          <td>131,700.00</td>
+              <td>103,300.00</td>
+              <td>
+                0.78              </td>
+                          <td>32,400.00</td>
+              <td>23,400.00</td>
+              <td>
+                0.72              </td>
+                          <td>207,000.00</td>
+              <td>172,400.00</td>
+              <td>
+                0.83              </td>
+                          <td>68,800.00</td>
+              <td>35,400.00</td>
+              <td>
+                0.51              </td>
+                          <td>5,500.00</td>
+              <td>2,900.00</td>
+              <td>
+                0.53              </td>
+                          <td>5,000.00</td>
+              <td>3,000.00</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2010 - 2011</td>
+                            <td>62,400.00</td>
+              <td>34,100.00</td>
+              <td>
+                0.55              </td>
+                          <td>122,500.00</td>
+              <td>112,800.00</td>
+              <td>
+                0.92              </td>
+                          <td>33,600.00</td>
+              <td>43,600.00</td>
+              <td>
+                1.30              </td>
+                          <td>194,400.00</td>
+              <td>140,400.00</td>
+              <td>
+                0.72              </td>
+                          <td>70,400.00</td>
+              <td>96,600.00</td>
+              <td>
+                1.37              </td>
+                          <td>3,700.00</td>
+              <td>2,200.00</td>
+              <td>
+                0.59              </td>
+                          <td>3,600.00</td>
+              <td>1,600.00</td>
+              <td>
+                0.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2011 - 2012</td>
+                            <td>50,200.00</td>
+              <td>28,800.00</td>
+              <td>
+                0.57              </td>
+                          <td>107,100.00</td>
+              <td>108,900.00</td>
+              <td>
+                1.02              </td>
+                          <td>28,800.00</td>
+              <td>32,800.00</td>
+              <td>
+                1.14              </td>
+                          <td>170,400.00</td>
+              <td>117,700.00</td>
+              <td>
+                0.69              </td>
+                          <td>76,400.00</td>
+              <td>118,100.00</td>
+              <td>
+                1.55              </td>
+                          <td>1,900.00</td>
+              <td>1,100.00</td>
+              <td>
+                0.58              </td>
+                          <td>1,200.00</td>
+              <td>500.00</td>
+              <td>
+                0.42              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2012 - 2013</td>
+                            <td>50,200.00</td>
+              <td>20,300.00</td>
+              <td>
+                0.40              </td>
+                          <td>107,100.00</td>
+              <td>69,000.00</td>
+              <td>
+                0.64              </td>
+                          <td>28,800.00</td>
+              <td>30,300.00</td>
+              <td>
+                1.05              </td>
+                          <td>186,500.00</td>
+              <td>48,200.00</td>
+              <td>
+                0.26              </td>
+                          <td>76,400.00</td>
+              <td>127,000.00</td>
+              <td>
+                1.66              </td>
+                          <td>1,900.00</td>
+              <td>800.00</td>
+              <td>
+                0.42              </td>
+                          <td>700.00</td>
+              <td>200.00</td>
+              <td>
+                0.29              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2013 - 2014</td>
+                            <td>56,400.00</td>
+              <td>37,700.00</td>
+              <td>
+                0.67              </td>
+                          <td>122,100.00</td>
+              <td>130,300.00</td>
+              <td>
+                1.07              </td>
+                          <td>18,100.00</td>
+              <td>23,100.00</td>
+              <td>
+                1.28              </td>
+                          <td>262,300.00</td>
+              <td>170,200.00</td>
+              <td>
+                0.65              </td>
+                          <td>93,500.00</td>
+              <td>174,200.00</td>
+              <td>
+                1.86              </td>
+                          <td>1,800.00</td>
+              <td>900.00</td>
+              <td>
+                0.50              </td>
+                          <td>700.00</td>
+              <td>420.00</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2014 - 2015</td>
+                            <td>60,600.00</td>
+              <td>10,200.00</td>
+              <td>
+                0.17              </td>
+                          <td>127,100.00</td>
+              <td>56,200.00</td>
+              <td>
+                0.44              </td>
+                          <td>19,400.00</td>
+              <td>10,300.00</td>
+              <td>
+                0.53              </td>
+                          <td>250,400.00</td>
+              <td>134,800.00</td>
+              <td>
+                0.54              </td>
+                          <td>113,400.00</td>
+              <td>39,900.00</td>
+              <td>
+                0.35              </td>
+                          <td>1,700.00</td>
+              <td>600.00</td>
+              <td>
+                0.35              </td>
+                          <td>500.00</td>
+              <td>100.00</td>
+              <td>
+                0.20              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2015 - 2016</td>
+                            <td>72,300.00</td>
+              <td>11,700.00</td>
+              <td>
+                0.16              </td>
+                          <td>127,600.00</td>
+              <td>32,800.00</td>
+              <td>
+                0.26              </td>
+                          <td>19,200.00</td>
+              <td>5,600.00</td>
+              <td>
+                0.29              </td>
+                          <td>282,000.00</td>
+              <td>80,600.00</td>
+              <td>
+                0.29              </td>
+                          <td>145,100.00</td>
+              <td>23,800.00</td>
+              <td>
+                0.16              </td>
+                          <td>1,600.00</td>
+              <td>100.00</td>
+              <td>
+                0.06              </td>
+                          <td>500.00</td>
+              <td>80.00</td>
+              <td>
+                0.16              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2016 - 2017</td>
+                            <td>89,190.00</td>
+              <td>81,624.00</td>
+              <td>
+                0.92              </td>
+                          <td>144,700.00</td>
+              <td>93,090.00</td>
+              <td>
+                0.64              </td>
+                          <td>19,000.00</td>
+              <td>5,640.00</td>
+              <td>
+                0.30              </td>
+                          <td>449,800.00</td>
+              <td>237,470.00</td>
+              <td>
+                0.53              </td>
+                          <td>169,200.00</td>
+              <td>132,350.00</td>
+              <td>
+                0.78              </td>
+                          <td>782.00</td>
+              <td>48.00</td>
+              <td>
+                0.06              </td>
+                          <td>100.00</td>
+              <td>100.00</td>
+              <td>
+                1.00              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2017 - 2018</td>
+                            <td>92,600.00</td>
+              <td>52,200.00</td>
+              <td>
+                0.56              </td>
+                          <td>152,700.00</td>
+              <td>90,240.00</td>
+              <td>
+                0.59              </td>
+                          <td>21,000.00</td>
+              <td>14,610.00</td>
+              <td>
+                0.70              </td>
+                          <td>500,300.00</td>
+              <td>232,640.00</td>
+              <td>
+                0.47              </td>
+                          <td>181,300.00</td>
+              <td>128,300.00</td>
+              <td>
+                0.71              </td>
+                          <td>837.00</td>
+              <td>751.00</td>
+              <td>
+                0.90              </td>
+                          <td>268.00</td>
+              <td>140.00</td>
+              <td>
+                0.52              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2018 - 2019</td>
+                            <td>51,121.00</td>
+              <td>5,609.00</td>
+              <td>
+                0.11              </td>
+                          <td>57,506.00</td>
+              <td>15,492.00</td>
+              <td>
+                0.27              </td>
+                          <td>7,852.00</td>
+              <td>1,973.00</td>
+              <td>
+                0.25              </td>
+                          <td>79,040.00</td>
+              <td>22,200.00</td>
+              <td>
+                0.28              </td>
+                          <td>217,791.00</td>
+              <td>52,764.00</td>
+              <td>
+                0.24              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2019 - 2020</td>
+                            <td>58,598.00</td>
+              <td>44,228.00</td>
+              <td>
+                0.75              </td>
+                          <td>64,497.00</td>
+              <td>51,583.00</td>
+              <td>
+                0.80              </td>
+                          <td>8,064.00</td>
+              <td>4,388.00</td>
+              <td>
+                0.54              </td>
+                          <td>101,457.00</td>
+              <td>75,857.00</td>
+              <td>
+                0.75              </td>
+                          <td>245,565.00</td>
+              <td>190,397.00</td>
+              <td>
+                0.78              </td>
+                          <td>8.00</td>
+              <td>3.00</td>
+              <td>
+                0.38              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2020 - 2021</td>
+                            <td>60,460.09</td>
+              <td>87,034.29</td>
+              <td>
+                1.44              </td>
+                          <td>56,397.45</td>
+              <td>94,480.40</td>
+              <td>
+                1.68              </td>
+                          <td>7,273.89</td>
+              <td>3,532.20</td>
+              <td>
+                0.49              </td>
+                          <td>101,456.80</td>
+              <td>133,060.31</td>
+              <td>
+                1.31              </td>
+                          <td>259,964.67</td>
+              <td>514,696.40</td>
+              <td>
+                1.98              </td>
+                          <td>9.14</td>
+              <td>3.74</td>
+              <td>
+                0.41              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2021 - 2022</td>
+                            <td>66,224.16</td>
+              <td>54,740.89</td>
+              <td>
+                0.83              </td>
+                          <td>41,355.06</td>
+              <td>31,917.72</td>
+              <td>
+                0.77              </td>
+                          <td>2,452.54</td>
+              <td>785.30</td>
+              <td>
+                0.32              </td>
+                          <td>101,456.80</td>
+              <td>121,260.15</td>
+              <td>
+                1.20              </td>
+                          <td>286,183.40</td>
+              <td>267,724.57</td>
+              <td>
+                0.94              </td>
+                          <td>9.14</td>
+              <td>3.48</td>
+              <td>
+                0.38              </td>
+                          <td>27.00</td>
+              <td>21.77</td>
+              <td>
+                0.81              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Beed</td -->
+              <td>2022 - 2023</td>
+                            <td>48,520.00</td>
+              <td>41,795.00</td>
+              <td>
+                0.86              </td>
+                          <td>36,425.00</td>
+              <td>41,572.00</td>
+              <td>
+                1.14              </td>
+                          <td>2,278.00</td>
+              <td>1,825.82</td>
+              <td>
+                0.80              </td>
+                          <td>145,523.00</td>
+              <td>168,659.70</td>
+              <td>
+                1.16              </td>
+                          <td>344,732.00</td>
+              <td>507,514.00</td>
+              <td>
+                1.47              </td>
+                          <td>23.00</td>
+              <td>9.00</td>
+              <td>
+                0.39              </td>
+                          <td>110.00</td>
+              <td>44.97</td>
+              <td>
+                0.41              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="23">3. Dharashiv</td>
+                      <td>2000 - 2001</td>
+                        <td>83,600.00</td>
+            <td>58,500.00</td>
+            <td>
+              0.70            </td>
+                      <td>19,700.00</td>
+            <td>10,600.00</td>
+            <td>
+              0.54            </td>
+                      <td>89,600.00</td>
+            <td>113,400.00</td>
+            <td>
+              1.27            </td>
+                      <td>226,600.00</td>
+            <td>179,400.00</td>
+            <td>
+              0.79            </td>
+                      <td>2,100.00</td>
+            <td>1,700.00</td>
+            <td>
+              0.81            </td>
+                      <td>33,800.00</td>
+            <td>15,900.00</td>
+            <td>
+              0.47            </td>
+                      <td>34,000.00</td>
+            <td>18,000.00</td>
+            <td>
+              0.53            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2001 - 2002</td>
+                            <td>68,100.00</td>
+              <td>35,100.00</td>
+              <td>
+                0.52              </td>
+                          <td>18,500.00</td>
+              <td>5,500.00</td>
+              <td>
+                0.30              </td>
+                          <td>82,400.00</td>
+              <td>51,300.00</td>
+              <td>
+                0.62              </td>
+                          <td>253,600.00</td>
+              <td>171,300.00</td>
+              <td>
+                0.68              </td>
+                          <td>3,600.00</td>
+              <td>700.00</td>
+              <td>
+                0.19              </td>
+                          <td>20,300.00</td>
+              <td>5,000.00</td>
+              <td>
+                0.25              </td>
+                          <td>38,100.00</td>
+              <td>17,100.00</td>
+              <td>
+                0.45              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2002 - 2003</td>
+                            <td>81,500.00</td>
+              <td>44,100.00</td>
+              <td>
+                0.54              </td>
+                          <td>20,500.00</td>
+              <td>8,300.00</td>
+              <td>
+                0.40              </td>
+                          <td>85,900.00</td>
+              <td>76,100.00</td>
+              <td>
+                0.89              </td>
+                          <td>251,400.00</td>
+              <td>146,000.00</td>
+              <td>
+                0.58              </td>
+                          <td>4,700.00</td>
+              <td>5,200.00</td>
+              <td>
+                1.11              </td>
+                          <td>20,500.00</td>
+              <td>10,900.00</td>
+              <td>
+                0.53              </td>
+                          <td>42,200.00</td>
+              <td>20,100.00</td>
+              <td>
+                0.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2003 - 2004</td>
+                            <td>75,000.00</td>
+              <td>14,500.00</td>
+              <td>
+                0.19              </td>
+                          <td>19,700.00</td>
+              <td>5,500.00</td>
+              <td>
+                0.28              </td>
+                          <td>77,200.00</td>
+              <td>39,100.00</td>
+              <td>
+                0.51              </td>
+                          <td>282,200.00</td>
+              <td>39,600.00</td>
+              <td>
+                0.14              </td>
+                          <td>23,300.00</td>
+              <td>10,100.00</td>
+              <td>
+                0.43              </td>
+                          <td>22,900.00</td>
+              <td>6,100.00</td>
+              <td>
+                0.27              </td>
+                          <td>41,400.00</td>
+              <td>5,800.00</td>
+              <td>
+                0.14              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2004 - 2005</td>
+                            <td>83,500.00</td>
+              <td>42,600.00</td>
+              <td>
+                0.51              </td>
+                          <td>19,200.00</td>
+              <td>6,600.00</td>
+              <td>
+                0.34              </td>
+                          <td>77,800.00</td>
+              <td>57,800.00</td>
+              <td>
+                0.74              </td>
+                          <td>255,700.00</td>
+              <td>144,500.00</td>
+              <td>
+                0.57              </td>
+                          <td>27,200.00</td>
+              <td>33,300.00</td>
+              <td>
+                1.22              </td>
+                          <td>23,600.00</td>
+              <td>9,800.00</td>
+              <td>
+                0.42              </td>
+                          <td>40,400.00</td>
+              <td>23,700.00</td>
+              <td>
+                0.59              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2005 - 2006</td>
+                            <td>84,700.00</td>
+              <td>49,800.00</td>
+              <td>
+                0.59              </td>
+                          <td>20,100.00</td>
+              <td>8,500.00</td>
+              <td>
+                0.42              </td>
+                          <td>73,200.00</td>
+              <td>65,400.00</td>
+              <td>
+                0.89              </td>
+                          <td>259,600.00</td>
+              <td>210,500.00</td>
+              <td>
+                0.81              </td>
+                          <td>33,500.00</td>
+              <td>36,300.00</td>
+              <td>
+                1.08              </td>
+                          <td>25,500.00</td>
+              <td>13,800.00</td>
+              <td>
+                0.54              </td>
+                          <td>43,400.00</td>
+              <td>31,900.00</td>
+              <td>
+                0.74              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2006 - 2007</td>
+                            <td>95,900.00</td>
+              <td>49,500.00</td>
+              <td>
+                0.52              </td>
+                          <td>20,000.00</td>
+              <td>10,200.00</td>
+              <td>
+                0.51              </td>
+                          <td>72,900.00</td>
+              <td>53,400.00</td>
+              <td>
+                0.73              </td>
+                          <td>237,500.00</td>
+              <td>173,700.00</td>
+              <td>
+                0.73              </td>
+                          <td>32,400.00</td>
+              <td>19,500.00</td>
+              <td>
+                0.60              </td>
+                          <td>34,800.00</td>
+              <td>20,000.00</td>
+              <td>
+                0.57              </td>
+                          <td>43,500.00</td>
+              <td>25,400.00</td>
+              <td>
+                0.58              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2007 - 2008</td>
+                            <td>100,000.00</td>
+              <td>115,200.00</td>
+              <td>
+                1.15              </td>
+                          <td>20,600.00</td>
+              <td>10,200.00</td>
+              <td>
+                0.50              </td>
+                          <td>67,800.00</td>
+              <td>50,200.00</td>
+              <td>
+                0.74              </td>
+                          <td>252,100.00</td>
+              <td>220,500.00</td>
+              <td>
+                0.87              </td>
+                          <td>36,200.00</td>
+              <td>47,400.00</td>
+              <td>
+                1.31              </td>
+                          <td>31,100.00</td>
+              <td>14,800.00</td>
+              <td>
+                0.48              </td>
+                          <td>36,300.00</td>
+              <td>27,700.00</td>
+              <td>
+                0.76              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2008 - 2009</td>
+                            <td>59,000.00</td>
+              <td>32,400.00</td>
+              <td>
+                0.55              </td>
+                          <td>17,100.00</td>
+              <td>7,700.00</td>
+              <td>
+                0.45              </td>
+                          <td>52,100.00</td>
+              <td>26,600.00</td>
+              <td>
+                0.51              </td>
+                          <td>286,600.00</td>
+              <td>236,000.00</td>
+              <td>
+                0.82              </td>
+                          <td>26,200.00</td>
+              <td>7,000.00</td>
+              <td>
+                0.27              </td>
+                          <td>21,600.00</td>
+              <td>11,400.00</td>
+              <td>
+                0.53              </td>
+                          <td>41,500.00</td>
+              <td>28,300.00</td>
+              <td>
+                0.68              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2009 - 2010</td>
+                            <td>72,600.00</td>
+              <td>56,500.00</td>
+              <td>
+                0.78              </td>
+                          <td>17,600.00</td>
+              <td>8,000.00</td>
+              <td>
+                0.45              </td>
+                          <td>83,000.00</td>
+              <td>44,300.00</td>
+              <td>
+                0.53              </td>
+                          <td>264,900.00</td>
+              <td>216,000.00</td>
+              <td>
+                0.82              </td>
+                          <td>46,100.00</td>
+              <td>22,400.00</td>
+              <td>
+                0.49              </td>
+                          <td>19,100.00</td>
+              <td>8,700.00</td>
+              <td>
+                0.46              </td>
+                          <td>37,000.00</td>
+              <td>22,400.00</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2010 - 2011</td>
+                            <td>94,300.00</td>
+              <td>72,800.00</td>
+              <td>
+                0.77              </td>
+                          <td>16,600.00</td>
+              <td>6,700.00</td>
+              <td>
+                0.40              </td>
+                          <td>51,400.00</td>
+              <td>41,200.00</td>
+              <td>
+                0.80              </td>
+                          <td>269,100.00</td>
+              <td>201,300.00</td>
+              <td>
+                0.75              </td>
+                          <td>65,200.00</td>
+              <td>111,400.00</td>
+              <td>
+                1.71              </td>
+                          <td>20,200.00</td>
+              <td>9,800.00</td>
+              <td>
+                0.49              </td>
+                          <td>37,300.00</td>
+              <td>25,800.00</td>
+              <td>
+                0.69              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2011 - 2012</td>
+                            <td>97,800.00</td>
+              <td>73,900.00</td>
+              <td>
+                0.76              </td>
+                          <td>16,800.00</td>
+              <td>9,400.00</td>
+              <td>
+                0.56              </td>
+                          <td>55,100.00</td>
+              <td>57,900.00</td>
+              <td>
+                1.05              </td>
+                          <td>248,500.00</td>
+              <td>179,500.00</td>
+              <td>
+                0.72              </td>
+                          <td>90,800.00</td>
+              <td>137,400.00</td>
+              <td>
+                1.51              </td>
+                          <td>14,300.00</td>
+              <td>7,900.00</td>
+              <td>
+                0.55              </td>
+                          <td>17,600.00</td>
+              <td>12,600.00</td>
+              <td>
+                0.72              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2012 - 2013</td>
+                            <td>93,200.00</td>
+              <td>28,000.00</td>
+              <td>
+                0.30              </td>
+                          <td>17,200.00</td>
+              <td>5,200.00</td>
+              <td>
+                0.30              </td>
+                          <td>51,000.00</td>
+              <td>23,200.00</td>
+              <td>
+                0.45              </td>
+                          <td>245,300.00</td>
+              <td>95,300.00</td>
+              <td>
+                0.39              </td>
+                          <td>111,700.00</td>
+              <td>101,300.00</td>
+              <td>
+                0.91              </td>
+                          <td>14,100.00</td>
+              <td>4,800.00</td>
+              <td>
+                0.34              </td>
+                          <td>17,600.00</td>
+              <td>6,300.00</td>
+              <td>
+                0.36              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2013 - 2014</td>
+                            <td>101,000.00</td>
+              <td>115,700.00</td>
+              <td>
+                1.15              </td>
+                          <td>17,700.00</td>
+              <td>12,000.00</td>
+              <td>
+                0.68              </td>
+                          <td>45,300.00</td>
+              <td>45,600.00</td>
+              <td>
+                1.01              </td>
+                          <td>199,100.00</td>
+              <td>167,400.00</td>
+              <td>
+                0.84              </td>
+                          <td>133,500.00</td>
+              <td>270,400.00</td>
+              <td>
+                2.03              </td>
+                          <td>14,300.00</td>
+              <td>9,000.00</td>
+              <td>
+                0.63              </td>
+                          <td>17,600.00</td>
+              <td>10,200.00</td>
+              <td>
+                0.58              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2014 - 2015</td>
+                            <td>101,000.00</td>
+              <td>28,600.00</td>
+              <td>
+                0.28              </td>
+                          <td>17,700.00</td>
+              <td>4,400.00</td>
+              <td>
+                0.25              </td>
+                          <td>45,300.00</td>
+              <td>12,000.00</td>
+              <td>
+                0.26              </td>
+                          <td>215,900.00</td>
+              <td>74,500.00</td>
+              <td>
+                0.35              </td>
+                          <td>133,500.00</td>
+              <td>65,600.00</td>
+              <td>
+                0.49              </td>
+                          <td>14,300.00</td>
+              <td>3,500.00</td>
+              <td>
+                0.24              </td>
+                          <td>15,800.00</td>
+              <td>4,900.00</td>
+              <td>
+                0.31              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2015 - 2016</td>
+                            <td>60,500.00</td>
+              <td>8,700.00</td>
+              <td>
+                0.14              </td>
+                          <td>10,200.00</td>
+              <td>1,700.00</td>
+              <td>
+                0.17              </td>
+                          <td>14,000.00</td>
+              <td>2,800.00</td>
+              <td>
+                0.20              </td>
+                          <td>129,000.00</td>
+              <td>38,600.00</td>
+              <td>
+                0.30              </td>
+                          <td>90,900.00</td>
+              <td>14,900.00</td>
+              <td>
+                0.16              </td>
+                          <td>7,600.00</td>
+              <td>1,100.00</td>
+              <td>
+                0.14              </td>
+                          <td>5,800.00</td>
+              <td>1,300.00</td>
+              <td>
+                0.22              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2016 - 2017</td>
+                            <td>66,804.00</td>
+              <td>58,649.00</td>
+              <td>
+                0.88              </td>
+                          <td>10,400.00</td>
+              <td>3,300.00</td>
+              <td>
+                0.32              </td>
+                          <td>14,100.00</td>
+              <td>6,300.00</td>
+              <td>
+                0.45              </td>
+                          <td>146,600.00</td>
+              <td>122,000.00</td>
+              <td>
+                0.83              </td>
+                          <td>102,000.00</td>
+              <td>28,200.00</td>
+              <td>
+                0.28              </td>
+                          <td>9,985.00</td>
+              <td>2,370.00</td>
+              <td>
+                0.24              </td>
+                          <td>6,800.00</td>
+              <td>9,100.00</td>
+              <td>
+                1.34              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2017 - 2018</td>
+                            <td>70,300.00</td>
+              <td>58,100.00</td>
+              <td>
+                0.83              </td>
+                          <td>9,900.00</td>
+              <td>4,600.00</td>
+              <td>
+                0.46              </td>
+                          <td>12,936.00</td>
+              <td>9,000.00</td>
+              <td>
+                0.70              </td>
+                          <td>162,308.00</td>
+              <td>117,400.00</td>
+              <td>
+                0.72              </td>
+                          <td>115,400.00</td>
+              <td>79,400.00</td>
+              <td>
+                0.69              </td>
+                          <td>8,943.00</td>
+              <td>3,794.00</td>
+              <td>
+                0.42              </td>
+                          <td>3,100.00</td>
+              <td>1,500.00</td>
+              <td>
+                0.48              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2018 - 2019</td>
+                            <td>58,049.00</td>
+              <td>13,351.00</td>
+              <td>
+                0.23              </td>
+                          <td>8,754.00</td>
+              <td>1,093.00</td>
+              <td>
+                0.12              </td>
+                          <td>12,784.00</td>
+              <td>4,132.00</td>
+              <td>
+                0.32              </td>
+                          <td>114,470.00</td>
+              <td>76,500.00</td>
+              <td>
+                0.67              </td>
+                          <td>214,165.00</td>
+              <td>117,791.00</td>
+              <td>
+                0.55              </td>
+                          <td>1,210.00</td>
+              <td>200.00</td>
+              <td>
+                0.17              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2019 - 2020</td>
+                            <td>66,619.00</td>
+              <td>24,783.00</td>
+              <td>
+                0.37              </td>
+                          <td>7,677.00</td>
+              <td>2,337.00</td>
+              <td>
+                0.30              </td>
+                          <td>12,183.00</td>
+              <td>7,019.00</td>
+              <td>
+                0.58              </td>
+                          <td>136,745.00</td>
+              <td>126,120.00</td>
+              <td>
+                0.92              </td>
+                          <td>229,766.00</td>
+              <td>276,894.00</td>
+              <td>
+                1.21              </td>
+                          <td>10,463.00</td>
+              <td>3,032.00</td>
+              <td>
+                0.29              </td>
+                          <td>1,062.00</td>
+              <td>377.00</td>
+              <td>
+                0.35              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2020 - 2021</td>
+                            <td>69,376.95</td>
+              <td>65,014.01</td>
+              <td>
+                0.94              </td>
+                          <td>7,314.29</td>
+              <td>3,675.91</td>
+              <td>
+                0.50              </td>
+                          <td>13,127.96</td>
+              <td>13,955.35</td>
+              <td>
+                1.06              </td>
+                          <td>144,630.84</td>
+              <td>189,567.48</td>
+              <td>
+                1.31              </td>
+                          <td>243,729.95</td>
+              <td>410,948.00</td>
+              <td>
+                1.69              </td>
+                          <td>10,372.53</td>
+              <td>4,247.55</td>
+              <td>
+                0.41              </td>
+                          <td>1,020.00</td>
+              <td>610.72</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2021 - 2022</td>
+                            <td>69,628.55</td>
+              <td>49,450.19</td>
+              <td>
+                0.71              </td>
+                          <td>6,302.77</td>
+              <td>2,412.70</td>
+              <td>
+                0.38              </td>
+                          <td>11,153.82</td>
+              <td>3,446.53</td>
+              <td>
+                0.31              </td>
+                          <td>155,522.02</td>
+              <td>178,229.79</td>
+              <td>
+                1.15              </td>
+                          <td>266,322.21</td>
+              <td>286,269.74</td>
+              <td>
+                1.07              </td>
+                          <td>6,918.79</td>
+              <td>2,633.98</td>
+              <td>
+                0.38              </td>
+                          <td>1,166.87</td>
+              <td>872.24</td>
+              <td>
+                0.75              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Dharashiv</td -->
+              <td>2022 - 2023</td>
+                            <td>41,972.00</td>
+              <td>26,094.00</td>
+              <td>
+                0.62              </td>
+                          <td>232.00</td>
+              <td>83.00</td>
+              <td>
+                0.36              </td>
+                          <td>1,903.01</td>
+              <td>283.74</td>
+              <td>
+                0.15              </td>
+                          <td>139,397.51</td>
+              <td>171,539.79</td>
+              <td>
+                1.23              </td>
+                          <td>437,775.00</td>
+              <td>500,201.00</td>
+              <td>
+                1.14              </td>
+                          <td>7,766.00</td>
+              <td>2,893.00</td>
+              <td>
+                0.37              </td>
+                          <td>559.05</td>
+              <td>259.38</td>
+              <td>
+                0.46              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="23">4. Latur</td>
+                      <td>2000 - 2001</td>
+                        <td>76,400.00</td>
+            <td>26,500.00</td>
+            <td>
+              0.35            </td>
+                      <td>10,100.00</td>
+            <td>7,700.00</td>
+            <td>
+              0.76            </td>
+                      <td>179,700.00</td>
+            <td>224,900.00</td>
+            <td>
+              1.25            </td>
+                      <td>26,000.00</td>
+            <td>19,400.00</td>
+            <td>
+              0.75            </td>
+                      <td>7,000.00</td>
+            <td>8,400.00</td>
+            <td>
+              1.20            </td>
+                      <td>18,000.00</td>
+            <td>9,600.00</td>
+            <td>
+              0.53            </td>
+                      <td>42,800.00</td>
+            <td>23,900.00</td>
+            <td>
+              0.56            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2001 - 2002</td>
+                            <td>72,800.00</td>
+              <td>48,900.00</td>
+              <td>
+                0.67              </td>
+                          <td>9,500.00</td>
+              <td>3,100.00</td>
+              <td>
+                0.33              </td>
+                          <td>162,800.00</td>
+              <td>205,900.00</td>
+              <td>
+                1.26              </td>
+                          <td>28,700.00</td>
+              <td>17,100.00</td>
+              <td>
+                0.60              </td>
+                          <td>14,100.00</td>
+              <td>10,300.00</td>
+              <td>
+                0.73              </td>
+                          <td>13,300.00</td>
+              <td>5,500.00</td>
+              <td>
+                0.41              </td>
+                          <td>44,100.00</td>
+              <td>23,100.00</td>
+              <td>
+                0.52              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2002 - 2003</td>
+                            <td>71,000.00</td>
+              <td>44,100.00</td>
+              <td>
+                0.62              </td>
+                          <td>9,300.00</td>
+              <td>5,700.00</td>
+              <td>
+                0.61              </td>
+                          <td>157,500.00</td>
+              <td>250,200.00</td>
+              <td>
+                1.59              </td>
+                          <td>29,100.00</td>
+              <td>20,500.00</td>
+              <td>
+                0.70              </td>
+                          <td>21,600.00</td>
+              <td>24,900.00</td>
+              <td>
+                1.15              </td>
+                          <td>14,500.00</td>
+              <td>7,400.00</td>
+              <td>
+                0.51              </td>
+                          <td>41,200.00</td>
+              <td>18,300.00</td>
+              <td>
+                0.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2003 - 2004</td>
+                            <td>70,800.00</td>
+              <td>45,200.00</td>
+              <td>
+                0.64              </td>
+                          <td>8,100.00</td>
+              <td>3,600.00</td>
+              <td>
+                0.44              </td>
+                          <td>156,700.00</td>
+              <td>229,100.00</td>
+              <td>
+                1.46              </td>
+                          <td>28,900.00</td>
+              <td>12,500.00</td>
+              <td>
+                0.43              </td>
+                          <td>112,200.00</td>
+              <td>121,300.00</td>
+              <td>
+                1.08              </td>
+                          <td>15,100.00</td>
+              <td>7,400.00</td>
+              <td>
+                0.49              </td>
+                          <td>48,100.00</td>
+              <td>21,100.00</td>
+              <td>
+                0.44              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2004 - 2005</td>
+                            <td>70,200.00</td>
+              <td>57,600.00</td>
+              <td>
+                0.82              </td>
+                          <td>7,400.00</td>
+              <td>3,900.00</td>
+              <td>
+                0.53              </td>
+                          <td>139,700.00</td>
+              <td>137,800.00</td>
+              <td>
+                0.99              </td>
+                          <td>31,400.00</td>
+              <td>19,300.00</td>
+              <td>
+                0.61              </td>
+                          <td>152,800.00</td>
+              <td>88,900.00</td>
+              <td>
+                0.58              </td>
+                          <td>17,000.00</td>
+              <td>7,700.00</td>
+              <td>
+                0.45              </td>
+                          <td>51,600.00</td>
+              <td>29,600.00</td>
+              <td>
+                0.57              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2005 - 2006</td>
+                            <td>73,400.00</td>
+              <td>85,200.00</td>
+              <td>
+                1.16              </td>
+                          <td>6,000.00</td>
+              <td>3,300.00</td>
+              <td>
+                0.55              </td>
+                          <td>137,000.00</td>
+              <td>224,900.00</td>
+              <td>
+                1.64              </td>
+                          <td>30,900.00</td>
+              <td>28,500.00</td>
+              <td>
+                0.92              </td>
+                          <td>173,100.00</td>
+              <td>249,800.00</td>
+              <td>
+                1.44              </td>
+                          <td>16,000.00</td>
+              <td>8,700.00</td>
+              <td>
+                0.54              </td>
+                          <td>59,500.00</td>
+              <td>39,100.00</td>
+              <td>
+                0.66              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2006 - 2007</td>
+                            <td>66,300.00</td>
+              <td>31,800.00</td>
+              <td>
+                0.48              </td>
+                          <td>5,900.00</td>
+              <td>2,400.00</td>
+              <td>
+                0.41              </td>
+                          <td>138,400.00</td>
+              <td>180,900.00</td>
+              <td>
+                1.31              </td>
+                          <td>31,900.00</td>
+              <td>23,600.00</td>
+              <td>
+                0.74              </td>
+                          <td>155,400.00</td>
+              <td>43,300.00</td>
+              <td>
+                0.28              </td>
+                          <td>12,700.00</td>
+              <td>5,200.00</td>
+              <td>
+                0.41              </td>
+                          <td>59,400.00</td>
+              <td>31,500.00</td>
+              <td>
+                0.53              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2007 - 2008</td>
+                            <td>73,800.00</td>
+              <td>88,200.00</td>
+              <td>
+                1.20              </td>
+                          <td>5,600.00</td>
+              <td>3,100.00</td>
+              <td>
+                0.55              </td>
+                          <td>133,300.00</td>
+              <td>202,400.00</td>
+              <td>
+                1.52              </td>
+                          <td>29,200.00</td>
+              <td>28,000.00</td>
+              <td>
+                0.96              </td>
+                          <td>183,000.00</td>
+              <td>213,500.00</td>
+              <td>
+                1.17              </td>
+                          <td>9,900.00</td>
+              <td>6,200.00</td>
+              <td>
+                0.63              </td>
+                          <td>44,400.00</td>
+              <td>31,100.00</td>
+              <td>
+                0.70              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2008 - 2009</td>
+                            <td>95,300.00</td>
+              <td>74,800.00</td>
+              <td>
+                0.78              </td>
+                          <td>5,000.00</td>
+              <td>2,300.00</td>
+              <td>
+                0.46              </td>
+                          <td>125,700.00</td>
+              <td>130,600.00</td>
+              <td>
+                1.04              </td>
+                          <td>27,300.00</td>
+              <td>20,800.00</td>
+              <td>
+                0.76              </td>
+                          <td>211,100.00</td>
+              <td>91,000.00</td>
+              <td>
+                0.43              </td>
+                          <td>13,100.00</td>
+              <td>6,900.00</td>
+              <td>
+                0.53              </td>
+                          <td>29,300.00</td>
+              <td>16,800.00</td>
+              <td>
+                0.57              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2009 - 2010</td>
+                            <td>81,700.00</td>
+              <td>113,200.00</td>
+              <td>
+                1.39              </td>
+                          <td>4,000.00</td>
+              <td>1,500.00</td>
+              <td>
+                0.38              </td>
+                          <td>117,200.00</td>
+              <td>90,000.00</td>
+              <td>
+                0.77              </td>
+                          <td>29,100.00</td>
+              <td>24,200.00</td>
+              <td>
+                0.83              </td>
+                          <td>217,700.00</td>
+              <td>142,600.00</td>
+              <td>
+                0.66              </td>
+                          <td>6,600.00</td>
+              <td>2,000.00</td>
+              <td>
+                0.30              </td>
+                          <td>27,300.00</td>
+              <td>14,800.00</td>
+              <td>
+                0.54              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2010 - 2011</td>
+                            <td>88,600.00</td>
+              <td>103,300.00</td>
+              <td>
+                1.17              </td>
+                          <td>4,300.00</td>
+              <td>2,200.00</td>
+              <td>
+                0.51              </td>
+                          <td>123,600.00</td>
+              <td>176,700.00</td>
+              <td>
+                1.43              </td>
+                          <td>31,400.00</td>
+              <td>23,200.00</td>
+              <td>
+                0.74              </td>
+                          <td>194,500.00</td>
+              <td>431,800.00</td>
+              <td>
+                2.22              </td>
+                          <td>6,500.00</td>
+              <td>4,700.00</td>
+              <td>
+                0.72              </td>
+                          <td>27,400.00</td>
+              <td>18,600.00</td>
+              <td>
+                0.68              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2011 - 2012</td>
+                            <td>106,300.00</td>
+              <td>86,100.00</td>
+              <td>
+                0.81              </td>
+                          <td>3,800.00</td>
+              <td>2,100.00</td>
+              <td>
+                0.55              </td>
+                          <td>106,200.00</td>
+              <td>139,700.00</td>
+              <td>
+                1.32              </td>
+                          <td>27,100.00</td>
+              <td>27,300.00</td>
+              <td>
+                1.01              </td>
+                          <td>265,400.00</td>
+              <td>437,200.00</td>
+              <td>
+                1.65              </td>
+                          <td>5,300.00</td>
+              <td>3,500.00</td>
+              <td>
+                0.66              </td>
+                          <td>7,500.00</td>
+              <td>4,300.00</td>
+              <td>
+                0.57              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2012 - 2013</td>
+                            <td>106,300.00</td>
+              <td>150,000.00</td>
+              <td>
+                1.41              </td>
+                          <td>3,800.00</td>
+              <td>2,700.00</td>
+              <td>
+                0.71              </td>
+                          <td>99,900.00</td>
+              <td>166,000.00</td>
+              <td>
+                1.66              </td>
+                          <td>30,100.00</td>
+              <td>28,200.00</td>
+              <td>
+                0.94              </td>
+                          <td>265,400.00</td>
+              <td>625,400.00</td>
+              <td>
+                2.36              </td>
+                          <td>5,300.00</td>
+              <td>3,400.00</td>
+              <td>
+                0.64              </td>
+                          <td>6,800.00</td>
+              <td>4,800.00</td>
+              <td>
+                0.71              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2013 - 2014</td>
+                            <td>112,400.00</td>
+              <td>156,200.00</td>
+              <td>
+                1.39              </td>
+                          <td>2,700.00</td>
+              <td>1,300.00</td>
+              <td>
+                0.48              </td>
+                          <td>96,000.00</td>
+              <td>147,200.00</td>
+              <td>
+                1.53              </td>
+                          <td>30,100.00</td>
+              <td>29,900.00</td>
+              <td>
+                0.99              </td>
+                          <td>308,400.00</td>
+              <td>670,400.00</td>
+              <td>
+                2.17              </td>
+                          <td>4,200.00</td>
+              <td>2,900.00</td>
+              <td>
+                0.69              </td>
+                          <td>6,000.00</td>
+              <td>4,500.00</td>
+              <td>
+                0.75              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2014 - 2015</td>
+                            <td>113,200.00</td>
+              <td>28,300.00</td>
+              <td>
+                0.25              </td>
+                          <td>2,500.00</td>
+              <td>400.00</td>
+              <td>
+                0.16              </td>
+                          <td>88,300.00</td>
+              <td>94,600.00</td>
+              <td>
+                1.07              </td>
+                          <td>22,200.00</td>
+              <td>8,100.00</td>
+              <td>
+                0.36              </td>
+                          <td>336,800.00</td>
+              <td>210,000.00</td>
+              <td>
+                0.62              </td>
+                          <td>3,400.00</td>
+              <td>700.00</td>
+              <td>
+                0.21              </td>
+                          <td>4,000.00</td>
+              <td>1,300.00</td>
+              <td>
+                0.33              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2015 - 2016</td>
+                            <td>116,200.00</td>
+              <td>30,900.00</td>
+              <td>
+                0.27              </td>
+                          <td>2,300.00</td>
+              <td>300.00</td>
+              <td>
+                0.13              </td>
+                          <td>83,500.00</td>
+              <td>39,600.00</td>
+              <td>
+                0.47              </td>
+                          <td>24,700.00</td>
+              <td>9,200.00</td>
+              <td>
+                0.37              </td>
+                          <td>340,800.00</td>
+              <td>109,000.00</td>
+              <td>
+                0.32              </td>
+                          <td>3,700.00</td>
+              <td>500.00</td>
+              <td>
+                0.14              </td>
+                          <td>4,900.00</td>
+              <td>1,500.00</td>
+              <td>
+                0.31              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2016 - 2017</td>
+                            <td>126,097.00</td>
+              <td>432,434.00</td>
+              <td>
+                3.43              </td>
+                          <td>2,200.00</td>
+              <td>300.00</td>
+              <td>
+                0.14              </td>
+                          <td>87,800.00</td>
+              <td>77,600.00</td>
+              <td>
+                0.88              </td>
+                          <td>40,100.00</td>
+              <td>43,600.00</td>
+              <td>
+                1.09              </td>
+                          <td>370,300.00</td>
+              <td>297,900.00</td>
+              <td>
+                0.80              </td>
+                          <td>2,166.00</td>
+              <td>687.00</td>
+              <td>
+                0.32              </td>
+                          <td>420.00</td>
+              <td>380.00</td>
+              <td>
+                0.90              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2017 - 2018</td>
+                            <td>111,300.00</td>
+              <td>131,400.00</td>
+              <td>
+                1.18              </td>
+                          <td>1,500.00</td>
+              <td>300.00</td>
+              <td>
+                0.20              </td>
+                          <td>78,408.00</td>
+              <td>67,200.00</td>
+              <td>
+                0.86              </td>
+                          <td>32,759.00</td>
+              <td>24,700.00</td>
+              <td>
+                0.75              </td>
+                          <td>392,800.00</td>
+              <td>465,000.00</td>
+              <td>
+                1.18              </td>
+                          <td>1,587.00</td>
+              <td>531.00</td>
+              <td>
+                0.33              </td>
+                          <td>500.00</td>
+              <td>300.00</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2018 - 2019</td>
+                            <td>114,087.00</td>
+              <td>54,420.00</td>
+              <td>
+                0.48              </td>
+                          <td>1,549.00</td>
+              <td>378.00</td>
+              <td>
+                0.24              </td>
+                          <td>79,498.00</td>
+              <td>56,006.00</td>
+              <td>
+                0.70              </td>
+                          <td>23,800.00</td>
+              <td>16,200.00</td>
+              <td>
+                0.68              </td>
+                          <td>435,969.00</td>
+              <td>445,480.00</td>
+              <td>
+                1.02              </td>
+                          <td>410.00</td>
+              <td>50.00</td>
+              <td>
+                0.12              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2019 - 2020</td>
+                            <td>108,642.00</td>
+              <td>132,824.00</td>
+              <td>
+                1.22              </td>
+                          <td>1,668.00</td>
+              <td>371.00</td>
+              <td>
+                0.22              </td>
+                          <td>63,056.00</td>
+              <td>49,570.00</td>
+              <td>
+                0.79              </td>
+                          <td>33,693.00</td>
+              <td>32,016.00</td>
+              <td>
+                0.95              </td>
+                          <td>413,012.00</td>
+              <td>455,564.00</td>
+              <td>
+                1.10              </td>
+                          <td>5,407.00</td>
+              <td>2,224.00</td>
+              <td>
+                0.41              </td>
+                          <td>605.00</td>
+              <td>431.00</td>
+              <td>
+                0.71              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2020 - 2021</td>
+                            <td>111,326.31</td>
+              <td>164,494.09</td>
+              <td>
+                1.48              </td>
+                          <td>1,661.58</td>
+              <td>468.59</td>
+              <td>
+                0.28              </td>
+                          <td>56,343.09</td>
+              <td>47,244.73</td>
+              <td>
+                0.84              </td>
+                          <td>37,764.35</td>
+              <td>50,727.77</td>
+              <td>
+                1.34              </td>
+                          <td>442,391.19</td>
+              <td>774,232.16</td>
+              <td>
+                1.75              </td>
+                          <td>5,479.94</td>
+              <td>2,244.04</td>
+              <td>
+                0.41              </td>
+                          <td>711.00</td>
+              <td>425.71</td>
+              <td>
+                0.60              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2021 - 2022</td>
+                            <td>115,458.26</td>
+              <td>73,916.38</td>
+              <td>
+                0.64              </td>
+                          <td>918.36</td>
+              <td>115.08</td>
+              <td>
+                0.13              </td>
+                          <td>57,358.52</td>
+              <td>32,952.47</td>
+              <td>
+                0.57              </td>
+                          <td>40,790.24</td>
+              <td>49,780.00</td>
+              <td>
+                1.22              </td>
+                          <td>475,381.11</td>
+              <td>583,720.46</td>
+              <td>
+                1.23              </td>
+                          <td>305.68</td>
+              <td>116.37</td>
+              <td>
+                0.38              </td>
+                          <td>407.02</td>
+              <td>304.25</td>
+              <td>
+                0.75              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Latur</td -->
+              <td>2022 - 2023</td>
+                            <td>68,615.00</td>
+              <td>23,521.00</td>
+              <td>
+                0.34              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>7,068.54</td>
+              <td>2,090.17</td>
+              <td>
+                0.30              </td>
+                          <td>31,944.62</td>
+              <td>30,949.87</td>
+              <td>
+                0.97              </td>
+                          <td>486,702.00</td>
+              <td>534,398.00</td>
+              <td>
+                1.10              </td>
+                          <td>258.00</td>
+              <td>96.00</td>
+              <td>
+                0.37              </td>
+                          <td>491.67</td>
+              <td>228.14</td>
+              <td>
+                0.46              </td>
+            
+
+            </tr>
+                          <tr>
+                        <td rowspan="23">5. Solapur</td>
+                      <td>2000 - 2001</td>
+                        <td>32,300.00</td>
+            <td>12,500.00</td>
+            <td>
+              0.39            </td>
+                      <td>53,300.00</td>
+            <td>22,100.00</td>
+            <td>
+              0.41            </td>
+                      <td>2,100.00</td>
+            <td>1,600.00</td>
+            <td>
+              0.76            </td>
+                      <td>636,700.00</td>
+            <td>285,200.00</td>
+            <td>
+              0.45            </td>
+                      <td>600.00</td>
+            <td>1,000.00</td>
+            <td>
+              1.67            </td>
+                      <td>20,800.00</td>
+            <td>10,600.00</td>
+            <td>
+              0.51            </td>
+                      <td>27,500.00</td>
+            <td>13,300.00</td>
+            <td>
+              0.48            </td>
+          
+
+          </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2001 - 2002</td>
+                            <td>6,700.00</td>
+              <td>1,400.00</td>
+              <td>
+                0.21              </td>
+                          <td>11,800.00</td>
+              <td>5,400.00</td>
+              <td>
+                0.46              </td>
+                          <td>700.00</td>
+              <td>500.00</td>
+              <td>
+                0.71              </td>
+                          <td>712,900.00</td>
+              <td>313,800.00</td>
+              <td>
+                0.44              </td>
+                          <td>400.00</td>
+              <td>500.00</td>
+              <td>
+                1.25              </td>
+                          <td>5,700.00</td>
+              <td>1,900.00</td>
+              <td>
+                0.33              </td>
+                          <td>24,100.00</td>
+              <td>12,300.00</td>
+              <td>
+                0.51              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2002 - 2003</td>
+                            <td>13,300.00</td>
+              <td>4,600.00</td>
+              <td>
+                0.35              </td>
+                          <td>25,100.00</td>
+              <td>9,500.00</td>
+              <td>
+                0.38              </td>
+                          <td>1,100.00</td>
+              <td>600.00</td>
+              <td>
+                0.55              </td>
+                          <td>672,100.00</td>
+              <td>225,400.00</td>
+              <td>
+                0.34              </td>
+                          <td>700.00</td>
+              <td>500.00</td>
+              <td>
+                0.71              </td>
+                          <td>9,800.00</td>
+              <td>3,700.00</td>
+              <td>
+                0.38              </td>
+                          <td>24,700.00</td>
+              <td>11,600.00</td>
+              <td>
+                0.47              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2003 - 2004</td>
+                            <td>7,700.00</td>
+              <td>700.00</td>
+              <td>
+                0.09              </td>
+                          <td>9,700.00</td>
+              <td>3,700.00</td>
+              <td>
+                0.38              </td>
+                          <td>400.00</td>
+              <td>100.00</td>
+              <td>
+                0.25              </td>
+                          <td>613,700.00</td>
+              <td>28,600.00</td>
+              <td>
+                0.05              </td>
+                          <td>600.00</td>
+              <td>700.00</td>
+              <td>
+                1.17              </td>
+                          <td>2,500.00</td>
+              <td>700.00</td>
+              <td>
+                0.28              </td>
+                          <td>19,000.00</td>
+              <td>2,000.00</td>
+              <td>
+                0.11              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2004 - 2005</td>
+                            <td>15,800.00</td>
+              <td>5,500.00</td>
+              <td>
+                0.35              </td>
+                          <td>26,200.00</td>
+              <td>15,000.00</td>
+              <td>
+                0.57              </td>
+                          <td>400.00</td>
+              <td>300.00</td>
+              <td>
+                0.75              </td>
+                          <td>686,900.00</td>
+              <td>302,600.00</td>
+              <td>
+                0.44              </td>
+                          <td>2,100.00</td>
+              <td>4,700.00</td>
+              <td>
+                2.24              </td>
+                          <td>12,700.00</td>
+              <td>6,700.00</td>
+              <td>
+                0.53              </td>
+                          <td>25,200.00</td>
+              <td>14,000.00</td>
+              <td>
+                0.56              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2005 - 2006</td>
+                            <td>18,900.00</td>
+              <td>5,900.00</td>
+              <td>
+                0.31              </td>
+                          <td>14,800.00</td>
+              <td>6,700.00</td>
+              <td>
+                0.45              </td>
+                          <td>400.00</td>
+              <td>300.00</td>
+              <td>
+                0.75              </td>
+                          <td>707,000.00</td>
+              <td>361,100.00</td>
+              <td>
+                0.51              </td>
+                          <td>1,100.00</td>
+              <td>800.00</td>
+              <td>
+                0.73              </td>
+                          <td>12,100.00</td>
+              <td>7,100.00</td>
+              <td>
+                0.59              </td>
+                          <td>24,900.00</td>
+              <td>12,400.00</td>
+              <td>
+                0.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2006 - 2007</td>
+                            <td>28,300.00</td>
+              <td>14,500.00</td>
+              <td>
+                0.51              </td>
+                          <td>27,500.00</td>
+              <td>7,700.00</td>
+              <td>
+                0.28              </td>
+                          <td>400.00</td>
+              <td>200.00</td>
+              <td>
+                0.50              </td>
+                          <td>711,300.00</td>
+              <td>342,200.00</td>
+              <td>
+                0.48              </td>
+                          <td>2,100.00</td>
+              <td>3,300.00</td>
+              <td>
+                1.57              </td>
+                          <td>13,900.00</td>
+              <td>7,100.00</td>
+              <td>
+                0.51              </td>
+                          <td>21,800.00</td>
+              <td>11,100.00</td>
+              <td>
+                0.51              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2007 - 2008</td>
+                            <td>25,700.00</td>
+              <td>11,100.00</td>
+              <td>
+                0.43              </td>
+                          <td>21,500.00</td>
+              <td>9,100.00</td>
+              <td>
+                0.42              </td>
+                          <td>200.00</td>
+              <td>200.00</td>
+              <td>
+                1.00              </td>
+                          <td>617,800.00</td>
+              <td>351,500.00</td>
+              <td>
+                0.57              </td>
+                          <td>2,800.00</td>
+              <td>3,900.00</td>
+              <td>
+                1.39              </td>
+                          <td>10,700.00</td>
+              <td>7,800.00</td>
+              <td>
+                0.73              </td>
+                          <td>15,600.00</td>
+              <td>9,900.00</td>
+              <td>
+                0.63              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2008 - 2009</td>
+                            <td>6,900.00</td>
+              <td>2,700.00</td>
+              <td>
+                0.39              </td>
+                          <td>1,800.00</td>
+              <td>800.00</td>
+              <td>
+                0.44              </td>
+                          <td>200.00</td>
+              <td>200.00</td>
+              <td>
+                1.00              </td>
+                          <td>687,500.00</td>
+              <td>406,000.00</td>
+              <td>
+                0.59              </td>
+                          <td>2,500.00</td>
+              <td>2,300.00</td>
+              <td>
+                0.92              </td>
+                          <td>6,100.00</td>
+              <td>3,300.00</td>
+              <td>
+                0.54              </td>
+                          <td>17,400.00</td>
+              <td>10,700.00</td>
+              <td>
+                0.61              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2009 - 2010</td>
+                            <td>23,200.00</td>
+              <td>6,900.00</td>
+              <td>
+                0.30              </td>
+                          <td>14,400.00</td>
+              <td>5,200.00</td>
+              <td>
+                0.36              </td>
+                          <td>100.00</td>
+              <td>44.00</td>
+              <td>
+                0.44              </td>
+                          <td>657,600.00</td>
+              <td>400,700.00</td>
+              <td>
+                0.61              </td>
+                          <td>3,200.00</td>
+              <td>2,800.00</td>
+              <td>
+                0.88              </td>
+                          <td>6,600.00</td>
+              <td>2,200.00</td>
+              <td>
+                0.33              </td>
+                          <td>17,400.00</td>
+              <td>9,000.00</td>
+              <td>
+                0.52              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2010 - 2011</td>
+                            <td>41,800.00</td>
+              <td>15,600.00</td>
+              <td>
+                0.37              </td>
+                          <td>18,400.00</td>
+              <td>9,600.00</td>
+              <td>
+                0.52              </td>
+                          <td>400.00</td>
+              <td>200.00</td>
+              <td>
+                0.50              </td>
+                          <td>641,200.00</td>
+              <td>380,600.00</td>
+              <td>
+                0.59              </td>
+                          <td>4,300.00</td>
+              <td>5,300.00</td>
+              <td>
+                1.23              </td>
+                          <td>8,500.00</td>
+              <td>3,500.00</td>
+              <td>
+                0.41              </td>
+                          <td>18,200.00</td>
+              <td>10,400.00</td>
+              <td>
+                0.57              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2011 - 2012</td>
+                            <td>21,600.00</td>
+              <td>8,100.00</td>
+              <td>
+                0.38              </td>
+                          <td>9,900.00</td>
+              <td>3,900.00</td>
+              <td>
+                0.39              </td>
+                          <td>400.00</td>
+              <td>300.00</td>
+              <td>
+                0.75              </td>
+                          <td>482,600.00</td>
+              <td>193,000.00</td>
+              <td>
+                0.40              </td>
+                          <td>5,100.00</td>
+              <td>12,200.00</td>
+              <td>
+                2.39              </td>
+                          <td>4,600.00</td>
+              <td>2,100.00</td>
+              <td>
+                0.46              </td>
+                          <td>12,300.00</td>
+              <td>6,100.00</td>
+              <td>
+                0.50              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2012 - 2013</td>
+                            <td>18,800.00</td>
+              <td>6,300.00</td>
+              <td>
+                0.34              </td>
+                          <td>6,300.00</td>
+              <td>200.00</td>
+              <td>
+                0.03              </td>
+                          <td>400.00</td>
+              <td>100.00</td>
+              <td>
+                0.25              </td>
+                          <td>480,700.00</td>
+              <td>132,900.00</td>
+              <td>
+                0.28              </td>
+                          <td>5,500.00</td>
+              <td>11,500.00</td>
+              <td>
+                2.09              </td>
+                          <td>3,600.00</td>
+              <td>1,200.00</td>
+              <td>
+                0.33              </td>
+                          <td>10,800.00</td>
+              <td>5,000.00</td>
+              <td>
+                0.46              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2013 - 2014</td>
+                            <td>18,800.00</td>
+              <td>9,200.00</td>
+              <td>
+                0.49              </td>
+                          <td>6,300.00</td>
+              <td>2,200.00</td>
+              <td>
+                0.35              </td>
+                          <td>500.00</td>
+              <td>200.00</td>
+              <td>
+                0.40              </td>
+                          <td>565,800.00</td>
+              <td>304,500.00</td>
+              <td>
+                0.54              </td>
+                          <td>5,500.00</td>
+              <td>9,900.00</td>
+              <td>
+                1.80              </td>
+                          <td>3,600.00</td>
+              <td>2,200.00</td>
+              <td>
+                0.61              </td>
+                          <td>13,000.00</td>
+              <td>10,000.00</td>
+              <td>
+                0.77              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2014 - 2015</td>
+                            <td>18,800.00</td>
+              <td>9,000.00</td>
+              <td>
+                0.48              </td>
+                          <td>5,500.00</td>
+              <td>2,200.00</td>
+              <td>
+                0.40              </td>
+                          <td>300.00</td>
+              <td>100.00</td>
+              <td>
+                0.33              </td>
+                          <td>622,800.00</td>
+              <td>354,100.00</td>
+              <td>
+                0.57              </td>
+                          <td>6,300.00</td>
+              <td>7,400.00</td>
+              <td>
+                1.17              </td>
+                          <td>4,500.00</td>
+              <td>2,100.00</td>
+              <td>
+                0.47              </td>
+                          <td>16,000.00</td>
+              <td>9,900.00</td>
+              <td>
+                0.62              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2015 - 2016</td>
+                            <td>18,200.00</td>
+              <td>3,000.00</td>
+              <td>
+                0.16              </td>
+                          <td>14,800.00</td>
+              <td>3,400.00</td>
+              <td>
+                0.23              </td>
+                          <td>200.00</td>
+              <td></td>
+              <td>
+                0.00              </td>
+                          <td>615,700.00</td>
+              <td>108,000.00</td>
+              <td>
+                0.18              </td>
+                          <td>14,200.00</td>
+              <td>2,400.00</td>
+              <td>
+                0.17              </td>
+                          <td>2,300.00</td>
+              <td>300.00</td>
+              <td>
+                0.13              </td>
+                          <td>15,100.00</td>
+              <td>3,700.00</td>
+              <td>
+                0.25              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2016 - 2017</td>
+                            <td>29,968.00</td>
+              <td>16,798.00</td>
+              <td>
+                0.56              </td>
+                          <td>26,900.00</td>
+              <td>9,400.00</td>
+              <td>
+                0.35              </td>
+                          <td>200.00</td>
+              <td>80.00</td>
+              <td>
+                0.40              </td>
+                          <td>658,500.00</td>
+              <td>361,780.00</td>
+              <td>
+                0.55              </td>
+                          <td>27,700.00</td>
+              <td>10,170.00</td>
+              <td>
+                0.37              </td>
+                          <td>3,051.00</td>
+              <td>1,016.00</td>
+              <td>
+                0.33              </td>
+                          <td>180.00</td>
+              <td>120.00</td>
+              <td>
+                0.67              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2017 - 2018</td>
+                            <td>29,800.00</td>
+              <td>18,700.00</td>
+              <td>
+                0.63              </td>
+                          <td>28,600.00</td>
+              <td>9,740.00</td>
+              <td>
+                0.34              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+                          <td>656,900.00</td>
+              <td>370,080.00</td>
+              <td>
+                0.56              </td>
+                          <td>33,588.00</td>
+              <td>38,560.00</td>
+              <td>
+                1.15              </td>
+                          <td>2,778.00</td>
+              <td>1,567.00</td>
+              <td>
+                0.56              </td>
+                          <td>18,300.00</td>
+              <td>9,330.00</td>
+              <td>
+                0.51              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2018 - 2019</td>
+                            <td>35,316.00</td>
+              <td>4,052.00</td>
+              <td>
+                0.11              </td>
+                          <td>23,793.00</td>
+              <td>3,203.00</td>
+              <td>
+                0.13              </td>
+                          <td>3,688.00</td>
+              <td>1,819.00</td>
+              <td>
+                0.49              </td>
+                          <td>513,810.00</td>
+              <td>182,500.00</td>
+              <td>
+                0.36              </td>
+                          <td>35,037.00</td>
+              <td>11,569.00</td>
+              <td>
+                0.33              </td>
+                          <td>13,610.00</td>
+              <td>2,300.00</td>
+              <td>
+                0.17              </td>
+                          <td></td>
+              <td></td>
+              <td>
+                              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2019 - 2020</td>
+                            <td>51,532.00</td>
+              <td>29,432.00</td>
+              <td>
+                0.57              </td>
+                          <td>49,811.00</td>
+              <td>11,528.00</td>
+              <td>
+                0.23              </td>
+                          <td>3,648.00</td>
+              <td>929.00</td>
+              <td>
+                0.25              </td>
+                          <td>462,614.00</td>
+              <td>315,047.00</td>
+              <td>
+                0.68              </td>
+                          <td>34,910.00</td>
+              <td>22,193.00</td>
+              <td>
+                0.64              </td>
+                          <td>2,062.00</td>
+              <td>732.00</td>
+              <td>
+                0.35              </td>
+                          <td>498.00</td>
+              <td>273.00</td>
+              <td>
+                0.55              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2020 - 2021</td>
+                            <td>55,028.24</td>
+              <td>33,980.26</td>
+              <td>
+                0.62              </td>
+                          <td>55,313.76</td>
+              <td>27,225.22</td>
+              <td>
+                0.49              </td>
+                          <td>3,112.67</td>
+              <td>1,921.76</td>
+              <td>
+                0.62              </td>
+                          <td>470,931.63</td>
+              <td>374,566.11</td>
+              <td>
+                0.80              </td>
+                          <td>39,088.70</td>
+              <td>48,707.78</td>
+              <td>
+                1.25              </td>
+                          <td>2,265.50</td>
+              <td>1,360.42</td>
+              <td>
+                0.60              </td>
+                          <td>693.87</td>
+              <td>270.82</td>
+              <td>
+                0.39              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2021 - 2022</td>
+                            <td>60,637.32</td>
+              <td>31,379.81</td>
+              <td>
+                0.52              </td>
+                          <td>57,132.06</td>
+              <td>23,218.19</td>
+              <td>
+                0.41              </td>
+                          <td>1,199.19</td>
+              <td>1,353.97</td>
+              <td>
+                1.13              </td>
+                          <td>458,397.74</td>
+              <td>374,300.09</td>
+              <td>
+                0.82              </td>
+                          <td>50,475.36</td>
+              <td>59,061.22</td>
+              <td>
+                1.17              </td>
+                          <td>2,333.82</td>
+              <td>1,311.61</td>
+              <td>
+                0.56              </td>
+                          <td>479.37</td>
+              <td>632.19</td>
+              <td>
+                1.32              </td>
+            
+
+            </tr>
+                      <tr>
+
+              <!-- td rowspan="">Solapur</td -->
+              <td>2022 - 2023</td>
+                            <td>62,818.00</td>
+              <td>33,495.00</td>
+              <td>
+                0.53              </td>
+                          <td>49,448.00</td>
+              <td>20,712.00</td>
+              <td>
+                0.42              </td>
+                          <td>313.64</td>
+              <td>156.14</td>
+              <td>
+                0.50              </td>
+                          <td>251,430.71</td>
+              <td>195,660.86</td>
+              <td>
+                0.78              </td>
+                          <td>86,495.00</td>
+              <td>80,432.00</td>
+              <td>
+                0.93              </td>
+                          <td>2,237.00</td>
+              <td>1,044.00</td>
+              <td>
+                0.47              </td>
+                          <td>466.08</td>
+              <td>565.36</td>
+              <td>
+                1.21              </td>
+            
+
+            </tr>
+                      
+      </tbody>
+      </table>

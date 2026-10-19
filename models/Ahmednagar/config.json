@@ -1,0 +1,53 @@
+{
+  "district": "Ahmednagar",
+  "target_features": [
+    "Rainfall_mm",
+    "Temperature_C",
+    "Temperature_Max_C",
+    "Temperature_Min_C",
+    "Relative_Humidity_percent",
+    "Wind_Speed_mps",
+    "Surface_Pressure_kPa",
+    "Solar_Radiation",
+    "Dew_Point_C",
+    "Cloud_Amount_percent",
+    "Wind_Speed_50m_mps"
+  ],
+  "input_features": [
+    "Rainfall_mm",
+    "Temperature_C",
+    "Temperature_Max_C",
+    "Temperature_Min_C",
+    "Relative_Humidity_percent",
+    "Wind_Speed_mps",
+    "Surface_Pressure_kPa",
+    "Solar_Radiation",
+    "Dew_Point_C",
+    "Cloud_Amount_percent",
+    "Wind_Speed_50m_mps",
+    "Rain_roll7",
+    "Rain_roll14",
+    "Rain_roll30",
+    "Humid_roll7",
+    "Solar_roll7",
+    "Wind_roll7",
+    "Wind50_roll7",
+    "Cloud_roll7"
+  ],
+  "log_transformed_columns": [
+    "Rainfall_mm",
+    "Wind_Speed_mps"
+  ],
+  "lookback": 45,
+  "horizon": 3,
+  "lstm_units": 128,
+  "num_layers": 1,
+  "dense_units": 384,
+  "dropout": 0.25,
+  "learning_rate": 0.0005,
+  "batch_size": 16,
+  "train_end": "2018-12-31",
+  "val_end": "2021-12-31",
+  "blended_test_r2": 0.7484545454545455,
+  "trained_through_date": "2026-09-14"
+}

@@ -1,0 +1,12 @@
+feature,RMSE,MAE,R2
+Rainfall_mm,7.298,1.671,0.101
+Temperature_C,1.121,0.869,0.922
+Temperature_Max_C,1.47,1.128,0.886
+Temperature_Min_C,1.4,1.031,0.896
+Relative_Humidity_percent,5.667,4.204,0.937
+Wind_Speed_mps,0.957,0.716,0.718
+Surface_Pressure_kPa,0.148,0.118,0.835
+Solar_Radiation,2.97,2.168,0.65
+Dew_Point_C,2.231,1.576,0.9
+Cloud_Amount_percent,18.603,14.478,0.747
+Wind_Speed_50m_mps,1.252,0.968,0.641
