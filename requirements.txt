@@ -1,0 +1,13 @@
+numpy
+pandas
+scikit-learn
+torch
+joblib
+matplotlib
+seaborn
+requests
+jupyter
+# knowledge graph
+pdfplumber
+networkx
+lxml
