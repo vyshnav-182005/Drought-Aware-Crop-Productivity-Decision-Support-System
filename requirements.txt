@@ -11,3 +11,9 @@ jupyter
 pdfplumber
 networkx
 lxml
+mlflow
+fastapi
+uvicorn
+pytest
+pyyaml
+dvc

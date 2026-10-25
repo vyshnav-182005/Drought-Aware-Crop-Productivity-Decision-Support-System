@@ -2,7 +2,7 @@
 
 Final-year project for five drought-prone Maharashtra districts: Ahmednagar, Beed, Latur, Osmanabad and Solapur.
 
-- **Weather forecasting.** A PyTorch LSTM, one model per district, forecasts 11 daily weather variables 3 days ahead. It is trained on NASA POWER data from 2000 onward.
+- **Weather forecasting.** A hurdle ensemble, one model per district, forecasts rainfall up to 3 days ahead. It is trained on NASA POWER data from 2000 onward.
 - **Knowledge graph.** Built from the district Agriculture Contingency Plans and the DES crop data. It maps a district, crop and drought condition to the recommended actions.
 
 ## Structure
@@ -10,17 +10,35 @@ Final-year project for five drought-prone Maharashtra districts: Ahmednagar, Bee
 ```
 ├── codes/
 │   ├── preprocessing.ipynb        # downloads (NASA POWER, regional points, climate indices, Open-Meteo) + cleaning
-│   ├── forecasting/lstm.ipynb     # LSTM: data prep, training, evaluation, plots for all districts
+│   ├── forecasting/lstm.ipynb     # archived LSTM experiment
+│   ├── forecasting/hurdle/        # classifier + intensity regressor
 │   └── knowledge_graph/           # PDF extraction, graph build, HTML viewer, query (see its README)
 ├── data/
 │   ├── weather/v1/, v2/           # raw NASA POWER (v2 = 11 variables, used for training)
 │   ├── weather/clean/             # gap-filled v2, written by preprocessing.ipynb, read by lstm.ipynb
 │   ├── crop_production/, census/, contingency_plans/
-├── models/                        # LSTM weights only: <district>_weather_lstm_pytorch.pt
+├── models/                        # Hurdle checkpoints
 ├── outputs/
 │   ├── knowledge_graph/           # extracted CSVs, graph (.graphml/.json), interactive viewer
 │   └── lstm/<District>/           # scalers, config.json, test metrics, plots
 └── docs/                          # review presentations
+```
+
+## MLOps workflow
+
+The hurdle pipeline is the production path. It supports leakage-safe
+three-day rainfall forecasts, MLflow tracking and champion promotion, a
+FastAPI service, DVC-managed data, and weekly monitoring. See
+[`MLOps/MLOPS_IMPLEMENTATION.md`](./MLOps/MLOPS_IMPLEMENTATION.md) for setup.
+
+The current production baseline was trained from
+`data/weather data new/`. Its authoritative metrics are stored in
+`outputs/hurdle/results/hurdle_per_district_metrics.csv`, and its checkpoints
+are under `outputs/hurdle/checkpoints/`. The registration command imports those
+existing checkpoints; it does not retrain them:
+
+```bash
+python codes/forecasting/register_existing.py
 ```
 
 ## How to run

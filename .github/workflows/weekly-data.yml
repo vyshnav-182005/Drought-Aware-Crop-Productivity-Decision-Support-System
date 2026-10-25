@@ -1,0 +1,30 @@
+name: weekly-data
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install dvc pandas numpy pyyaml requests scikit-learn
+      - run: |
+          dvc remote modify origin --local auth basic
+          dvc remote modify origin --local user "${{ secrets.DAGSHUB_USER }}"
+          dvc remote modify origin --local password "${{ secrets.DAGSHUB_TOKEN }}"
+      - run: dvc pull "data/weather data new.dvc"
+      - run: python codes/pipeline/fetch_nasa.py
+      - run: python codes/pipeline/clean.py
+      - run: dvc add "data/weather data new"
+      - run: dvc push
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add data/weather.dvc
+          git diff --cached --quiet || (git commit -m "weekly weather refresh" && git push)
