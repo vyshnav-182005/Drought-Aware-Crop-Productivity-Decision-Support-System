@@ -119,6 +119,9 @@ existing checkpoints; it does not retrain them:
 python codes/forecasting/register_existing.py
 ```
 
+For day-to-day operation, see the
+[MLOps operations runbook](./MLOps/OPERATIONS_RUNBOOK.md).
+
 The API writes forecast observations to `logs/forecasts_log.csv`. To make
 those observations available to the scheduled monitor, periodically version
 the log and push it to DVC:
