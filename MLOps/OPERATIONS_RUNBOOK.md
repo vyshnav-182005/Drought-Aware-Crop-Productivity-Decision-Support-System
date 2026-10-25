@@ -1,67 +1,32 @@
-# Hurdle Model MLOps Operations Runbook
+# MLOps Operations Runbook
 
-This document explains how to operate the production hurdle rainfall model
-pipeline in this repository.
+This project uses the existing hurdle rainfall models for production. The
+LSTM notebook is archived and is not part of serving, registration, or
+monitoring.
 
-## Production scope
+## Production assets
 
-The production MLOps path uses the existing hurdle ensemble checkpoints:
+| Asset | Location |
+|---|---|
+| Weather data | `data/weather data new/` |
+| Checkpoints | `outputs/hurdle/checkpoints/` |
+| Baseline metrics | `outputs/hurdle/results/hurdle_per_district_metrics.csv` |
+| API | `serve/app.py` |
+| MLflow models | `<district>_hurdle` |
 
-- Data source: `data/weather data new/`
-- Checkpoints: `outputs/hurdle/checkpoints/`
-- Authoritative metrics: `outputs/hurdle/results/hurdle_per_district_metrics.csv`
-- MLflow model names:
-  - `Ahmednagar_hurdle`
-  - `Beed_hurdle`
-  - `Latur_hurdle`
-  - `Osmanabad_hurdle`
-  - `Solapur_hurdle`
+The registered checkpoints reproduce the original same-day validation model.
+The API labels responses `original_checkpoint_same_day`; do not describe them
+as validated three-day forecasts.
 
-The LSTM notebook is archived and is not part of the production MLOps path.
+## One-time setup
 
-> **Important model limitation:** the registered checkpoints preserve the
-> original hurdle implementation and metrics. The original implementation
-> evaluates a same-day rainfall prediction using a one-year holdout. The API
-> therefore reports `original_checkpoint_same_day`; it must not be described
-> as a rigorously validated three-day-ahead forecast without retraining and
-> re-evaluating the hurdle model with future-shifted targets.
-
-## Required GitHub secrets
-
-Configure these under:
-
-```text
-Repository → Settings → Secrets and variables → Actions → Secrets
-```
-
-Create three separate repository secrets:
-
-```text
-DAGSHUB_USER
-DAGSHUB_TOKEN
-MLFLOW_TRACKING_URI
-```
-
-Values:
-
-```text
-DAGSHUB_USER=your DagsHub username
-DAGSHUB_TOKEN=your DagsHub access token
-MLFLOW_TRACKING_URI=https://dagshub.com/<username>/DACPDSS.mlflow
-```
-
-Never put tokens in Actions variables, source files, `.env` files committed
-to Git, workflow YAML, screenshots, or chat messages.
-
-## Local environment setup
-
-From the repository root, install the dependencies:
+Install dependencies:
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
 
-Configure MLflow for the current PowerShell session:
+Set MLflow variables in each new PowerShell session:
 
 ```powershell
 $env:MLFLOW_TRACKING_URI="https://dagshub.com/<username>/DACPDSS.mlflow"
@@ -69,159 +34,76 @@ $env:MLFLOW_TRACKING_USERNAME="<username>"
 $env:MLFLOW_TRACKING_PASSWORD="<DAGSHUB_TOKEN>"
 ```
 
-Configure the DagsHub DVC remote once:
+Configure DVC once:
 
 ```powershell
 dvc remote add -d origin "https://dagshub.com/<username>/DACPDSS.dvc"
 dvc remote modify origin --local auth basic
 dvc remote modify origin --local user "<username>"
 dvc remote modify origin --local password "<DAGSHUB_TOKEN>"
-```
-
-Check the configuration:
-
-```powershell
-dvc remote list
 dvc status
 ```
 
-## Registering the existing models
+Never commit or share the token. Do not commit `.dvc/config.local`.
 
-The original checkpoints are imported without retraining:
+## Register the existing models
+
+This imports the existing checkpoints; it does not retrain them:
 
 ```powershell
 python codes\forecasting\register_existing.py
 ```
 
-This uploads the existing checkpoint and the corresponding row from
-`hurdle_per_district_metrics.csv`, then marks the new version as `champion`.
-
-To register one district only:
+Register one district:
 
 ```powershell
 python codes\forecasting\register_existing.py --district Latur
 ```
 
-Verify all champions:
-
-```powershell
-python -c "import sys; sys.path.insert(0, 'codes\forecasting'); import registry; districts=['Ahmednagar','Beed','Latur','Osmanabad','Solapur']; [print(d, registry.get_champion(d+'_hurdle').version) for d in districts]"
-```
-
-## GitHub Actions workflows
-
-### `ci`
-
-Runs automatically on every push and pull request.
-
-It:
-
-1. Checks out the repository.
-2. Installs Python dependencies needed by the tests.
-3. Runs `pytest -q`.
-
-Run it manually from **Actions → ci → Run workflow** when needed.
-
-Expected result:
-
-```text
-2 passed
-```
-
-### `weekly-data`
-
-Schedule: Mondays at 03:00 UTC, which is 08:30 IST.
-
-Run manually from:
-
-```text
-Actions → weekly-data → Run workflow → select main → Run workflow
-```
-
-It:
-
-1. Pulls the current DVC version of `data/weather data new/`.
-2. Re-pulls the latest NASA POWER window.
-3. Cleans the refreshed data.
-4. Creates a new DVC version.
-5. Pushes the data to DagsHub.
-6. Commits the updated `data/weather data new.dvc` pointer to GitHub.
-
-Run this once for testing, or let the Monday schedule operate it.
-
-### `weekly-monitor`
-
-Schedule: Mondays at 06:00 UTC, which is 11:30 IST.
-
-Run manually from:
-
-```text
-Actions → weekly-monitor → Run workflow → select main → Run workflow
-```
-
-It:
-
-1. Pulls the current weather data from DVC.
-2. Pulls `logs/forecasts_log.csv` from DVC if its pointer exists.
-3. Scores logged champion forecasts against actual rainfall.
-4. Calculates rolling RMSE and R².
-5. Detects degradation.
-6. Trains a rolling challenger when the configured trigger is reached.
-7. Promotes the challenger only if it beats the current champion on the same
-   evaluation period.
-
-If no forecast log has been persisted yet, it safely reports:
-
-```text
-No forecast log available; skipping monitoring.
-```
-
-## Running the API locally
-
-Configure the MLflow environment variables first, then start the API:
+## Run the API
 
 ```powershell
 uvicorn serve.app:app --host 127.0.0.1 --port 8000
 ```
 
-Keep that terminal running. From a second PowerShell terminal:
+In another terminal:
 
 ```powershell
 Invoke-RestMethod http://127.0.0.1:8000/health
+Invoke-RestMethod http://127.0.0.1:8000/forecast/Latur
 ```
 
-Expected response:
+Available districts: `Ahmednagar`, `Beed`, `Latur`, `Osmanabad`, and
+`Solapur`. Each forecast resolves the MLflow champion, loads weather data,
+returns a prediction, and appends to `logs/forecasts_log.csv`.
+
+## GitHub Actions
+
+Configure these repository **secrets** under **Settings → Secrets and
+variables → Actions**:
 
 ```text
-status
-------
-ok
+DAGSHUB_USER
+DAGSHUB_TOKEN
+MLFLOW_TRACKING_URI
 ```
 
-Request forecasts:
+| Workflow | Schedule | Purpose |
+|---|---|---|
+| `ci` | Push/PR | Installs dependencies and runs `pytest -q` |
+| `weekly-data` | Monday 03:00 UTC (08:30 IST) | Refreshes NASA data and pushes the DVC update |
+| `weekly-monitor` | Monday 06:00 UTC (11:30 IST) | Scores persisted forecasts and reports degradation |
 
-```powershell
-Invoke-RestMethod http://127.0.0.1:8000/forecast/Ahmednagar
-Invoke-RestMethod http://127.0.0.1:8000/forecast/Beed
-Invoke-RestMethod http://127.0.0.1:8000/forecast/Latur
-Invoke-RestMethod http://127.0.0.1:8000/forecast/Osmanabad
-Invoke-RestMethod http://127.0.0.1:8000/forecast/Solapur
-```
+To run one manually: **Actions → workflow → Run workflow → select `main`**.
 
-Each request:
+`weekly-data` refreshes `data/weather data new/`, cleans it, pushes DVC
+objects, and commits the updated `.dvc` pointer. `weekly-monitor` needs a
+forecast log in DVC; otherwise it safely reports that no log is available.
 
-1. Resolves the district's MLflow `champion`.
-2. Downloads the registered hurdle checkpoint.
-3. Loads the matching weather data.
-4. Produces a rainfall prediction.
-5. Appends a row to `logs/forecasts_log.csv`.
+## Persist forecast logs
 
-## Persisting forecast logs for monitoring
-
-The API log is local runtime state. GitHub Actions cannot see a log stored on
-your computer or on another API server until it is versioned with DVC.
-
-After generating forecasts:
+GitHub Actions cannot access a log on a local machine. After generating
+forecasts:
 
 ```powershell
 dvc add logs/forecasts_log.csv
@@ -231,27 +113,10 @@ git commit -m "Persist forecast monitoring log"
 git push
 ```
 
-The weekly monitor can then pull and score the log.
+## Monitoring and promotion
 
-## Promotion logic
-
-The monitor uses this sequence:
-
-```text
-Current champion
-    ↓
-Rolling forecast R² is calculated
-    ↓
-R² falls below champion baseline - configured tolerance
-    ↓
-Train a rolling challenger
-    ↓
-Evaluate champion and challenger on the same period
-    ↓
-Promote only if challenger R² is better
-```
-
-The relevant settings are in `params.yaml`:
+The monitor calculates rolling RMSE/R² and checks the configured thresholds in
+`params.yaml`:
 
 ```yaml
 monitor:
@@ -261,69 +126,17 @@ monitor:
   min_improvement: 0.0
 ```
 
-## DVC operation
+The intended sequence is: detect degradation, train a rolling challenger,
+compare both models on the same period, and promote only a better challenger.
+Confirm legacy-checkpoint compatibility before enabling automatic promotion.
 
-Check status:
+## Useful commands
 
 ```powershell
 dvc status
-```
-
-Pull the authoritative weather data:
-
-```powershell
 dvc pull "data/weather data new.dvc"
-```
-
-Push local DVC objects:
-
-```powershell
 dvc push
+pytest -q
 ```
 
-Do not commit `.dvc/config.local`; it contains local credentials and is
-ignored by Git.
-
-## Troubleshooting
-
-### `ModuleNotFoundError: No module named 'mlflow'`
-
-Install the project dependencies:
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-### MLflow says `MLFLOW_TRACKING_URI is required`
-
-Set the MLflow variables again in the current PowerShell window. Environment
-variables do not automatically carry over to a newly opened terminal.
-
-### A workflow is not visible
-
-Scheduled workflows and their manual dispatch controls must be present on the
-default branch. Merge the MLOps pull request into `main`, then reload the
-Actions page.
-
-### Weekly monitor skips
-
-Check whether the forecast log exists:
-
-```powershell
-Test-Path logs\forecasts_log.csv
-Test-Path logs\forecasts_log.csv.dvc
-```
-
-If the log exists locally but no `.dvc` pointer exists, persist it using the
-commands above.
-
-### DVC authentication fails
-
-Reconfigure the local DVC credentials with a valid DagsHub token:
-
-```powershell
-dvc remote modify origin --local user "<username>"
-dvc remote modify origin --local password "<DAGSHUB_TOKEN>"
-```
-
-Never print or commit the token.
+If workflows are missing from Actions, merge the MLOps branch into `main`.
