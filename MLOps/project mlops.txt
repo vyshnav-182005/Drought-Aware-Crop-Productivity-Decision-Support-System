@@ -1,0 +1,30 @@
+MLOps Tasks
+
+0. Re-evaluate the hurdle ensemble correctly: use daily rainfall targets at
+   horizons 1, 2 and 3, test dates from 2022 onward, and causal inputs only.
+   The existing 0.79-0.94 figures are a baseline from the original
+   same-day/leaky evaluation and must not be presented as 3-day performance.
+
+1. Convert the hurdle training logic into
+   codes/forecasting/hurdle_pipeline.py, train.py and evaluate.py, with
+   hyperparameters in params.yaml. Leave the LSTM notebook archived.
+
+2. Version data/weather, models/hurdle and selected outputs/hurdle artifacts
+   with DVC, using a DagsHub remote.
+
+3. Log each district's hurdle training run to MLflow, including thresholds,
+   split parameters, per-horizon R²/RMSE and the joblib bundle. Register each
+   model as "<district>_hurdle" and mark the live version "champion".
+
+4. Build a FastAPI endpoint, GET /forecast/{district}, that loads the hurdle
+   champion and returns the 1-, 2- and 3-day rainfall forecast. Save every
+   forecast to logs/forecasts_log.csv and package the API with Docker.
+
+5. Set up GitHub Actions to run pytest on every push, and to fetch the latest
+   NASA POWER data each week (re-pulling the last 60 days), clean it and save
+   it with DVC.
+
+6. Each week, compare the logged forecasts with the actual weather and compute
+   the rolling rainfall RMSE/R² for each district. If R² falls below the
+   threshold, retrain a hurdle challenger on a rolling split, and promote it
+   only if it beats the current champion on the same test period.

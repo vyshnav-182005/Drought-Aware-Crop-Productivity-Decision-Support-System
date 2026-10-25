@@ -8,3 +8,7 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+mlruns/
+logs/
+.env
+.dvc/config.local

@@ -1,0 +1,8 @@
+.git
+.venv
+__pycache__
+data
+logs
+outputs
+models
+MLOps

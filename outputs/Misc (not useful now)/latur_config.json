@@ -1,0 +1,30 @@
+{
+  "district": "Latur",
+  "features": [
+    "sin_day_365",
+    "cos_day_365",
+    "rain_lag_1",
+    "rain_lag_2",
+    "rain_lag_3",
+    "rain_roll_3",
+    "rain_roll_7",
+    "rain_roll_14",
+    "rain_max_3",
+    "humidity_lag_1",
+    "humidity_diff_1",
+    "pressure_lag_1",
+    "pressure_diff_1",
+    "Relative_Humidity_percent",
+    "Surface_Pressure_kPa",
+    "Temperature_C",
+    "Temperature_Max_C",
+    "Temperature_Min_C",
+    "Wind_Speed_mps",
+    "Solar_Radiation",
+    "Dew_Point_C"
+  ],
+  "horizon": 3,
+  "probability_threshold": 0.35,
+  "rain_threshold": 0.25,
+  "trained_through": "2026-09-14"
+}

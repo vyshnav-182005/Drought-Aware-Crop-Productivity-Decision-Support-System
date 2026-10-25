@@ -1,0 +1,25 @@
+districts: [Ahmednagar, Beed, Latur, Osmanabad, Solapur]
+data:
+  source_dir: "data/weather data new"
+  checkpoint_dir: "outputs/hurdle/checkpoints"
+  metrics_file: "outputs/hurdle/results/hurdle_per_district_metrics.csv"
+model:
+  horizon: 3
+  rain_threshold: 0.25
+  probability_threshold: 0.35
+  max_iter_classifier: 250
+  max_iter_regressor: 350
+  learning_rate_classifier: 0.04
+  learning_rate_regressor: 0.03
+  l2_regularization: 0.1
+split:
+  test_start: "2022-01-01"
+  validation_days: 365
+monitor:
+  window_days: 60
+  min_days: 30
+  r2_drop_tolerance: 0.10
+  min_improvement: 0.0
+nasa:
+  start_date: "2000-01-01"
+  refresh_days: 60

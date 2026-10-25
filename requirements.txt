@@ -12,3 +12,9 @@ pdfplumber
 networkx
 scipy
 lxml
+mlflow
+fastapi
+uvicorn
+pytest
+pyyaml
+dvc

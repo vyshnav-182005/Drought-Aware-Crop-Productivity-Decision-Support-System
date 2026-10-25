@@ -102,6 +102,23 @@ Schema, extraction rules, checks and known limitations are in [`codes/knowledge_
 └── docs/                          # zeroth and first review presentations
 ```
 
+## MLOps workflow
+
+The hurdle pipeline is the production path. It supports leakage-safe
+three-day rainfall forecasts, MLflow tracking and champion promotion, a
+FastAPI service, DVC-managed data, and weekly monitoring. See
+[`MLOps/MLOPS_IMPLEMENTATION.md`](./MLOps/MLOPS_IMPLEMENTATION.md) for setup.
+
+The current production baseline was trained from
+`data/weather data new/`. Its authoritative metrics are stored in
+`outputs/hurdle/results/hurdle_per_district_metrics.csv`, and its checkpoints
+are under `outputs/hurdle/checkpoints/`. The registration command imports those
+existing checkpoints; it does not retrain them:
+
+```bash
+python codes/forecasting/register_existing.py
+```
+
 ## How to run
 
 ```bash

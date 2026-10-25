@@ -1,0 +1,6 @@
+outs:
+- md5: 168adc5e99b9fd3f27da801589ea2737.dir
+  size: 14762461
+  nfiles: 13
+  hash: md5
+  path: hurdle

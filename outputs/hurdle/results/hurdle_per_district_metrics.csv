@@ -1,6 +1,0 @@
-District,MAE,RMSE,R2,Checkpoint
-Ahmednagar,0.3792097230792474,1.049506085120979,0.9229894564068725,methodology_hurdle\checkpoints\hurdle_Ahmednagar.joblib
-Beed,0.4080076998386804,1.077398902271301,0.9396164195217866,methodology_hurdle\checkpoints\hurdle_Beed.joblib
-Latur,0.5056903350942535,1.1732495786030028,0.94449964184421,methodology_hurdle\checkpoints\hurdle_Latur.joblib
-Osmanabad,0.6295759535170675,1.5936664247746855,0.8848016599865265,methodology_hurdle\checkpoints\hurdle_Osmanabad.joblib
-Solapur,0.5836752985779614,1.7136048402324313,0.7868378287218185,methodology_hurdle\checkpoints\hurdle_Solapur.joblib
