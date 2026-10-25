@@ -119,6 +119,18 @@ existing checkpoints; it does not retrain them:
 python codes/forecasting/register_existing.py
 ```
 
+The API writes forecast observations to `logs/forecasts_log.csv`. To make
+those observations available to the scheduled monitor, periodically version
+the log and push it to DVC:
+
+```bash
+dvc add logs/forecasts_log.csv
+dvc push
+git add logs/forecasts_log.csv.dvc
+git commit -m "Persist forecast monitoring log"
+git push
+```
+
 ## How to run
 
 ```bash
