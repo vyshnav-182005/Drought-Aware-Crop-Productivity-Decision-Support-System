@@ -10,6 +10,7 @@ jupyter
 # knowledge graph
 pdfplumber
 networkx
+scipy
 lxml
 mlflow
 fastapi

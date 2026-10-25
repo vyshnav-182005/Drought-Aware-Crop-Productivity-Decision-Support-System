@@ -23,6 +23,9 @@ TYPE_COLORS = {
     "Crop": "#085041",         # teal 800
     "Condition": "#791F1F",    # red 800
     "Action": "#3C3489",       # purple 800
+    "ConditionDetail": "#712B13",  # coral 800
+    "Year": "#444441",         # gray 800
+    "SeasonRecord": "#72243E",  # pink 800
 }
 TYPE_FILL = {
     "District": "#B5D4F4",
@@ -31,10 +34,14 @@ TYPE_FILL = {
     "Crop": "#9FE1CB",
     "Condition": "#F7C1C1",
     "Action": "#CECBF6",
+    "ConditionDetail": "#F5C4B3",
+    "Year": "#D3D1C7",
+    "SeasonRecord": "#F4C0D1",
 }
 TYPE_SIZE = {
     "District": 26, "SoilType": 16, "Season": 22,
     "Crop": 18, "Condition": 22, "Action": 8,
+    "ConditionDetail": 14, "Year": 10, "SeasonRecord": 6,
 }
 
 EDGE_LABELS = {
@@ -45,13 +52,74 @@ EDGE_LABELS = {
     "APPLIES_TO_CROP": "applies to",
     "SOIL_CONTEXT": "soil context",
     "INCLUDES": "includes",
+    "SUBTYPE_OF": "subtype of",
+    "SUGGESTS_CROP": "suggests crop",
+    "NOT_APPLICABLE": "not applicable",
+    "HAS_SEASON_RECORD": "season record",
+    "IN_YEAR": "in year",
+    "OF_SEASON": "of season",
+    "EXPERIENCED": "experienced",
+    "HAD_YIELD": "had yield",
+}
+
+
+# Shown in the sidebar (click "?"), the Guide overlay, and the Details panel.
+NODE_INFO = {
+    "District": ("One of the 5 drought-prone districts.",
+                 "Holds the plan's normal SW-monsoon rainfall and net irrigated %.", "Beed"),
+    "SoilType": ("A soil category or farming situation named in the contingency plan.",
+                 "Section 1.4 soil classes plus the soil groups used in the Section 2 action tables.",
+                 "Medium Deep To Deep Black Soils"),
+    "Season": ("Cropping season.", "Kharif (monsoon, Jun-Oct) or Rabi (post-monsoon, Oct-Feb).", "Kharif"),
+    "Crop": ("A crop grown in a district or named in the plans.",
+             "category = core (yield-model target), extended (optional) or fallback (named only in the plans).",
+             "Soybean"),
+    "Condition": ("Broad weather problem the plans prepare for (7).",
+                  "Early-season, mid-season and terminal drought; irrigation water shortage; unusual rains; floods; "
+                  "extreme events.", "Mid-season drought (dry spell)"),
+    "ConditionDetail": ("The exact situation inside a Condition, with machine-readable thresholds.",
+                        "This is what the Stage 4 classifier output and the recommendations attach to.",
+                        "onset_delay_4w: monsoon onset delayed by 4 weeks (2nd week of July)"),
+    "Action": ("One official recommendation from a contingency-plan table.",
+               "Text split into the plan's own columns: change in crop, agronomic measures, crop management, "
+               "soil/moisture conservation, Rabi crop planning, remarks.",
+               "Give protective irrigation; foliar spray of 2% urea"),
+    "Year": ("A calendar year, 2000-2025.", "Groups the season records.", "2015"),
+    "SeasonRecord": ("One district's season in one year.",
+                     "Carries that season's observed rainfall, % departure from normal, onset date and longest dry spell.",
+                     "Beed Kharif 2015"),
+}
+EDGE_INFO = {
+    "HAS_SOIL": ("District", "SoilType", "The district has this soil type (area and % of district, plan Section 1.4)."),
+    "GROWS": ("District", "Crop", "The district grows this crop (seasons; source DES statistics and/or the plan)."),
+    "IN_SEASON": ("Crop", "Season", "The crop is grown in this season."),
+    "SUBTYPE_OF": ("ConditionDetail", "Condition", "This exact situation is a kind of the broader condition."),
+    "RECOMMENDS": ("ConditionDetail", "Action",
+                   "Under this situation the plan recommends this action. One edge per PDF table row, with district, "
+                   "crop, season, soil, crop stage and source page."),
+    "APPLIES_TO_CROP": ("Crop", "Action", "The action is prescribed for this crop (lets you start a search from a crop)."),
+    "SOIL_CONTEXT": ("SoilType", "Action", "The action is prescribed for this soil / farming situation."),
+    "SUGGESTS_CROP": ("Action", "Crop",
+                      "The action names this crop as an alternative, an intercrop, or the Rabi crop to grow after "
+                      "a failed Kharif crop."),
+    "NOT_APPLICABLE": ("District", "Condition / ConditionDetail",
+                       "The district's plan explicitly says this condition is not applicable (e.g. floods)."),
+    "INCLUDES": ("SoilType", "SoilType",
+                 "A soil group used in the action tables includes this official soil category (matched by name)."),
+    "HAS_SEASON_RECORD": ("District", "SeasonRecord", "The district's record for one season of one year."),
+    "IN_YEAR": ("SeasonRecord", "Year", "The year this season record belongs to."),
+    "OF_SEASON": ("SeasonRecord", "Season", "Whether the record is a Kharif or a Rabi season."),
+    "EXPERIENCED": ("SeasonRecord", "ConditionDetail",
+                    "That season actually had this condition, labelled from the daily weather (evidence attached)."),
+    "HAD_YIELD": ("SeasonRecord", "Crop", "Observed DES area, production and yield of this crop in that season."),
 }
 
 
 def node_label(n):
     t = n.get("type")
     if t == "Action":
-        return (n.get("change_in_cropping") or n.get("agronomic_measures") or "action")[:28]
+        return (n.get("change_in_cropping") or n.get("crop_management") or n.get("agronomic_measures")
+                or "action")[:28]
     return n.get("name", n.get("id", "?"))[:28]
 
 
@@ -84,14 +152,16 @@ def compute_layouts(data):
     U.add_nodes_from(types)
     U.add_edges_from((e["source"], e["target"]) for e in data["edges"])
 
-    core = [n for n in U if types[n] != "Action"]
+    # Season records / years are hidden by default and would crowd the core
+    # layout; they are placed only in the full layout.
+    core = [n for n in U if types[n] not in ("Action", "SeasonRecord", "Year")]
     C = nx.Graph(U.subgraph(core))
     # Layout-only links: nodes that meet at the same Action (its Condition,
     # Crop and SoilType) are pulled together. Without this, nodes that only
     # touch Actions are isolated in the core graph and get flung to the
     # edge, which shrinks everything else into a dot.
     for a in (n for n in U if types[n] == "Action"):
-        nb = [m for m in U.neighbors(a) if types[m] != "Action"]
+        nb = [m for m in U.neighbors(a) if m in C]
         for i in range(len(nb)):
             for j in range(i + 1, len(nb)):
                 C.add_edge(nb[i], nb[j])
@@ -159,7 +229,19 @@ def main():
     payload = json.dumps({"nodes": vis_nodes, "edges": vis_edges}, ensure_ascii=False)
     type_colors_json = json.dumps(TYPE_FILL)
 
+    counts_n = {}
+    for n in vis_nodes:
+        counts_n[n["ntype"]] = counts_n.get(n["ntype"], 0) + 1
+    counts_e = {}
+    for e in data["edges"]:
+        counts_e[e["relation"]] = counts_e.get(e["relation"], 0) + 1
+    info = {"nodes": {t: {"short": v[0], "long": v[1], "example": v[2], "count": counts_n.get(t, 0)}
+                      for t, v in NODE_INFO.items()},
+            "edges": {k: {"from": v[0], "to": v[1], "meaning": v[2], "count": counts_e.get(k, 0)}
+                      for k, v in EDGE_INFO.items()}}
+
     html = HTML_TEMPLATE.replace("__PAYLOAD__", payload) \
+                         .replace("__INFO__", json.dumps(info, ensure_ascii=False)) \
                          .replace("__NODE_TYPES__", json.dumps(node_types)) \
                          .replace("__EDGE_TYPES__", json.dumps(edge_types)) \
                          .replace("__TYPE_COLORS__", type_colors_json)
@@ -193,15 +275,33 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   #legend-note { font-size:11px; color:#888780; }
   button { font-size:12px; padding:5px 10px; border-radius:6px; border:1px solid #D3D1C7; background:#fff; cursor:pointer; margin-right:6px; margin-bottom:6px; }
   button:hover { background:#F1EFE8; }
+  #guide code { font-size:11px; background:#fff; padding:0 3px; border-radius:3px; }
+  .meaning { background:#fff; border-left:3px solid #888780; padding:6px 8px; margin-bottom:8px; border-radius:4px; }
+  #guide-overlay { display:none; position:fixed; inset:0; background:rgba(44,44,42,.45); z-index:10; }
+  #guide-overlay.open { display:flex; align-items:center; justify-content:center; }
+  #guide { background:#fff; border-radius:10px; width:min(920px, 94vw); max-height:88vh; overflow-y:auto;
+           padding:20px 24px; box-sizing:border-box; font-size:13px; line-height:1.5; color:#2C2C2A; }
+  #guide h3 { font-size:15px; margin:18px 0 8px; }
+  #guide h3:first-of-type { margin-top:4px; }
+  #guide table { border-collapse:collapse; width:100%; }
+  #guide th, #guide td { text-align:left; vertical-align:top; padding:6px 8px; border-bottom:1px solid #E5E3DC; }
+  #guide th { font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:#5F5E5A; }
+  #guide .num { color:#5F5E5A; white-space:nowrap; }
+  #guide td:first-child { white-space:nowrap; }
+  #guide .flow { font-family: ui-monospace, Consolas, monospace; font-size:12px; background:#F1EFE8; border-radius:6px;
+                 padding:10px 12px; white-space:pre; overflow-x:auto; }
+  #guide-close { float:right; }
 </style>
 </head>
 <body>
 <div id="app">
   <div id="sidebar">
     <h1>Drought decision-support KG</h1>
-    <div class="sub">District &rarr; SoilType &rarr; Crop &rarr; Season &rarr; Condition &rarr; Action</div>
+    <div class="sub">Condition &rarr; ConditionDetail &rarr; Action, by district, crop, soil and season. Tick Action or SeasonRecord to see recommendations and 2000&ndash;2025 history.</div>
 
-    <div class="section">
+    <button id="guide-btn">What do the nodes and relations mean?</button>
+
+    <div class="section" style="margin-top:12px">
       <h2>Search</h2>
       <input type="text" id="search" placeholder="e.g. Beed, Soybean, drought...">
     </div>
@@ -232,17 +332,65 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <div id="network"></div>
 </div>
 
+<div id="guide-overlay">
+  <div id="guide">
+    <button id="guide-close">Close</button>
+    <h3>How the graph is organised</h3>
+    <p>Three layers. <b>Profile</b>: what each district has (soils, crops). <b>Rules</b>: what the official
+    contingency plan says to do under each condition. <b>History</b>: what actually happened in every season
+    from 2000 to 2025, and the yield that followed.</p>
+    <div class="flow">District --GROWS--> Crop --APPLIES_TO_CROP--+
+   |                                        v
+   |      Condition <-SUBTYPE_OF- ConditionDetail --RECOMMENDS--> Action --SUGGESTS_CROP--> Crop
+   |                                        ^
+   +-HAS_SEASON_RECORD-> SeasonRecord --EXPERIENCED
+                             +--HAD_YIELD--> Crop</div>
+    <p>Example: <i>Beed, Soybean, dry spell at flowering</i> &rarr; start at ConditionDetail
+    <code>mid_dry_spell_flowering</code>, follow RECOMMENDS edges where district = Beed and crop = Soybean to get
+    the actions and PDF pages; SUGGESTS_CROP gives alternatives; EXPERIENCED (backwards) gives the past Beed
+    seasons with the same dry spell, and HAD_YIELD their soybean yield.</p>
+    <h3>Node types</h3>
+    <table id="guide-nodes"><tr><th>Type</th><th>Count</th><th>What it is</th><th>Example</th></tr></table>
+    <h3>Relations</h3>
+    <table id="guide-edges"><tr><th>Relation</th><th>From &rarr; To</th><th>Count</th><th>Meaning</th></tr></table>
+  </div>
+</div>
+
 <script>
 const graphData = __PAYLOAD__;
 const NODE_TYPES = __NODE_TYPES__;
 const EDGE_TYPES = __EDGE_TYPES__;
 const TYPE_COLORS = __TYPE_COLORS__;
+const INFO = __INFO__;
+
+function nodeMeaning(t) {
+  const i = INFO.nodes[t];
+  return i ? "<div class='meaning'><b>" + t + "</b>: " + i.short + " " + i.long + "</div>" : "";
+}
+function edgeMeaning(k) {
+  const i = INFO.edges[k];
+  return i ? "<div class='meaning'><b>" + k + "</b> (" + i.from + " &rarr; " + i.to + "): " + i.meaning + "</div>" : "";
+}
+
+// vis-network shows a string title as plain text, so tooltips become DOM
+// elements; the HTML string is kept in .html for the Details panel and search.
+function asTooltip(item) {
+  item.html = item.title || "";
+  if (item.title) {
+    const d = document.createElement("div");
+    d.innerHTML = item.title;
+    d.style.cssText = "max-width:360px;font-size:12px;line-height:1.45;white-space:normal;";
+    item.title = d;
+  }
+}
+graphData.nodes.forEach(asTooltip);
+graphData.edges.forEach(asTooltip);
 
 const allNodes = new vis.DataSet(graphData.nodes);
 const allEdges = new vis.DataSet(graphData.edges);
 
-// Default: hide Action nodes (326 of them) to start with a readable view.
-const activeTypes = new Set(NODE_TYPES.filter(t => t !== "Action"));
+// Actions (463) and the 260 season records start hidden; tick them on in the sidebar.
+const activeTypes = new Set(NODE_TYPES.filter(t => !["Action", "SeasonRecord", "Year"].includes(t)));
 const activeEdgeTypes = new Set(EDGE_TYPES.filter(k => k !== "APPLIES_TO_CROP"));
 let network = null;
 let physicsOn = false;
@@ -305,13 +453,13 @@ network.on("click", function (params) {
   const details = document.getElementById("details");
   if (params.nodes.length) {
     const n = allNodes.get(params.nodes[0]);
-    let html = fieldRow("type", n.ntype) + fieldRow("label", n.text || n.label);
-    if (n.title) html += "<hr style='border:none;border-top:1px solid #D3D1C7;margin:6px 0'>" + n.title;
+    let html = nodeMeaning(n.ntype) + fieldRow("type", n.ntype) + fieldRow("label", n.text || n.label);
+    if (n.html) html += "<hr style='border:none;border-top:1px solid #D3D1C7;margin:6px 0'>" + n.html;
     details.innerHTML = html;
   } else if (params.edges.length) {
     const e = allEdges.get(params.edges[0]);
-    let html = fieldRow("relation", e.relation);
-    if (e.title) html += "<hr style='border:none;border-top:1px solid #D3D1C7;margin:6px 0'>" + e.title;
+    let html = edgeMeaning(e.relation) + fieldRow("relation", e.relation);
+    if (e.html) html += "<hr style='border:none;border-top:1px solid #D3D1C7;margin:6px 0'>" + e.html;
     details.innerHTML = html;
   } else {
     details.innerHTML = "<span class='empty'>Click a node or edge for details.</span>";
@@ -320,12 +468,23 @@ network.on("click", function (params) {
 
 // --- type filter checkboxes ---
 const typeFiltersEl = document.getElementById("type-filters");
+// One filter row: checkbox label; hovering it shows the meaning.
+function filterRow(parent, labelHtml, descHtml, tooltip) {
+  const label = document.createElement("label");
+  label.innerHTML = labelHtml;
+  label.title = tooltip;
+  parent.appendChild(label);
+  return label;
+}
+
 NODE_TYPES.forEach(t => {
   const id = "type-" + t;
-  const label = document.createElement("label");
-  label.innerHTML = '<input type="checkbox" id="' + id + '" ' + (activeTypes.has(t) ? "checked" : "") + '>' +
-    '<span class="swatch" style="background:' + (TYPE_COLORS[t] || "#ccc") + '"></span>' + t;
-  typeFiltersEl.appendChild(label);
+  const i = INFO.nodes[t] || {short: "", long: "", example: "", count: ""};
+  const label = filterRow(typeFiltersEl,
+    '<input type="checkbox" id="' + id + '" ' + (activeTypes.has(t) ? "checked" : "") + '>' +
+    '<span class="swatch" style="background:' + (TYPE_COLORS[t] || "#ccc") + '"></span>' + t +
+    ' <span style="color:#888780;font-size:11px">' + i.count + '</span>',
+    i.short + " " + i.long + (i.example ? "<br><i>e.g.</i> <code>" + i.example + "</code>" : ""), i.short);
   label.querySelector("input").addEventListener("change", (e) => {
     if (e.target.checked) activeTypes.add(t); else activeTypes.delete(t);
     applyFilters();
@@ -335,9 +494,11 @@ NODE_TYPES.forEach(t => {
 const edgeFiltersEl = document.getElementById("edge-filters");
 EDGE_TYPES.forEach(k => {
   const id = "edge-" + k;
-  const label = document.createElement("label");
-  label.innerHTML = '<input type="checkbox" id="' + id + '" ' + (activeEdgeTypes.has(k) ? "checked" : "") + '>' + k;
-  edgeFiltersEl.appendChild(label);
+  const i = INFO.edges[k] || {from: "?", to: "?", meaning: "", count: ""};
+  const label = filterRow(edgeFiltersEl,
+    '<input type="checkbox" id="' + id + '" ' + (activeEdgeTypes.has(k) ? "checked" : "") + '>' + k +
+    ' <span style="color:#888780;font-size:11px">' + i.count + '</span>',
+    "<b>" + i.from + " &rarr; " + i.to + "</b><br>" + i.meaning, i.from + " -> " + i.to + ": " + i.meaning);
   label.querySelector("input").addEventListener("change", (e) => {
     if (e.target.checked) activeEdgeTypes.add(k); else activeEdgeTypes.delete(k);
     applyFilters();
@@ -349,11 +510,29 @@ document.getElementById("search").addEventListener("input", (e) => {
   const q = e.target.value.trim().toLowerCase();
   if (!q) { network.unselectAll(); return; }
   const matches = allNodes.get().filter(n => !n.hidden &&
-    ((n.text && n.text.toLowerCase().includes(q)) || (n.title && n.title.toLowerCase().includes(q)))
+    ((n.text && n.text.toLowerCase().includes(q)) || (n.html && n.html.toLowerCase().includes(q)))
   ).map(n => n.id);
   network.selectNodes(matches);
   if (matches.length) network.focus(matches[0], { scale: 1.2, animation: true });
 });
+
+// --- guide overlay ---
+const gn = document.getElementById("guide-nodes");
+Object.entries(INFO.nodes).forEach(([t, i]) => {
+  gn.insertAdjacentHTML("beforeend", "<tr><td><span class='swatch' style='background:" + (TYPE_COLORS[t] || "#ccc") +
+    "'></span> <b>" + t + "</b></td><td class='num'>" + i.count + "</td><td>" + i.short + " " + i.long +
+    "</td><td><code>" + i.example + "</code></td></tr>");
+});
+const ge = document.getElementById("guide-edges");
+Object.entries(INFO.edges).forEach(([k, i]) => {
+  ge.insertAdjacentHTML("beforeend", "<tr><td><b>" + k + "</b></td><td class='num'>" + i.from + " &rarr; " + i.to +
+    "</td><td class='num'>" + i.count + "</td><td>" + i.meaning + "</td></tr>");
+});
+const overlay = document.getElementById("guide-overlay");
+document.getElementById("guide-btn").addEventListener("click", () => overlay.classList.add("open"));
+document.getElementById("guide-close").addEventListener("click", () => overlay.classList.remove("open"));
+overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.classList.remove("open"); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") overlay.classList.remove("open"); });
 
 document.getElementById("fit-btn").addEventListener("click", () => fitVisible(true));
 

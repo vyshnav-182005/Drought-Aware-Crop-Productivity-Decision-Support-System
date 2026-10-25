@@ -107,6 +107,13 @@ CROP_ALIASES.update({
     "cabbage": "Cabbage",
     "cauliflower": "Cauliflower",
     "sapota": "Sapota",
+    # spelling variants seen in the plans
+    "pigeoenpea": "Tur",
+    "pomogranate": "Pomegranate",
+    "grapes": "Grape",
+    "groundnut": "Groundnut",
+    "linseed": "Linseed",
+    "sunflowers": "Sunflower",
 })
 
 # Canonical crop names this pipeline recognizes - used to reject noise cells
