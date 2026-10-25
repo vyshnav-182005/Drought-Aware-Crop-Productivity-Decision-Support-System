@@ -12,7 +12,27 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install mlflow pandas numpy scikit-learn joblib pyyaml
-      - run: python codes/forecasting/monitor.py --retrain
+      - name: Configure DVC credentials
+        run: |
+          dvc remote modify origin --local auth basic
+          dvc remote modify origin --local user "${{ secrets.DAGSHUB_USER }}"
+          dvc remote modify origin --local password "${{ secrets.DAGSHUB_TOKEN }}"
+      - run: pip install dvc
+      - run: dvc pull "data/weather data new.dvc"
+      - name: Restore forecast log
+        run: |
+          if [ -f logs/forecasts_log.csv.dvc ]; then
+            dvc pull logs/forecasts_log.csv.dvc
+          else
+            echo "No DVC forecast log exists yet; monitoring will be skipped."
+          fi
+      - name: Monitor and gate challengers
+        run: |
+          if [ -f logs/forecasts_log.csv ]; then
+            python codes/forecasting/monitor.py --retrain
+          else
+            echo "No forecast log available; skipping monitoring."
+          fi
         env:
           MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
           MLFLOW_TRACKING_USERNAME: ${{ secrets.DAGSHUB_USER }}

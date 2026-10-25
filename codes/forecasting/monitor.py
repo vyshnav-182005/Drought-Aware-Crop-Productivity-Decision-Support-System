@@ -46,7 +46,7 @@ def main():
             & (logs["model_version"].astype(str) == str(champion.version))
         ]
         actual = pd.read_csv(
-            DATA_DIR / f"{district.lower()}_weather.csv", parse_dates=["DATE"]
+            DATA_DIR / f"{district.lower()}_weather_2000_2025.csv", parse_dates=["DATE"]
         ).set_index("DATE")
         result = score(district_log, actual, params["monitor"]["window_days"])
         print(f"{district}: {result}")
