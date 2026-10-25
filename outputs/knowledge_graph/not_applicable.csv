@@ -1,0 +1,28 @@
+district,condition_category,condition_detail,source_page
+Beed,Floods,,26
+Beed,Floods,Continuous submergence for more than 2 days,26
+Beed,Extreme events,Heat Wave,26
+Beed,Extreme events,Cold wave,26
+Beed,Extreme events,Frost,26
+Beed,Extreme events,Hailstorm,26
+Beed,Extreme events,Cyclone,26
+Latur,Floods,,21
+Latur,Floods,Continuous submergence for more than 2 days,21
+Latur,Extreme events,Heat Wave,21
+Latur,Extreme events,Cold wave,21
+Latur,Extreme events,Frost,21
+Latur,Extreme events,Hailstorm,21
+Latur,Extreme events,Cyclone,21
+Osmanabad,Drought - irrigated situation (water shortage),Lack of inflows into tanks due to insufficient / delayed onset of monsoon,24
+Osmanabad,Floods,,27
+Osmanabad,Floods,Continuous submergence for more than 2 days,27
+Osmanabad,Extreme events,Heat Wave,27
+Osmanabad,Extreme events,Cold wave,27
+Osmanabad,Extreme events,Frost,27
+Osmanabad,Extreme events,Hailstorm,27
+Osmanabad,Extreme events,Cyclone,27
+Solapur,Extreme events,Heat wave,27
+Solapur,Extreme events,Frost,27
+Ahmednagar,Early season drought (delayed onset),Delay by 8 weeks August 2nd week,13
+Ahmednagar,Drought - irrigated situation (water shortage),Non release of water in canals under delayed onset of monsoon in catchments area,17
+Ahmednagar,Floods,,22

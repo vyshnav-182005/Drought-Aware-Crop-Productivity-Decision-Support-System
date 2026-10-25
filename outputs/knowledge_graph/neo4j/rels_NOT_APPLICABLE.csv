@@ -1,0 +1,28 @@
+start,end,source_page,statement
+District:Ahmednagar,ConditionDetail:onset_delay_8w,13,Delay by 8 weeks August 2nd week
+District:Ahmednagar,ConditionDetail:canal_non_release,17,Non release of water in canals under delayed onset of monsoon in catchments area
+District:Ahmednagar,Condition:Floods,22,Floods: not applicable
+District:Beed,Condition:Floods,26,Floods: not applicable
+District:Beed,ConditionDetail:continuous_submergence,26,Continuous submergence for more than 2 days
+District:Beed,ConditionDetail:heat_wave,26,Heat Wave
+District:Beed,ConditionDetail:cold_wave,26,Cold wave
+District:Beed,ConditionDetail:frost,26,Frost
+District:Beed,ConditionDetail:hailstorm,26,Hailstorm
+District:Beed,ConditionDetail:cyclone,26,Cyclone
+District:Osmanabad,ConditionDetail:tank_low_inflow,24,Lack of inflows into tanks due to insufficient / delayed onset of monsoon
+District:Osmanabad,Condition:Floods,27,Floods: not applicable
+District:Osmanabad,ConditionDetail:continuous_submergence,27,Continuous submergence for more than 2 days
+District:Osmanabad,ConditionDetail:heat_wave,27,Heat Wave
+District:Osmanabad,ConditionDetail:cold_wave,27,Cold wave
+District:Osmanabad,ConditionDetail:frost,27,Frost
+District:Osmanabad,ConditionDetail:hailstorm,27,Hailstorm
+District:Osmanabad,ConditionDetail:cyclone,27,Cyclone
+District:Latur,Condition:Floods,21,Floods: not applicable
+District:Latur,ConditionDetail:continuous_submergence,21,Continuous submergence for more than 2 days
+District:Latur,ConditionDetail:heat_wave,21,Heat Wave
+District:Latur,ConditionDetail:cold_wave,21,Cold wave
+District:Latur,ConditionDetail:frost,21,Frost
+District:Latur,ConditionDetail:hailstorm,21,Hailstorm
+District:Latur,ConditionDetail:cyclone,21,Cyclone
+District:Solapur,ConditionDetail:heat_wave,27,Heat wave
+District:Solapur,ConditionDetail:frost,27,Frost

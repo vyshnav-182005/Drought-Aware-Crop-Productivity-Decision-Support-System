@@ -1,0 +1,36 @@
+key,category,name
+Crop:Bajra,extended,Bajra
+Crop:Banana,fallback,Banana
+Crop:Ber,fallback,Ber
+Crop:Black gram,fallback,Black gram
+Crop:Brinjal,fallback,Brinjal
+Crop:Castor,fallback,Castor
+Crop:Cotton,extended,Cotton
+Crop:Cowpea,fallback,Cowpea
+Crop:Custard apple,fallback,Custard apple
+Crop:Ginger,fallback,Ginger
+Crop:Gram,core,Gram
+Crop:Grape,fallback,Grape
+Crop:Green gram,fallback,Green gram
+Crop:Horse gram,fallback,Horse gram
+Crop:Jowar,core,Jowar
+Crop:Kagzi lime,fallback,Kagzi lime
+Crop:Maize,fallback,Maize
+Crop:Mango,fallback,Mango
+Crop:Moth bean,fallback,Moth bean
+Crop:Niger,fallback,Niger
+Crop:Onion,fallback,Onion
+Crop:Pomegranate,fallback,Pomegranate
+Crop:Safflower,extended,Safflower
+Crop:Sesamum,fallback,Sesamum
+Crop:Soybean,core,Soybean
+Crop:Sugarcane,fallback,Sugarcane
+Crop:Sunflower,core,Sunflower
+Crop:Sweet orange,fallback,Sweet orange
+Crop:Tomato,fallback,Tomato
+Crop:Tur,core,Tur
+Crop:Turmeric,fallback,Turmeric
+Crop:Wheat,extended,Wheat
+Crop:Linseed,fallback,Linseed
+Crop:Cabbage,fallback,Cabbage
+Crop:Groundnut,fallback,Groundnut
