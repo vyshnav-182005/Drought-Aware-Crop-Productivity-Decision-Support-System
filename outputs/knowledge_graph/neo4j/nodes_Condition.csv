@@ -1,0 +1,8 @@
+key,category,code,description,name
+Condition:Early season drought (delayed onset),Early season drought (delayed onset),early_season_drought,"Rainfed Kharif: delayed monsoon onset, or a dry spell soon after a normal onset (plan 2.1.1)",Early season drought (delayed onset)
+Condition:Mid-season drought (dry spell),Mid-season drought (dry spell),mid_season_drought,Rainfed Kharif: long dry spell during crop growth (plan 2.1.1),Mid-season drought (dry spell)
+Condition:Late-season/terminal drought,Late-season/terminal drought,terminal_drought,Rainfed Kharif: early withdrawal of monsoon (plan 2.1.1),Late-season/terminal drought
+Condition:Drought - irrigated situation (water shortage),Drought - irrigated situation (water shortage),irrigation_shortage,Irrigated situation: canal / tank / groundwater shortage (plan 2.1.2),Drought - irrigated situation (water shortage)
+Condition:Unusual rains,Unusual rains,unusual_rains,"Untimely or unseasonal rains, rainfed and irrigated (plan 2.2)",Unusual rains
+Condition:Floods,Floods,floods,"Waterlogging, submergence, sea-water intrusion (plan 2.3)",Floods
+Condition:Extreme events,Extreme events,extreme_events,"Heat wave, cold wave, frost, hailstorm, cyclone (plan 2.4)",Extreme events

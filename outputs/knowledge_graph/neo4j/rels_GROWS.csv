@@ -1,0 +1,85 @@
+start,end,data_source,seasons
+District:Ahmednagar,Crop:Bajra,DES;contingency_plan,Kharif
+District:Ahmednagar,Crop:Banana,contingency_plan,
+District:Ahmednagar,Crop:Gram,contingency_plan,Rabi
+District:Ahmednagar,Crop:Grape,contingency_plan,
+District:Ahmednagar,Crop:Jowar,DES;contingency_plan,Kharif;Rabi
+District:Ahmednagar,Crop:Maize,contingency_plan,Kharif
+District:Ahmednagar,Crop:Mango,contingency_plan,
+District:Ahmednagar,Crop:Onion,contingency_plan,
+District:Ahmednagar,Crop:Pomegranate,contingency_plan,
+District:Ahmednagar,Crop:Soybean,DES;contingency_plan,Kharif
+District:Ahmednagar,Crop:Sugarcane,contingency_plan,
+District:Ahmednagar,Crop:Sunflower,DES,Kharif;Rabi
+District:Ahmednagar,Crop:Tur,DES,Kharif
+District:Ahmednagar,Crop:Wheat,contingency_plan,Rabi
+District:Beed,Crop:Bajra,DES;contingency_plan,Kharif
+District:Beed,Crop:Cotton,contingency_plan,Kharif
+District:Beed,Crop:Ginger,contingency_plan,
+District:Beed,Crop:Jowar,DES;contingency_plan,Kharif;Rabi
+District:Beed,Crop:Mango,contingency_plan,
+District:Beed,Crop:Onion,contingency_plan,Kharif
+District:Beed,Crop:Soybean,DES;contingency_plan,Kharif
+District:Beed,Crop:Sugarcane,contingency_plan,
+District:Beed,Crop:Sunflower,DES,Kharif;Rabi
+District:Beed,Crop:Sweet orange,contingency_plan,
+District:Beed,Crop:Tur,DES;contingency_plan,Kharif
+District:Beed,Crop:Turmeric,contingency_plan,
+District:Beed,Crop:Wheat,contingency_plan,Rabi
+District:Osmanabad,Crop:Bajra,DES;contingency_plan,Kharif
+District:Osmanabad,Crop:Black gram,contingency_plan,Kharif
+District:Osmanabad,Crop:Castor,contingency_plan,Kharif
+District:Osmanabad,Crop:Cotton,contingency_plan,Kharif
+District:Osmanabad,Crop:Grape,contingency_plan,
+District:Osmanabad,Crop:Jowar,DES;contingency_plan,Kharif;Rabi
+District:Osmanabad,Crop:Kagzi lime,contingency_plan,
+District:Osmanabad,Crop:Maize,contingency_plan,Kharif
+District:Osmanabad,Crop:Mango,contingency_plan,
+District:Osmanabad,Crop:Onion,contingency_plan,
+District:Osmanabad,Crop:Pomegranate,contingency_plan,
+District:Osmanabad,Crop:Sesamum,contingency_plan,Kharif
+District:Osmanabad,Crop:Soybean,DES;contingency_plan,Kharif
+District:Osmanabad,Crop:Sugarcane,contingency_plan,
+District:Osmanabad,Crop:Sunflower,DES;contingency_plan,Kharif;Rabi
+District:Osmanabad,Crop:Tur,DES;contingency_plan,Kharif
+District:Osmanabad,Crop:Turmeric,contingency_plan,
+District:Osmanabad,Crop:Wheat,contingency_plan,Rabi
+District:Latur,Crop:Bajra,DES,Kharif
+District:Latur,Crop:Black gram,contingency_plan,Kharif
+District:Latur,Crop:Cotton,contingency_plan,Kharif
+District:Latur,Crop:Ginger,contingency_plan,
+District:Latur,Crop:Grape,contingency_plan,
+District:Latur,Crop:Green gram,contingency_plan,Kharif
+District:Latur,Crop:Jowar,DES;contingency_plan,Kharif;Rabi
+District:Latur,Crop:Mango,contingency_plan,
+District:Latur,Crop:Soybean,DES;contingency_plan,Kharif
+District:Latur,Crop:Sugarcane,contingency_plan,
+District:Latur,Crop:Sunflower,DES,Kharif;Rabi
+District:Latur,Crop:Sweet orange,contingency_plan,
+District:Latur,Crop:Tur,DES;contingency_plan,Kharif
+District:Latur,Crop:Turmeric,contingency_plan,
+District:Solapur,Crop:Bajra,DES;contingency_plan,Kharif
+District:Solapur,Crop:Banana,contingency_plan,
+District:Solapur,Crop:Ber,contingency_plan,
+District:Solapur,Crop:Black gram,contingency_plan,Kharif
+District:Solapur,Crop:Brinjal,contingency_plan,
+District:Solapur,Crop:Castor,contingency_plan,Kharif
+District:Solapur,Crop:Cotton,contingency_plan,Kharif
+District:Solapur,Crop:Cowpea,contingency_plan,Kharif
+District:Solapur,Crop:Custard apple,contingency_plan,
+District:Solapur,Crop:Gram,contingency_plan,Rabi
+District:Solapur,Crop:Grape,contingency_plan,
+District:Solapur,Crop:Green gram,contingency_plan,Kharif
+District:Solapur,Crop:Horse gram,contingency_plan,Kharif
+District:Solapur,Crop:Jowar,DES;contingency_plan,Kharif;Rabi
+District:Solapur,Crop:Maize,contingency_plan,Kharif
+District:Solapur,Crop:Moth bean,contingency_plan,Kharif
+District:Solapur,Crop:Onion,contingency_plan,
+District:Solapur,Crop:Pomegranate,contingency_plan,
+District:Solapur,Crop:Safflower,contingency_plan,Rabi
+District:Solapur,Crop:Soybean,DES;contingency_plan,Kharif
+District:Solapur,Crop:Sugarcane,contingency_plan,
+District:Solapur,Crop:Sunflower,DES;contingency_plan,Kharif;Rabi
+District:Solapur,Crop:Tomato,contingency_plan,
+District:Solapur,Crop:Tur,DES;contingency_plan,Kharif
+District:Solapur,Crop:Wheat,contingency_plan,Rabi

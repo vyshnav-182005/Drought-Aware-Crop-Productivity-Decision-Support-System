@@ -1,0 +1,33 @@
+{
+ "nodes": 833,
+ "edges": 4353,
+ "nodes_by_type": {
+  "District": 5,
+  "SoilType": 12,
+  "Season": 2,
+  "Condition": 7,
+  "Crop": 35,
+  "Action": 462,
+  "ConditionDetail": 24,
+  "SeasonRecord": 260,
+  "Year": 26
+ },
+ "edges_by_relation": {
+  "HAS_SOIL": 15,
+  "NOT_APPLICABLE": 27,
+  "GROWS": 84,
+  "HAS_SEASON_RECORD": 260,
+  "SOIL_CONTEXT": 399,
+  "IN_SEASON": 20,
+  "APPLIES_TO_CROP": 702,
+  "SUBTYPE_OF": 24,
+  "RECOMMENDS": 1063,
+  "INCLUDES": 6,
+  "SUGGESTS_CROP": 321,
+  "IN_YEAR": 260,
+  "OF_SEASON": 260,
+  "EXPERIENCED": 124,
+  "HAD_YIELD": 788
+ },
+ "isolated_nodes": []
+}

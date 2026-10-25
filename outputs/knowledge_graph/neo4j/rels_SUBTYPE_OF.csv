@@ -1,0 +1,25 @@
+start,end
+ConditionDetail:onset_delay_2w,Condition:Early season drought (delayed onset)
+ConditionDetail:onset_delay_4w,Condition:Early season drought (delayed onset)
+ConditionDetail:onset_delay_6w,Condition:Early season drought (delayed onset)
+ConditionDetail:onset_delay_8w,Condition:Early season drought (delayed onset)
+ConditionDetail:normal_onset_dry_spell,Condition:Early season drought (delayed onset)
+ConditionDetail:mid_dry_spell_vegetative,Condition:Mid-season drought (dry spell)
+ConditionDetail:mid_dry_spell_flowering,Condition:Mid-season drought (dry spell)
+ConditionDetail:terminal_drought,Condition:Late-season/terminal drought
+ConditionDetail:canal_delayed_release,Condition:Drought - irrigated situation (water shortage)
+ConditionDetail:canal_limited_release,Condition:Drought - irrigated situation (water shortage)
+ConditionDetail:canal_non_release,Condition:Drought - irrigated situation (water shortage)
+ConditionDetail:groundwater_low_recharge,Condition:Drought - irrigated situation (water shortage)
+ConditionDetail:continuous_high_rainfall,Condition:Unusual rains
+ConditionDetail:heavy_rain_high_winds,Condition:Unusual rains
+ConditionDetail:pest_disease_outbreak,Condition:Unusual rains
+ConditionDetail:canal_delayed_or_limited_release,Condition:Drought - irrigated situation (water shortage)
+ConditionDetail:tank_low_inflow,Condition:Drought - irrigated situation (water shortage)
+ConditionDetail:transient_waterlogging,Condition:Floods
+ConditionDetail:continuous_submergence,Condition:Floods
+ConditionDetail:heat_wave,Condition:Extreme events
+ConditionDetail:cold_wave,Condition:Extreme events
+ConditionDetail:hailstorm,Condition:Extreme events
+ConditionDetail:frost,Condition:Extreme events
+ConditionDetail:cyclone,Condition:Extreme events
