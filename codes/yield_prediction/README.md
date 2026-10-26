@@ -14,6 +14,7 @@ Run everything: `python codes/yield_prediction/run_yield_pipeline.py` (about 4 m
 | `04_in_season_forecast.py` | LSTM 3-day forecast + analog years, backtest 2020-22, impact handoff |
 | `05_hurdle_yield_prediction.py` | Hurdle forecast backtest and comparison with LSTM / no forecast / oracle |
 | `06_train_hist_gradient_boosting_yield.py` | HistGradientBoosting benchmark (optional) |
+| `07_rolling_evaluation.py` | Rolling-origin R² 2010-2022: each year predicted only from earlier years |
 | `common.py`, `modeling.py`, `forecasters.py`, `inseason.py` | Shared code (one copy of season windows, features, selection, forecasters) |
 
 Inputs: `data/weather_data/weather data new/*_weather_2000_2025.csv` (daily, 2000-01-01 to 2026-05-30;
@@ -73,3 +74,22 @@ In-season backtest, all crops and cutoffs (412 predictions):
   reflect weather uncertainty from analog years, not model error.
 - Validation is 2 years × 5 districts (~10 rows per crop-season), so model choice is noisy;
   for Jowar Kharif the baseline (district mean + trend) wins.
+
+## R² and the optional satellite / soil-moisture data
+
+Test R² on 2020-2022 is negative for most crops: those years were record-wet with yields far above
+anything in training, so every model (including the baseline) underpredicts them. The rolling
+evaluation (`07`) is the fairer number: pooled R² ≈ 0.35 (RandomForest / ElasticNet) vs 0.18 for the
+baseline, using weather features only.
+
+Weather alone explains about a third of year-to-year yield change. To add crop-condition signals:
+
+1. **Soil moisture, no account:** `python codes/pipeline/fetch_soil_moisture_nasa.py`
+   → `data/remote_sensing/<district>_soil_moisture_nasa.csv` (NASA POWER GWETTOP/GWETROOT/GWETPROF).
+2. **Cropland NDVI/EVI + ERA5-Land soil moisture (free Google Earth Engine account):** paste
+   `codes/pipeline/gee_ndvi_soil_moisture.js` into code.earthengine.google.com, run both exports,
+   put `ndvi_districts.csv` and `soil_moisture_era5_districts.csv` in `data/remote_sensing/`.
+
+`common.load_weather` picks up whichever files exist and adds stage-wise means (NDVI/EVI also
+stage peak) as features, both in training and in in-season prediction (analog years fill the
+rest of the season). Then rerun the pipeline and compare `07` R² before/after.

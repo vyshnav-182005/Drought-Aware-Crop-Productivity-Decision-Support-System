@@ -183,7 +183,7 @@ class ActualWeather:
 
     def forecast(self, district, origin):
         dates = pd.date_range(origin + pd.Timedelta(days=1), periods=HORIZON, freq="D")
-        return self.weather[district].reindex(dates).dropna()
+        return self.weather[district].reindex(dates).dropna(subset=WEATHER_COLUMNS)
 
 
 class NoForecast:

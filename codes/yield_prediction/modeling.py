@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 from sklearn.base import clone
 from sklearn.impute import SimpleImputer
-from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error, root_mean_squared_error
+from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error, r2_score, root_mean_squared_error
 from sklearn.pipeline import Pipeline
 
 from common import TEST_YEARS, TRAIN_YEARS, VAL_YEARS, feature_matrix, in_years
@@ -90,6 +90,7 @@ def select_and_evaluate(crop: str, season: str, df_sub: pd.DataFrame, candidates
         row = {"crop": crop, "season": season, "model": name,
                "val_rmse": val_rmse, "val_mae": val_mae, "val_mape": val_mape,
                "test_rmse": test_rmse, "test_mae": test_mae, "test_mape": test_mape,
+               "test_r2": float(r2_score(y_te, test_pred)),
                "drought_rmse": dr_rmse, "drought_mae": dr_mae}
         rows.append(row)
         if log:
@@ -101,7 +102,7 @@ def select_and_evaluate(crop: str, season: str, df_sub: pd.DataFrame, candidates
     final, transform, best_test_pred = refit[best_name]
 
     print(f"\n{crop} ({season}): train {len(df_train)} | val {len(df_val)} | test {len(df_test)} rows; {drought_note}")
-    print(results[["model", "val_rmse", "test_rmse", "test_mae", "test_mape", "drought_rmse", "selected"]]
+    print(results[["model", "val_rmse", "test_rmse", "test_mae", "test_r2", "drought_rmse", "selected"]]
           .to_string(index=False, float_format=lambda v: f"{v:.4f}"))
     print(f">> Selected on validation RMSE: {best_name}")
 

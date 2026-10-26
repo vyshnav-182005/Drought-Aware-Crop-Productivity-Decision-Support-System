@@ -109,6 +109,7 @@ def main():
         summary.append({"Crop": crop, "Season": season, "Selected Model": bundle["model_name"],
                         "Val RMSE": round(m["val_rmse"], 4), "Test RMSE": round(m["test_rmse"], 4),
                         "Test MAE": round(m["test_mae"], 4), "Test MAPE (%)": round(m["test_mape"], 2),
+                        "Test R2": round(m["test_r2"], 3),
                         "Drought RMSE": round(m["drought_rmse"], 4)})
 
     pd.concat(all_results).to_csv(OUTPUT_DIR / "crop_yield_all_candidates.csv", index=False)

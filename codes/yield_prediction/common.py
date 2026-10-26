@@ -19,6 +19,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = next(p for p in [SCRIPT_DIR, *SCRIPT_DIR.parents] if (p / "codes").is_dir() and (p / "data").is_dir())
 
 WEATHER_DIR = ROOT_DIR / "data" / "weather_data" / "weather data new"
+REMOTE_SENSING_DIR = ROOT_DIR / "data" / "remote_sensing"   # optional NDVI / soil moisture (codes/pipeline)
 CROP_DIR = ROOT_DIR / "data" / "crop_production"
 CLEANED_CROP_FILE = CROP_DIR / "cleaned_crop_yield.csv"
 
@@ -100,15 +101,51 @@ def season_bounds(season: str, year: int):
 # ---------------------------------------------------------------------------
 # Weather loading
 # ---------------------------------------------------------------------------
+def _load_remote_sensing(district: str, dates: pd.DatetimeIndex) -> pd.DataFrame:
+    """
+    Optional daily crop/soil columns from data/remote_sensing/ (any file that is missing is skipped):
+      ndvi_districts.csv                   (GEE, 16-day)  -> ndvi, evi interpolated to daily
+      soil_moisture_era5_districts.csv     (GEE, daily)   -> sm_0_7cm, sm_7_28cm, sm_28_100cm
+      <district>_soil_moisture_nasa.csv    (NASA POWER)   -> GWETTOP, GWETROOT, GWETPROF
+    """
+    out = pd.DataFrame(index=dates)
+
+    def district_rows(path):
+        df = pd.read_csv(path, parse_dates=["date"])
+        df = df[df["district"] == district].drop(columns="district")
+        return df.groupby("date").mean().sort_index()
+
+    ndvi_path = REMOTE_SENSING_DIR / "ndvi_districts.csv"
+    if ndvi_path.exists():
+        vi = district_rows(ndvi_path)[["ndvi", "evi"]]
+        # MOD13Q1 composites are dated at the start of their 16-day window; interpolate between them,
+        # never across gaps longer than ~2 composites.
+        vi = vi.reindex(vi.index.union(dates)).interpolate("time", limit=40, limit_area="inside")
+        out = out.join(vi.reindex(dates))
+
+    era5_path = REMOTE_SENSING_DIR / "soil_moisture_era5_districts.csv"
+    if era5_path.exists():
+        out = out.join(district_rows(era5_path)[["sm_0_7cm", "sm_7_28cm", "sm_28_100cm"]].reindex(dates))
+
+    nasa_path = REMOTE_SENSING_DIR / f"{district.lower()}_soil_moisture_nasa.csv"
+    if nasa_path.exists():
+        sm = pd.read_csv(nasa_path, parse_dates=["DATE"]).set_index("DATE").sort_index()
+        out = out.join(sm[["GWETTOP", "GWETROOT", "GWETPROF"]].reindex(dates))
+    return out
+
+
 def load_weather(district: str) -> pd.DataFrame:
-    """Daily weather from data/weather_data/weather data new, blank trailing rows dropped."""
+    """
+    Daily weather from data/weather_data/weather data new (blank trailing rows dropped),
+    plus any remote-sensing columns available in data/remote_sensing/.
+    """
     path = WEATHER_DIR / f"{district.lower()}_weather_2000_2025.csv"
     df = pd.read_csv(path, parse_dates=["DATE"]).sort_values("DATE")
     df = df.dropna(subset=WEATHER_COLUMNS).drop_duplicates("DATE").set_index("DATE")
     full = pd.date_range(df.index.min(), df.index.max(), freq="D")
     if len(full) != len(df):
         raise ValueError(f"{district}: weather has {len(full) - len(df)} missing days inside its range")
-    return df[WEATHER_COLUMNS]
+    return df[WEATHER_COLUMNS].join(_load_remote_sensing(district, df.index))
 
 
 def load_all_weather() -> dict:
@@ -159,6 +196,11 @@ def raw_season_features(wdf: pd.DataFrame, season: str, year: int):
         row[f"{name}_days_gt35"] = int((tmax > 35.0).sum())
         row[f"{name}_gdd"] = float(np.maximum(0.0, (tmax + tmin) / 2.0 - 10.0).sum())
         row[f"{name}_mean_humidity"] = float(sl["Relative_Humidity_percent"].mean())
+        # Optional crop/soil signals: stage mean (NDVI also stage peak)
+        for col in sl.columns.difference(WEATHER_COLUMNS):
+            row[f"{name}_{col}_mean"] = float(sl[col].mean()) if sl[col].notna().any() else np.nan
+            if col in ("ndvi", "evi"):
+                row[f"{name}_{col}_max"] = float(sl[col].max()) if sl[col].notna().any() else np.nan
         total += float(rain.sum())
     row["seasonal_rainfall"] = total
     return row
