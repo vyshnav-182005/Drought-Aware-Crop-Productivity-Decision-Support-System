@@ -1,0 +1,166 @@
+\begin{thebibliography}{10}
+
+\bibitem{udmale2014farmers}
+P.~Udmale, Y.~Ichikawa, S.~Manandhar, H.~Ishidaira, and A.~S. Kiem, ``Farmers'
+  perception of drought impacts, local adaptation and administrative mitigation
+  measures in {Maharashtra} state, {India},'' {\em International Journal of
+  Disaster Risk Reduction}, vol.~10, pp.~250--269, 2014.
+
+\bibitem{crida2011plans}
+{ICAR -- Central Research Institute for Dryland Agriculture}, ``District
+  agriculture contingency plans, {Maharashtra}: {Ahmednagar}, {Beed}, {Latur},
+  {Osmanabad} and {Solapur}.'' ICAR-CRIDA, Hyderabad, and Ministry of
+  Agriculture, Government of India, 2011.
+
+\bibitem{ji2023survey}
+Z.~Ji, N.~Lee, R.~Frieske, {\em et~al.}, ``Survey of hallucination in natural
+  language generation,'' {\em ACM Computing Surveys}, vol.~55, no.~12,
+  pp.~1--38, 2023.
+
+\bibitem{box2015time}
+G.~E.~P. Box, G.~M. Jenkins, G.~C. Reinsel, and G.~M. Ljung, {\em Time Series
+  Analysis: Forecasting and Control}.
+\newblock John Wiley \& Sons, 5th~ed., 2015.
+
+\bibitem{mulla2024sarimax}
+S.~Mulla, C.~B. Pande, and S.~K. Singh, ``Time series forecasting of monthly
+  rainfall using seasonal auto regressive integrated moving average with
+  exogenous variables ({SARIMAX}) model,'' {\em Water Resources Management},
+  vol.~38, pp.~1825--1846, 2024.
+
+\bibitem{chen2016xgboost}
+T.~Chen and C.~Guestrin, ``{XGBoost}: A scalable tree boosting system,'' in
+  {\em Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge
+  Discovery and Data Mining}, pp.~785--794, 2016.
+
+\bibitem{dehvari2025forecasting}
+M.~Dehvari, S.~Farzaneh, and E.~Forootan, ``Forecasting rainfall events based
+  on zenith wet delay time series utilizing {eXtreme} gradient boosting
+  ({XGBoost}),'' {\em Advances in Space Research}, vol.~75, no.~3,
+  pp.~2584--2598, 2025.
+
+\bibitem{hochreiter1997long}
+S.~Hochreiter and J.~Schmidhuber, ``Long short-term memory,'' {\em Neural
+  Computation}, vol.~9, no.~8, pp.~1735--1780, 1997.
+
+\bibitem{bukhari2025forecasting}
+S.~N.~H. Bukhari and K.~A. Ogudo, ``Forecasting temperature and rainfall using
+  deep learning for the challenging climates of {Northern India},'' {\em PeerJ
+  Computer Science}, vol.~11, p.~e3012, 2025.
+
+\bibitem{lim2021temporal}
+B.~Lim, S.~{\"O}. Ar{\i}k, N.~Loeff, and T.~Pfister, ``Temporal fusion
+  transformers for interpretable multi-horizon time series forecasting,'' {\em
+  International Journal of Forecasting}, vol.~37, no.~4, pp.~1748--1764, 2021.
+
+\bibitem{cragg1971some}
+J.~G. Cragg, ``Some statistical models for limited dependent variables with
+  application to the demand for durable goods,'' {\em Econometrica}, vol.~39,
+  no.~5, pp.~829--844, 1971.
+
+\bibitem{mullahy1986specification}
+J.~Mullahy, ``Specification and testing of some modified count data models,''
+  {\em Journal of Econometrics}, vol.~33, no.~3, pp.~341--365, 1986.
+
+\bibitem{stern1984model}
+R.~D. Stern and R.~Coe, ``A model fitting analysis of daily rainfall data,''
+  {\em Journal of the Royal Statistical Society: Series A (General)}, vol.~147,
+  no.~1, pp.~1--34, 1984.
+
+\bibitem{vanklompenburg2020crop}
+T.~van Klompenburg, A.~Kassahun, and C.~Catal, ``Crop yield prediction using
+  machine learning: A systematic literature review,'' {\em Computers and
+  Electronics in Agriculture}, vol.~177, p.~105709, 2020.
+
+\bibitem{breiman2001random}
+L.~Breiman, ``Random forests,'' {\em Machine Learning}, vol.~45, no.~1,
+  pp.~5--32, 2001.
+
+\bibitem{lundberg2017unified}
+S.~M. Lundberg and S.-I. Lee, ``A unified approach to interpreting model
+  predictions,'' in {\em Advances in Neural Information Processing Systems},
+  vol.~30, 2017.
+
+\bibitem{mishra2010review}
+A.~K. Mishra and V.~P. Singh, ``A review of drought concepts,'' {\em Journal of
+  Hydrology}, vol.~391, no.~1--2, pp.~202--216, 2010.
+
+\bibitem{mckee1993relationship}
+T.~B. McKee, N.~J. Doesken, and J.~Kleist, ``The relationship of drought
+  frequency and duration to time scales,'' in {\em Proceedings of the 8th
+  Conference on Applied Climatology}, (Anaheim, CA), pp.~179--184, 1993.
+
+\bibitem{hogan2021knowledge}
+A.~Hogan, E.~Blomqvist, M.~Cochez, {\em et~al.}, ``Knowledge graphs,'' {\em ACM
+  Computing Surveys}, vol.~54, no.~4, pp.~1--37, 2021.
+
+\bibitem{lewis2020retrieval}
+P.~Lewis, E.~Perez, A.~Piktus, {\em et~al.}, ``Retrieval-augmented generation
+  for knowledge-intensive {NLP} tasks,'' in {\em Advances in Neural Information
+  Processing Systems}, vol.~33, pp.~9459--9474, 2020.
+
+\bibitem{edge2024local}
+D.~Edge, H.~Trinh, N.~Cheng, {\em et~al.}, ``From local to global: A graph
+  {RAG} approach to query-focused summarization,'' {\em arXiv preprint
+  arXiv:2404.16130}, 2024.
+
+\bibitem{pan2024unifying}
+S.~Pan, L.~Luo, Y.~Wang, C.~Chen, J.~Wang, and X.~Wu, ``Unifying large language
+  models and knowledge graphs: A roadmap,'' {\em IEEE Transactions on Knowledge
+  and Data Engineering}, vol.~36, no.~7, pp.~3580--3599, 2024.
+
+\bibitem{nasapower}
+{NASA Langley Research Center}, ``{NASA} prediction of worldwide energy
+  resources ({POWER}) project.'' \url{https://power.larc.nasa.gov}.
+\newblock Daily data, 2000--2025.
+
+\bibitem{desagri}
+{Directorate of Economics and Statistics, Ministry of Agriculture and Farmers
+  Welfare, Government of India}, ``District-wise crop production statistics.''
+  \url{https://data.desagri.gov.in}.
+\newblock 2000--01 to 2022--23.
+
+\bibitem{census2011}
+{Office of the Registrar General and Census Commissioner, India}, ``Census of
+  {India} 2011: District-wise population and workers.''
+  \url{https://censusindia.gov.in}, 2011.
+
+\bibitem{pedregosa2011scikit}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, {\em et~al.}, ``Scikit-learn: Machine
+  learning in {Python},'' {\em Journal of Machine Learning Research}, vol.~12,
+  pp.~2825--2830, 2011.
+
+\bibitem{paszke2019pytorch}
+A.~Paszke, S.~Gross, F.~Massa, {\em et~al.}, ``{PyTorch}: An imperative style,
+  high-performance deep learning library,'' in {\em Advances in Neural
+  Information Processing Systems}, vol.~32, 2019.
+
+\bibitem{hagberg2008exploring}
+A.~A. Hagberg, D.~A. Schult, and P.~J. Swart, ``Exploring network structure,
+  dynamics, and function using {NetworkX},'' in {\em Proceedings of the 7th
+  Python in Science Conference (SciPy 2008)}, pp.~11--15, 2008.
+
+\bibitem{zaharia2018accelerating}
+M.~Zaharia, A.~Chen, A.~Davidson, {\em et~al.}, ``Accelerating the machine
+  learning lifecycle with {MLflow},'' {\em IEEE Data Engineering Bulletin},
+  vol.~41, no.~4, pp.~39--45, 2018.
+
+\bibitem{kaufman2012leakage}
+S.~Kaufman, S.~Rosset, C.~Perlich, and O.~Stitelman, ``Leakage in data mining:
+  Formulation, detection, and avoidance,'' {\em ACM Transactions on Knowledge
+  Discovery from Data}, vol.~6, no.~4, pp.~1--21, 2012.
+
+\bibitem{huber1964robust}
+P.~J. Huber, ``Robust estimation of a location parameter,'' {\em The Annals of
+  Mathematical Statistics}, vol.~35, no.~1, pp.~73--101, 1964.
+
+\bibitem{kingma2015adam}
+D.~P. Kingma and J.~Ba, ``Adam: A method for stochastic optimization,'' in {\em
+  International Conference on Learning Representations (ICLR)}, 2015.
+
+\bibitem{sculley2015hidden}
+D.~Sculley, G.~Holt, D.~Golovin, {\em et~al.}, ``Hidden technical debt in
+  machine learning systems,'' in {\em Advances in Neural Information Processing
+  Systems}, vol.~28, 2015.
+
+\end{thebibliography}

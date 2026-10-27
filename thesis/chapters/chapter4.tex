@@ -1,0 +1,112 @@
+\label{chap.4}
+\section{Overview}
+The system is a pipeline of ten stages grouped into four phases (Figure~\ref{fig:arch}). A user chooses a district and a season. The weather for the coming days is forecast, the season is summarised and classified, crop yield is predicted and explained, the loss is turned into human impact, and finally the matching official guidance is retrieved and explained in plain language. Each stage writes a well-defined output that the next stage reads, so stages can be built, tested and replaced independently.
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\sffamily\small,
+  src/.style={draw, rounded corners, fill=gray!12, minimum width=4.2cm, minimum height=1.1cm, align=center},
+  stg/.style={draw, rounded corners, minimum width=4.4cm, minimum height=0.95cm, align=center, font=\sffamily\footnotesize},
+  done/.style={stg, fill=green!18, draw=green!50!black},
+  plan/.style={stg, fill=white, dashed},
+  ph/.style={font=\sffamily\bfseries\small, align=center},
+  arr/.style={-{Stealth[length=2.2mm]}, thick}
+]
+\def\xa{0}\def\xb{5.6}\def\xc{11.2}\def\xd{16.8}
+\node[src] (w) at (\xa,0) {Daily weather\\(NASA POWER)};
+\node[src] (c) at (\xb,0) {Crop statistics (DES)};
+\node[src] (k) at (\xc,0) {Census 2011};
+\node[src] (p) at (\xd,0) {Contingency plans\\(ICAR-CRIDA PDFs)};
+\node[ph] (h1) at (\xa,-1.5) {I. Weather forecasting};
+\node[ph] (h2) at (\xb,-1.5) {II. Condition \& yield};
+\node[ph] (h3) at (\xc,-1.5) {III. Impact \& comparison};
+\node[ph] (h4) at (\xd,-1.5) {IV. Knowledge graph \& LLM};
+\draw[arr, gray] (w) -- (h1); \draw[arr, gray] (c) -- (h2);
+\draw[arr, gray] (k) -- (h3); \draw[arr, gray] (p) -- (h4);
+\node[done] (s1) at (\xa,-2.6) {1. Select district \& season};
+\node[done] (s2) at (\xa,-3.9) {2. Hurdle model forecasts\\rainfall 1--3 days ahead};
+\node[plan] (s3) at (\xb,-2.6) {3. Season aggregation};
+\node[plan] (s4) at (\xb,-3.9) {4. Condition classification};
+\node[plan] (s5) at (\xb,-5.2) {5. Yield prediction};
+\node[plan] (s6) at (\xb,-6.5) {6. SHAP explanation};
+\node[plan] (s7) at (\xc,-2.6) {7. Human-impact estimate};
+\node[plan] (s8) at (\xc,-3.9) {8. Rank the 5 districts};
+\node[done] (s9) at (\xd,-2.6) {9. Knowledge-graph query};
+\node[plan] (s10) at (\xd,-3.9) {10. GraphRAG answer\\(guarded LLM)};
+\draw[arr] (s1) -- (s2);
+\draw[arr] (s2.east) -- ++(0.3,0) |- (s3.west);
+\draw[arr] (s3) -- (s4); \draw[arr] (s4) -- (s5); \draw[arr] (s5) -- (s6);
+\draw[arr] (s6.east) -- ++(0.3,0) |- (s7.west);
+\draw[arr] (s7) -- (s8);
+\draw[arr] (s8.east) -- ++(0.3,0) |- (s9.west);
+\draw[arr] (s9) -- (s10);
+\node[draw, rounded corners, fill=yellow!15, align=center, font=\sffamily\footnotesize, text width=4.2cm] at (\xd,-5.9) {Guardrail: the LLM only rephrases graph facts and model numbers, with page citations.};
+\node[done, minimum width=2.2cm] at (\xc-1.3,-6.5) {Built};
+\node[plan, minimum width=2.2cm] at (\xc+1.3,-6.5) {Planned};
+\end{tikzpicture}}
+\caption{System architecture: ten stages in four phases. Green boxes are built; dashed boxes are planned for the second phase.}
+\label{fig:arch}
+\end{figure}
+
+\section{The ten stages}
+Table~\ref{tab:stages} describes what each stage does in plain terms and its status at the end of the first phase.
+
+\begin{table}[H]
+	\centering
+	\caption{Pipeline stages and their status}
+	\label{tab:stages}
+	\small
+	\begin{tabularx}{\textwidth}{clYl}
+		\toprule
+		\textbf{\#} & \textbf{Stage} & \textbf{What it does} & \textbf{Status} \\
+		\midrule
+		1 & Selection & The user chooses a district and a crop-season (Kharif or Rabi). & Done \\
+		2 & Weather forecast & A two-stage hurdle model trained on that district's history forecasts daily rainfall 1 to 3 days ahead (LSTM, SARIMA, XGBoost and TFT were evaluated as comparative models). & Done \\
+		3 & Season aggregation & Daily weather is summarised into season rainfall, longest dry spell, monsoon onset date, etc. & Planned \\
+		4 & Condition classification & The season is labelled normal, dry spell, deficit or drought-like against the district's own history (SPI/terciles and the plans' definitions). & Planned$^\dagger$ \\
+		5 & Yield prediction & Random forest / gradient boosting (with a linear baseline) predict yield per district, crop and season. & Planned \\
+		6 & Explanation & SHAP shows which weather factors pushed each predicted yield up or down. & Planned \\
+		7 & Human impact & The yield shortfall is converted into people and workers affected using Census data. & Planned \\
+		8 & District comparison & Severity and exposure scores are normalised and combined to rank the five districts. & Planned \\
+		9 & Knowledge-graph query & The graph returns the official actions for the district, crop, season and condition, with page citations. & Done \\
+		10 & GraphRAG answer & An LLM extracts entities from a question, retrieves the subgraph and writes one grounded answer. & Planned \\
+		\bottomrule
+	\end{tabularx}
+	\\[2pt]
+	\footnotesize $^\dagger$ A rule-based season labeller built for the knowledge graph already labels all past seasons and acts as a stand-in for Stage~4 (Section~\ref{sec:labeller}).
+\end{table}
+
+\section{Key design decisions}
+\begin{enumerate}
+	\item \textbf{One model per district.} The five districts have different rainfall regimes (Table~\ref{tab:climate}). Training a separate forecaster for each lets every model learn its own district's seasonality and avoids one district's patterns dominating another's.
+	\item \textbf{Self-trained forecasting.} The forecast is produced from the district's own historical record, so the system keeps working without depending on an external live weather service.
+	\item \textbf{A model built for rainfall.} Daily rainfall is zero on most days and highly skewed when it rains, so the main forecaster is a two-stage hurdle model that predicts rain occurrence and amount separately. Deep learning (LSTM, TFT) was evaluated in a comparative study; for the yield stage, with only about 23 seasons per district-crop, tree ensembles and a linear baseline are used.
+	\item \textbf{History-relative drought.} Conditions are judged against each district's own 2000--2025 record and the plans' own definitions, never against one national threshold.
+	\item \textbf{Census only after prediction.} Population and workforce enter only the impact stage, never the yield model.
+	\item \textbf{Structured knowledge, not free text.} The contingency plans are turned into a graph whose every edge records the source page, so any recommendation can be traced.
+	\item \textbf{A guarded LLM.} The LLM sees only retrieved graph facts and model outputs, and its job is to phrase them clearly.
+	\item \textbf{Replaceable stages with fixed interfaces.} For example, the graph reads season labels from a CSV with fixed columns; when Stage~4 is built it simply writes a file with the same columns, and the graph picks it up with no change to its schema.
+\end{enumerate}
+
+\section{How a query flows through the system}
+The following example shows how the finished system is intended to answer a question; Stages 2 and 9 already work today.
+
+\begin{enumerate}
+	\item \textbf{Question:} "Rain has stopped in Beed for two weeks while the soybean is flowering. What should be done?"
+	\item \textbf{Stage 10} extracts the entities: district = Beed, crop = Soybean, season = Kharif, condition = mid-season dry spell at flowering.
+	\item \textbf{Stages 2--4} confirm the condition from the forecast and the season-to-date weather.
+	\item \textbf{Stages 5--8} predict the soybean yield for the season, explain the drivers, estimate the people affected and place Beed in the district ranking.
+	\item \textbf{Stage 9} retrieves the Beed plan's recommendations for this situation, for example "give protective irrigation with sprinkler" (Beed plan, p.~18), together with past seasons in which Beed had the same condition and the yield that followed.
+	\item \textbf{Stage 10} writes one answer from these pieces only, citing the plan pages.
+\end{enumerate}
+
+\section{Technology stack}
+\begin{itemize}
+	\item \textbf{Language and data:} Python, pandas, NumPy; Jupyter notebooks for exploration.
+	\item \textbf{Forecasting:} scikit-learn \cite{pedregosa2011scikit} for the main hurdle model; for the comparative study, PyTorch \cite{paszke2019pytorch} (LSTM, TFT), XGBoost and statsmodels (SARIMA).
+	\item \textbf{Knowledge graph:} pdfplumber for table extraction, NetworkX \cite{hagberg2008exploring} for the graph, GraphML/JSON export, Neo4j import scripts, vis-network for the interactive viewer.
+	\item \textbf{MLOps:} Git and GitHub Actions, DVC with a DagsHub remote, MLflow \cite{zaharia2018accelerating} model registry, FastAPI service, Docker, pytest.
+	\item \textbf{Planned:} SHAP for explanations; LangChain/LlamaIndex for GraphRAG; Streamlit for the user interface.
+\end{itemize}

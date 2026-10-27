@@ -1,0 +1,112 @@
+\label{app:config}
+\section{Main model: hurdle configuration (params.yaml)}
+\begin{table}[H]
+	\centering
+	\caption{Hurdle model and monitoring settings}
+	\small
+	\begin{tabularx}{\textwidth}{lY}
+		\toprule
+		\textbf{Setting} & \textbf{Value} \\
+		\midrule
+		Rain/no-rain threshold & 0.25 mm \\
+		Rain-probability threshold $\tau$ & 0.35 \\
+		Classifier & HistGradientBoosting, 250 iterations, learning rate 0.04 \\
+		Regressor & HistGradientBoosting on $\log(1+y)$, 350 iterations, learning rate 0.03 \\
+		L2 regularisation & 0.1 \\
+		Test start / validation & 1 Jan 2022 / last 365 days before test \\
+		Monitor window / minimum days & 60 / 30 days \\
+		$R^2$ drop tolerance & 0.10 \\
+		NASA refresh window & 60 days \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\section{Comparative model: LSTM configuration}
+The same configuration is used for all five districts (stored as \texttt{config.json} in each district's folder under \texttt{outputs/plots/lstm}).
+
+\begin{table}[H]
+	\centering
+	\caption{LSTM hyper-parameters}
+	\small
+	\begin{tabular}{ll}
+		\toprule
+		\textbf{Setting} & \textbf{Value} \\
+		\midrule
+		Lookback window & 45 days \\
+		Forecast horizon & 3 days (direct multi-step) \\
+		Input features & 19 per day (11 raw + 8 rolling) + day-of-year sin/cos \\
+		Output & 11 variables $\times$ 3 days \\
+		Log-transformed columns & Rainfall, wind speed \\
+		LSTM layers / units & 1 / 128 \\
+		Dense layers & 384, 192 units; dropout 0.25 \\
+		Loss & Huber \\
+		Optimiser / learning rate & Adam / $5\times 10^{-4}$ \\
+		Batch size & 16 \\
+		Early stopping & Patience 12 epochs on validation loss \\
+		Training / validation / test & to 31-12-2018 / 2019--2021 / 2022 onward \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\section{Comparative LSTM: per-variable test $R^2$ for all districts}
+\begin{table}[H]
+	\centering
+	\caption{Test $R^2$ by district and variable}
+	\small
+	\begin{tabular}{lccccc}
+		\toprule
+		\textbf{Variable} & \textbf{Ahmednagar} & \textbf{Beed} & \textbf{Latur} & \textbf{Osmanabad} & \textbf{Solapur} \\
+		\midrule
+		Rainfall & 0.101 & 0.209 & 0.218 & 0.163 & 0.169 \\
+		Mean temperature & 0.922 & 0.932 & 0.929 & 0.922 & 0.917 \\
+		Max temperature & 0.886 & 0.892 & 0.890 & 0.878 & 0.859 \\
+		Min temperature & 0.896 & 0.908 & 0.903 & 0.897 & 0.888 \\
+		Relative humidity & 0.937 & 0.934 & 0.932 & 0.927 & 0.927 \\
+		Wind speed & 0.718 & 0.699 & 0.694 & 0.676 & 0.728 \\
+		Surface pressure & 0.835 & 0.851 & 0.803 & 0.809 & 0.814 \\
+		Solar radiation & 0.650 & 0.571 & 0.529 & 0.530 & 0.545 \\
+		Dew point & 0.900 & 0.892 & 0.878 & 0.854 & 0.871 \\
+		Cloud cover & 0.747 & 0.733 & 0.724 & 0.722 & 0.717 \\
+		Wind speed at 50 m & 0.641 & 0.632 & 0.615 & 0.592 & 0.660 \\
+		\midrule
+		\textbf{Blended} & \textbf{0.749} & \textbf{0.750} & \textbf{0.738} & \textbf{0.725} & \textbf{0.736} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\section{Knowledge-graph interface}
+\begin{itemize}
+	\item Build everything: \texttt{python codes/knowledge\_graph/run\_all.py}
+	\item List condition codes:\\ \texttt{python codes/knowledge\_graph/kg\_query.py --list-conditions}
+	\item Example query:\\ \texttt{kg\_query.py --district Beed --crop Soybean}\\ \texttt{\phantom{kg\_query.py} --condition mid\_dry\_spell\_flowering}
+	\item Python call for the LLM layer: \texttt{retrieve\_context(G, district, crop, season, condition)}
+	\item Node keys have the form \texttt{<Type>:<name or code>}; relations are read from the \texttt{relation} attribute of each edge.
+\end{itemize}
+
+\textbf{Condition-detail codes used by the labeller:} \texttt{onset\_delay\_2w}, \texttt{onset\_delay\_4w}, \texttt{onset\_delay\_6w}, \texttt{onset\_delay\_8w}, \texttt{normal\_onset\_dry\_spell}, \texttt{mid\_dry\_spell\_vegetative}, \texttt{mid\_dry\_spell\_flowering}, \texttt{terminal\_drought}, \texttt{continuous\_high\_rainfall}.
+
+\section{Forecast API}
+\begin{table}[H]
+	\centering
+	\caption{FastAPI endpoints}
+	\small
+	\begin{tabularx}{\textwidth}{lY}
+		\toprule
+		\textbf{Endpoint} & \textbf{Response} \\
+		\midrule
+		\texttt{GET /health} & \texttt{\{status: ok\}} \\
+		\texttt{GET /forecast/\{district\}} & District, champion model version, origin date, forecast type, and a list of (target date, rainfall in mm). Unknown districts return HTTP 404; a missing model or data returns HTTP 503. \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\section{Repository layout}
+\begin{itemize}
+	\item \texttt{codes/preprocessing.ipynb} --- downloads and cleaning
+	\item \texttt{codes/forecasting/} --- hurdle pipeline (main model), registry, monitor, comparative LSTM notebook
+	\item \texttt{codes/knowledge\_graph/} --- extraction, labeller, graph build, viewer, Neo4j export, queries
+	\item \texttt{codes/pipeline/} --- scheduled NASA refresh and cleaning
+	\item \texttt{serve/} --- FastAPI service; \texttt{tests/} --- pytest suite
+	\item \texttt{data/}, \texttt{models/}, \texttt{outputs/} --- data, weights, results (large files tracked with DVC)
+	\item \texttt{MLOps/} --- implementation notes and operations runbook
+\end{itemize}

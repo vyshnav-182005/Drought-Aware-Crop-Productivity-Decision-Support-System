@@ -1,0 +1,54 @@
+\label{chap.1}
+\section{Background}
+Agriculture in India is still largely rainfed, and in rainfed regions a single delayed monsoon or a three-week dry spell at the wrong moment can wipe out a season's harvest. Nowhere is this more visible than in Maharashtra's traditional \emph{scarcity zone}: the Marathwada plateau and the semi-arid rain-shadow belt east of the Western Ghats. The five districts studied in this project, Ahmednagar, Beed, Latur, Osmanabad and Solapur, all lie in this zone. They receive roughly 620 to 760 mm of rain in a year, three-quarters of it between June and September, and the annual total swings by 20 to 25\% from one year to the next (Chapter~\ref{chap.3}). Severe droughts in years such as 2014, 2015 and 2018 caused widespread crop failure and distress in the region \cite{udmale2014farmers}.
+
+The State and the Indian Council of Agricultural Research (ICAR) already know what farmers should do in such situations. For every district, ICAR's Central Research Institute for Dryland Agriculture (CRIDA), together with the state agricultural universities, has published a \emph{District Agriculture Contingency Plan} \cite{crida2011plans}. Each plan lists, crop by crop and soil type by soil type, what should be done if the monsoon is delayed by two, four, six or eight weeks, if a dry spell occurs at the vegetative or flowering stage, if the monsoon withdraws early, or if unusual rains, floods or hailstorms occur. The advice is concrete: switch soybean to a pearl millet and pigeon pea intercrop in a 4:2 row ratio, gap-fill to keep 75\% plant population, give a protective irrigation with sprinklers, and so on.
+
+\section{The problem}
+Despite their value, the contingency plans are hardly used in day-to-day decisions. Three gaps explain why.
+
+\begin{enumerate}
+	\item \textbf{The guidance is locked inside PDFs.} Each plan is a 30 to 50 page document with several different table layouts. Finding the action that applies to, say, \emph{soybean on medium-deep black soil in Beed when there is a two-week dry spell at flowering} means reading the document by hand.
+	\item \textbf{Nothing links the guidance to the weather and the expected yield.} A district officer has to decide separately whether the current season counts as a "delayed onset" or a "mid-season drought", how much the yield is likely to fall, and how many people that affects. No tool connects these steps.
+	\item \textbf{Drought is judged against generic thresholds.} A 20\% rainfall deficit means very different things in Solapur (mean Kharif rainfall about 520 mm) and in Latur (about 660 mm). A fair judgement compares each season with that district's own history.
+\end{enumerate}
+
+\section{Aim of the project}
+The aim of this project is to build a decision-support system that, for a chosen district and season, links the weather, the expected crop yield, the human impact and the official guidance in one place, and explains each answer in plain language. In short, it should answer questions such as: \emph{"The monsoon in Beed is running four weeks late this year. What does that mean for the soybean crop, how many people are affected, and what does the official plan say we should do?"}
+
+\section{Objectives}
+\begin{enumerate}
+	\item Build weather-forecasting models trained on each district's own history, so that the system does not depend on an external live weather service.
+	\item Classify each season (normal, dry spell, deficit, drought-like) against the district's own 26-year record, using the definitions written in the contingency plans.
+	\item Predict crop yield for each district, crop and season with interpretable machine learning and explain which weather factors drove each prediction.
+	\item Translate predicted yield losses into human impact using Census 2011 population and workforce data, and rank the five districts by priority.
+	\item Convert the five contingency plans into a structured knowledge graph and retrieve the official actions that match a given district, crop, season and condition, with page citations.
+	\item Use a large language model only to explain retrieved facts and model outputs in natural language, never to produce numbers or recommendations of its own.
+	\item Run the forecasting part as a maintained service with data versioning, a model registry, scheduled data refresh and performance monitoring.
+\end{enumerate}
+
+\section{Scope}
+\begin{itemize}
+	\item \textbf{Districts:} Ahmednagar (now officially Ahilyanagar), Beed, Latur, Osmanabad (now Dharashiv) and Solapur.
+	\item \textbf{Seasons:} Kharif (monsoon, roughly June to October) and Rabi (post-monsoon, roughly October to March). The Summer/Zaid season was examined in all five plans and found to have negligible cropped area, so it is excluded.
+	\item \textbf{Crops modelled:} Kharif Jowar, Soybean, Tur (pigeon pea), Sunflower and Bajra (pearl millet); Rabi Jowar, Sunflower and Gram (chickpea). Cotton, Wheat and Safflower form an optional extended set. Sugarcane (a 12 to 18 month crop) and horticulture crops are not modelling targets, but they appear in the knowledge graph wherever a plan mentions them.
+	\item \textbf{Time span:} daily weather from 1 January 2000 to 31 December 2025, and crop statistics from 2000--01 to 2022--23.
+\end{itemize}
+
+\section{The guardrail}
+Large language models are fluent but can state things that are not true, a problem known as hallucination \cite{ji2023survey}. In an advisory system for farmers this is unacceptable. The project therefore follows one non-negotiable rule: \textbf{the language model only rephrases facts retrieved from the knowledge graph and numbers already produced by the forecasting and yield models. It never predicts a yield or invents a recommendation, and every recommendation it gives cites the contingency-plan page it came from.}
+
+\section{Status at the end of the first phase}
+The project is planned over two semesters. The system is organised as a pipeline of ten stages grouped into four phases (Chapter~\ref{chap.4}). In the first phase the team completed the data audit and preprocessing, exploratory analysis, the weather-forecasting stage with a hurdle rainfall model as the main model and four comparative models, the knowledge graph with its query interface, and an MLOps pipeline around the forecasting models. The remaining stages, from season aggregation through yield prediction and human impact to the LLM layer, are planned for the second phase and are described in Chapter~\ref{chap.conclusion}.
+
+\section{Organisation of the thesis}
+\begin{itemize}
+	\item \textbf{Chapter 2} reviews earlier work on rainfall forecasting, crop-yield prediction, drought indices and knowledge-graph-based question answering, and identifies the research gap.
+	\item \textbf{Chapter 3} describes the study area and the four data sources, and the problems found while auditing and cleaning them.
+	\item \textbf{Chapter 4} presents the overall architecture: the ten stages, how data flows between them, and which stages are complete.
+	\item \textbf{Chapter 5} covers weather forecasting: the main two-stage hurdle model for rainfall, its results, and a comparative study with LSTM, SARIMA, XGBoost and TFT.
+	\item \textbf{Chapter 6} explains how the contingency plans were turned into a knowledge graph and how the graph is queried.
+	\item \textbf{Chapter 7} describes the MLOps pipeline that keeps the forecasting model up to date and monitored.
+	\item \textbf{Chapter 8} concludes the first phase and lays out the detailed plan for the second.
+	\item \textbf{Appendix A} lists model configurations, the graph schema and the interfaces.
+\end{itemize}
