@@ -1,0 +1,86 @@
+\label{chap.conclusion}
+\section{Conclusion of the first phase}
+This thesis set out to build a decision-support system that links weather, crop yield, human impact and official guidance for five drought-prone districts of Maharashtra, with every recommendation traceable to the District Agriculture Contingency Plans. In the first phase the team:
+
+\begin{enumerate}
+	\item audited, cleaned and standardised four public data sources and documented their gaps;
+	\item built the main forecasting model, a per-district two-stage hurdle model that forecasts daily rainfall one to three days ahead using only information available on the forecast day ($R^2$ 0.15 to 0.29 at one day, 0.07 to 0.15 at three days), after finding and correcting a data-leakage problem in its first version;
+	\item carried out a comparative study with LSTM, SARIMA, XGBoost and TFT models; the hurdle model gave better next-day rainfall forecasts than the LSTM in every district, while the LSTM forecast temperature, humidity and dew point well ($R^2$ 0.85 to 0.94);
+	\item turned the five contingency plans into a knowledge graph of 833 nodes and 4,353 edges, with 1,063 cited recommendations, 26 years of labelled season history and DES yields, and a single query call for the LLM layer; and
+	\item set up an MLOps pipeline with data versioning, a model registry, a forecast API, weekly data refresh and monitoring with champion--challenger promotion.
+\end{enumerate}
+
+Three of the ten stages (selection, forecasting and knowledge-graph retrieval) are complete, and the interfaces between stages are fixed, so the remaining stages can be built in parallel and plugged in.
+
+\section{Scope for further research: plan for the second phase}
+The second phase completes the remaining seven stages and turns the components into one working system. The plan below follows the pipeline order.
+
+\subsection{Strengthening the forecasting stage}
+\begin{itemize}
+	\item \textbf{Deploy the corrected hurdle model.} Register the three-horizon hurdle models in MLflow in place of the first, same-day checkpoints, and serve them through the API.
+	\item \textbf{Improve the hurdle model.} Tune the rain-probability threshold and boosting settings, test the physically motivated features (vapour pressure deficit, dew-point spread) in the leakage-safe set-up, and add regional or large-scale predictors.
+	\item \textbf{Longer outlook.} Because Stages 3--4 judge a whole season, investigate longer horizons: direct 7- to 14-day models, combining the in-house forecast for days 1--3 with an external forecast for later days, and season-level outlooks using large-scale climate indices.
+	\item \textbf{Complete the comparative study} by re-running SARIMA, XGBoost and TFT under the same protocol as the hurdle model and the LSTM.
+\end{itemize}
+
+\subsection{Stage 3: season aggregation}
+For each district, season and year, summarise the daily weather (observed so far plus forecast) into season-level features: total and monsoon rainfall, departure from the district mean, onset date and delay, longest dry spell, number of rainy days, maximum 3-day rainfall, and rainfall and heat during sensitive crop stages (sowing, vegetative, flowering). The season summary already produced for the knowledge graph will be extended rather than rebuilt.
+
+\subsection{Stage 4: condition classification}
+Classify each season against the district's own history using the Standardised Precipitation Index \cite{mckee1993relationship} at one- to three-month scales and tercile thresholds, combined with the plans' agronomic definitions already encoded in the season labeller. The output will use the same columns as the labeller's file, so the knowledge graph picks it up unchanged. Labels will be checked against known drought years (2014, 2015, 2018).
+
+\subsection{Stage 5: yield prediction}
+\begin{itemize}
+	\item \textbf{Target:} yield (t/ha) for each district, crop and season, from DES.
+	\item \textbf{Features:} Stage-3 season aggregates, the district's soil and irrigation profile, and a time trend to capture improvements in seeds and practices.
+	\item \textbf{Models:} a linear baseline (ElasticNet) and tree ensembles (random forest \cite{breiman2001random}, gradient boosting). Deep learning is ruled out because there are only about 23 seasons per district-crop.
+	\item \textbf{Validation:} rolling-origin or leave-one-year-out, so a year is always predicted from other years; results compared against a simple baseline (district trend or mean yield).
+	\item \textbf{Data gap:} source Rabi Gram yields from the DES portal before modelling.
+\end{itemize}
+
+\subsection{Stage 6: explanation}
+Apply SHAP \cite{lundberg2017unified} (TreeExplainer for tree models) to each yield prediction, so the system can state which factors, such as a long August dry spell or a late onset, pushed the predicted yield up or down, and by how much.
+
+\subsection{Stage 7: human impact}
+Convert the predicted shortfall into impact: production loss = (expected yield $-$ predicted yield) $\times$ cropped area; then relate it to the district's population and agricultural workforce from Census 2011. To express the loss as food need, a per-capita consumption norm (for example from ICMR-NIN dietary guidelines or Public Distribution System allocations) still has to be sourced.
+
+\subsection{Stage 8: district comparison}
+Normalise a severity score (yield shortfall, SPI) and an exposure score (population, workers) to a common 0--1 scale, combine them into a priority index, and rank the five districts. The sensitivity of the ranking to the weights will be reported.
+
+\subsection{Stages 9--10: knowledge graph and guarded GraphRAG}
+\begin{itemize}
+	\item Load the graph into Neo4j, check the remaining soil-vocabulary links by hand, and add the extended crops.
+	\item Build the GraphRAG layer: an LLM extracts district, crop, season and condition from a question; templated Cypher queries retrieve the matching subgraph through \texttt{retrieve\_context()}; the LLM writes one answer from the retrieved facts and Stage 5--8 numbers only.
+	\item Enforce the guardrail in code: every number in the answer must appear in the retrieved context, and every recommendation must carry a plan page. Evaluate on a set of test questions for citation correctness and faithfulness.
+\end{itemize}
+
+\subsection{Integration, interface and evaluation}
+\begin{itemize}
+	\item A Streamlit interface where a user picks a district and season (or types a question) and sees the forecast, the season's condition, the predicted yield with its SHAP explanation, the human impact, the district ranking and the cited official actions.
+	\item End-to-end hindcast case studies on known drought years (e.g.\ Beed 2018, Osmanabad 2015) to check that the system would have flagged the right conditions and returned the right guidance.
+	\item Final report and a research paper.
+\end{itemize}
+
+\subsection{Timeline}
+\begin{table}[H]
+	\centering
+	\caption{Plan for the second phase (eighth semester)}
+	\label{tab:timeline}
+	\small
+	\begin{tabularx}{\textwidth}{p{2.0cm}YY}
+		\toprule
+		\textbf{Weeks} & \textbf{Work} & \textbf{Lead} \\
+		\midrule
+		1--3 & Leakage-safe models into production; common benchmark protocol; source Gram data and consumption norms & Gowtham, Guhan, Vaishnavi, Vyshnav \\
+		3--6 & Season aggregation (Stage 3) and condition classification (Stage 4); forecasts fed into aggregation & Guhan, Vyshnav \\
+		5--9 & Yield model (Stage 5) and SHAP explanations (Stage 6) & Guhan, Vaishnavi \\
+		8--11 & Human impact (Stage 7) and district ranking (Stage 8) & Vaishnavi \\
+		6--11 & Neo4j load and graph refinement; GraphRAG layer with guardrail (Stage 10) & Vyshnav, Gowtham \\
+		11--13 & Integration, Streamlit interface, MLOps for all deployed models & All \\
+		13--15 & Hindcast case studies, testing, final report and paper & All \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\section{Closing remarks}
+The contingency plans already contain the expert knowledge that farmers and officials need during a drought; what has been missing is a way to connect that knowledge to the weather and the crop as they unfold. The first phase has built the two ends of that bridge: a forecasting stage that reads each district's own weather history, and a knowledge graph that makes the official guidance queryable and citable. The second phase builds the middle, from season condition through yield and impact to a plain-language answer that a district officer can trust because every part of it can be checked.

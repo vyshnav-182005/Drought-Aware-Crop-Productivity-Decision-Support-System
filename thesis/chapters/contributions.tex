@@ -1,0 +1,51 @@
+\label{chap.contrib}
+\section{Overview}
+The project is shared equally among the four members. Each member owns one model or component that has already been built, and an equal share of the remaining stages. Work that cuts across the whole project, namely data preprocessing, exploratory analysis, model benchmarking, integration, testing and writing, is done jointly. Table~\ref{tab:contrib} summarises the split; the sections that follow describe each member's work in more detail.
+
+\begin{table}[H]
+	\centering
+	\caption{Summary of contributions}
+	\label{tab:contrib}
+	\small
+	\begin{tabularx}{\textwidth}{p{2.6cm}YY}
+		\toprule
+		\textbf{Member} & \textbf{Completed (Phase 1)} & \textbf{Planned (Phase 2)} \\
+		\midrule
+		Vyshnav Kumar S & Per-district PyTorch LSTM forecaster for all 11 variables (Ch.~\ref{chap.5}); contingency-plan extraction, season labeller, knowledge graph, query API, viewer and Neo4j export (Ch.~\ref{chap.6}) & Feed forecasts into season aggregation; load the graph into Neo4j and refine it (soil links, Gram/extended crops); support the GraphRAG retrieval interface \\
+		Gowtham S D & Temporal Fusion Transformer and two-stage hurdle rainfall model (Ch.~\ref{chap.5}) & GraphRAG layer: entity extraction, templated Cypher retrieval, guarded LLM answer with citations \\
+		Guhan K B & Per-district XGBoost forecaster (Ch.~\ref{chap.5}); MLOps model pipeline (Ch.~\ref{chap.7}) & Season aggregation and condition classification; yield model (RF/gradient boosting with linear baseline); tuning and scheduled retraining of forecast models \\
+		Vaishnavi Gupta & Per-district SARIMA forecaster (Ch.~\ref{chap.5}); MLOps data ingestion, versioning and monitoring (Ch.~\ref{chap.7}) & SHAP explanations; Census human-impact estimation and district ranking; data ingestion and monitoring \\
+		\textit{All four} & Data audit and preprocessing, EDA, model benchmarking & Integration, end-to-end testing, user interface, final report and paper \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\section{Vyshnav Kumar S --- weather forecasting and knowledge graph}
+\begin{itemize}
+	\item \textbf{Per-district LSTM forecaster.} Designed the input pipeline (45-day lookback, 11 raw and 8 rolling features, day-of-year encoding, log transforms, train-only scaling), the network (LSTM 128 units with dense layers and direct three-day, 11-variable output) and the training set-up (Huber loss, Adam, early stopping, chronological split). Trained and evaluated one model for each of the five districts, reaching a blended test $R^2$ of 0.725 to 0.750, and produced the per-district configurations, scalers, metrics and diagnostic plots.
+	\item \textbf{Contingency-plan extraction.} Wrote the PDF table extractor that copes with the five plans' different layouts, two-row and spanned headers, page breaks, irrigated-situation tables, crop names in free text and "-do-" cells, producing 1,063 cited condition$\to$action rows, verified at 99\% verbatim match.
+	\item \textbf{Season labeller.} Turned the plans' own definitions (delayed onset, dry spells, terminal drought, heavy rain) into rules over the daily rainfall record and labelled all 260 district-seasons from 2000 to 2025.
+	\item \textbf{Knowledge graph.} Designed the schema (9 node types, 15 relation types), built the 833-node, 4,353-edge graph linking the plans with DES yields and season history, the \texttt{retrieve\_context()} query interface for the LLM layer, the interactive browser viewer and the Neo4j export.
+	\item \textbf{Shared:} name-standardisation module for districts and crops, data audit and project documentation.
+\end{itemize}
+
+\section{Gowtham S D --- TFT, hurdle model, GraphRAG}
+\begin{itemize}
+	\item \textbf{Temporal Fusion Transformer.} Trained an attention-based multi-horizon forecaster as the most expressive deep-learning benchmark.
+	\item \textbf{Two-stage hurdle model.} Designed the rain-gate classifier and log-intensity regressor with physically motivated features (vapour pressure deficit, dew-point spread, wind shear, moisture flux) and a physical dry-air rule, targeting the zero-inflated nature of daily rainfall. This model became the production path of the MLOps pipeline.
+	\item \textbf{Planned:} the GraphRAG layer (Stage 10): extracting district, crop and condition from a question, retrieving the matching subgraph through templated Cypher queries, and generating a guarded answer that cites plan pages.
+\end{itemize}
+
+\section{Guhan K B --- XGBoost, yield prediction and retraining}
+\begin{itemize}
+	\item \textbf{XGBoost forecaster.} Trained per-district gradient-boosted models on lagged and rolling-window weather features as the classical machine-learning benchmark.
+	\item \textbf{MLOps model pipeline.} Contributed to the training, registry and retraining parts of the MLOps pipeline.
+	\item \textbf{Planned:} season aggregation (Stage 3) and condition classification (Stage 4), the yield model (Stage 5), and tuning and scheduled retraining of the forecasting models.
+\end{itemize}
+
+\section{Vaishnavi Gupta --- SARIMA, explainability, impact and monitoring}
+\begin{itemize}
+	\item \textbf{SARIMA forecaster.} Fitted per-district seasonal ARIMA models as the statistical baseline.
+	\item \textbf{MLOps data and monitoring.} Contributed to automated data ingestion, DVC versioning and forecast monitoring.
+	\item \textbf{Planned:} SHAP explanations of yield drivers (Stage 6), Census-based human-impact estimation (Stage 7) and the cross-district priority ranking (Stage 8).
+\end{itemize}

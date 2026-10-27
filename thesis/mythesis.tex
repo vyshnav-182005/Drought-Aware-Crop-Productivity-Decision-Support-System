@@ -1,0 +1,268 @@
+%AMRITA UNIVERSITY PH.D latex template...Created by Chungath, CYS-CBE%
+% Adapted for the B.Tech project report of Team AB11
+
+\documentclass[a4paper, 12pt]{report}
+%\renewcommand{\bibname}{References}
+\usepackage[margin=0.8in]{geometry}
+
+\usepackage{bold-extra}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+%\usepackage[a4paper,top=30mm,bottom=30mm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\graphicspath{{images/}}
+\usepackage{amsthm}
+%\usepackage{hyperref}
+%\hypersetup{colourlinks=true,linkcolour=blue}
+\usepackage{array}
+%\usepackage{parskip}
+\usepackage{cite}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{titletoc}
+% --- packages added for this report ---
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,fit,backgrounds,shapes.geometric}
+\usepackage{url}
+\renewcommand{\_}{\textunderscore\allowbreak}
+\setlength{\emergencystretch}{3em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\theoremstyle{definition}
+\newtheorem{Definition}{Definition}[section]
+
+\newcommand{\thesistitle}{Drought-Aware Crop Productivity Decision-Support System for the Scarcity Zone of Maharashtra}
+
+%-------------------------------------------------------------
+% title page
+\begin{document}
+	\pagenumbering{gobble}
+	\thispagestyle{empty}
+	\begin{large}
+		\begin{center}
+			{\Large\bfseries{DROUGHT-AWARE CROP PRODUCTIVITY DECISION-SUPPORT SYSTEM FOR THE SCARCITY ZONE OF MAHARASHTRA}}\\
+			\vspace{1.3cm}
+			A Thesis \\
+			\vspace{.1cm}
+			Submitted in partial fulfilment for the Degree of\\
+			\vspace{.1cm}
+			BACHELOR OF TECHNOLOGY\\
+			\vspace{.1cm}
+            in
+            \vspace{.1cm}
+            \\ ARTIFICIAL INTELLIGENCE AND DATA SCIENCE \\
+			\vspace{1cm}
+			by\\ \vspace{0.2cm}
+			\vspace{.1cm}
+			{\Large\bfseries{GOWTHAM S D (CB.AI.U4AID23113)}} \\
+            {\Large\bfseries{GUHAN K B (CB.AI.U4AID23114)}} \\
+            {\Large\bfseries{VAISHNAVI GUPTA (CB.AI.U4AID23149)}} \\
+            {\Large\bfseries{VYSHNAV KUMAR S (CB.AI.U4AID23151)}} \\
+            \vspace{3cm}
+
+			\includegraphics[scale=0.8]{univA.png}\\
+			\vfill
+			DEPARTMENT OF ARTIFICIAL INTELLIGENCE\\
+			\Large{\textbf{AMRITA VISHWA VIDYAPEETHAM}}\\
+			{\large COIMBATORE CAMPUS (INDIA)}\\
+			\vspace*{.3cm}
+			October 2026
+		\end{center}
+	\end{large}
+	%------------------------------------------------------------------------------------
+	% bonafide certificate
+	\newpage
+	\begin{center}
+
+		{\large DEPARTMENT OF ARTIFICIAL INTELLIGENCE}\\
+		\Large{ \textbf{AMRITA VISHWA VIDYAPEETHAM}}\\
+			{\large COIMBATORE CAMPUS}\\
+		\vspace*{2.2cm}
+		%\includegraphics[width=5cm,height=5cm,keepaspectratio]{university.jpg}
+		\includegraphics[scale=0.8]{univA.png}\\
+		\vspace*{1.5cm}
+		{\Large \textbf{BONAFIDE CERTIFICATE}}
+	\end{center}
+	\vspace*{.8cm}
+	\noindent This is to certify that the thesis entitled \enquote{\textbf{\thesistitle}} submitted by \textbf{Gowtham S D, Roll. No: CB.AI.U4AID23113}, \textbf{Guhan K B, Roll. No: CB.AI.U4AID23114}, \textbf{Vaishnavi Gupta, Roll. No: CB.AI.U4AID23149} and \textbf{Vyshnav Kumar S, Roll. No: CB.AI.U4AID23151} for the award of the \textbf{Degree of Bachelor of Technology} under the \textbf{Faculty of Engineering} is a bonafide record of the work carried out by them under my guidance and supervision at \enquote{Department of Artificial Intelligence}, Amrita Vishwa Vidyapeetham, Coimbatore Campus.\\
+	%\vspace*{0.5cm}
+    \vfill
+    Submitted for the examination held on .........
+    \vfill
+    \textbf{INTERNAL EXAMINER}    \hspace{5cm}      \textbf{EXTERNAL EXAMINER}
+    \vfill
+\begin{center}
+		\textbf{Dr. Unnikrishnan}\\
+	Thesis Advisor,\\
+	Assistant Professor (Sr. Gr),\\
+	Department of Artificial Intelligence,\\
+	Amrita Vishwa Vidyapeetham,\\
+	Coimbatore Campus,\\
+	India.
+\end{center}
+
+	%-------------------------------------------------------------------------------
+	% Declaration page
+	\newpage
+	\begin{center}
+	{\large DEPARTMENT OF ARTIFICIAL INTELLIGENCE}\\
+	\Large{ \textbf{AMRITA VISHWA VIDYAPEETHAM}}\\
+
+	{\large COIMBATORE CAMPUS}\\
+
+
+		\vspace*{2.5cm}
+		\large {\textbf{DECLARATION}}
+		\vspace*{.3cm}
+	\end{center}
+
+	\noindent We, \textbf{Gowtham S D}, \textbf{Reg. No: CB.AI.U4AID23113}, \textbf{Guhan K B}, \textbf{Reg. No: CB.AI.U4AID23114}, \textbf{Vaishnavi Gupta}, \textbf{Reg. No: CB.AI.U4AID23149} and \textbf{Vyshnav Kumar S}, \textbf{Reg. No: CB.AI.U4AID23151} hereby declare that this thesis entitled \enquote{\textbf{\thesistitle}} is the record of the original work done by us under the guidance of \textbf{Dr. Unnikrishnan}, Assistant Professor (Sr. Gr), Department of Artificial Intelligence, Amrita Vishwa Vidyapeetham, Coimbatore Campus. To the best of our knowledge, this work has not formed the basis for the award of any degree/diploma/associateship/fellowship or a similar award to any candidate in any University.\\\\
+
+	\vspace*{1cm}
+	\noindent{\bf Place:\hfill Signature of the Students} \\
+	\noindent {\bf Date: }
+	\vfill
+	\begin{center}
+		\large{COUNTERSIGNED}\\
+	\end{center}
+	\vspace{0.6in}
+
+\begin{center}
+		\textbf{Dr. K.P Soman}\\
+	Professor and Dean, \\
+	Department of Artificial Intelligence \\ Amrita Vishwa Vidyapeetham,\\
+	Coimbatore Campus,\\
+	India.
+\end{center}
+
+	%-----------------------------------------------------------------------------
+	\clearpage
+	\pagenumbering{roman}
+	\tableofcontents
+
+	\chapter*{Acknowledgements}
+	\addcontentsline{toc}{chapter}{Acknowledgements}
+	We express our sincere gratitude to our project guide, \textbf{Dr. Unnikrishnan}, Department of Artificial Intelligence, for his steady guidance, for pushing us to keep the problem grounded in what farmers and district officials actually need, and for his patience through every review.
+
+	We thank \textbf{Dr. K.P. Soman}, Professor and Dean, Department of Artificial Intelligence, for providing the academic environment and facilities that made this work possible, and the members of our review panel for their questions and suggestions at the zeroth and first reviews, which shaped the scope of this project.
+
+	We also acknowledge the public institutions whose open data this work is built on: NASA's Prediction Of Worldwide Energy Resources (POWER) project for daily weather data, the Directorate of Economics and Statistics, Ministry of Agriculture and Farmers Welfare, for district crop statistics, ICAR-CRIDA and the state agricultural universities for the District Agriculture Contingency Plans, and the Office of the Registrar General and Census Commissioner, India, for Census 2011 data.
+
+	Finally, we thank our families and friends for their constant support.\\
+	\vspace{1cm}
+	\begin{flushright}
+		GOWTHAM S D\\
+		GUHAN K B\\
+		VAISHNAVI GUPTA\\
+		VYSHNAV KUMAR S
+	\end{flushright}
+	\listoffigures
+	\addcontentsline{toc}{chapter}{List of figures}
+	\listoftables
+	\addcontentsline{toc}{chapter}{List of tables}
+	\newpage
+%\chapter*{Abbreviations}
+\section*{{\huge Abbreviations}\hfill} \addcontentsline{toc}{chapter}{\textbf{Abbreviations}}
+\vspace{1.2cm}
+\begin{tabular}{lll}
+API ~~~~&--&~~~~ Application Programming Interface\\
+CI ~~~~&--&~~~~ Continuous Integration\\
+DES ~~~~&--&~~~~ Directorate of Economics and Statistics\\
+DVC ~~~~&--&~~~~ Data Version Control\\
+EDA ~~~~&--&~~~~ Exploratory Data Analysis\\
+GraphRAG ~~~~&--&~~~~ Graph-based Retrieval-Augmented Generation\\
+ICAR ~~~~&--&~~~~ Indian Council of Agricultural Research\\
+CRIDA ~~~~&--&~~~~ Central Research Institute for Dryland Agriculture\\
+IMD ~~~~&--&~~~~ India Meteorological Department\\
+KG ~~~~&--&~~~~ Knowledge Graph\\
+LLM ~~~~&--&~~~~ Large Language Model\\
+LSTM ~~~~&--&~~~~ Long Short-Term Memory\\
+MAE ~~~~&--&~~~~ Mean Absolute Error\\
+MLOps ~~~~&--&~~~~ Machine Learning Operations\\
+NASA POWER ~~~~&--&~~~~ NASA Prediction Of Worldwide Energy Resources\\
+RAG ~~~~&--&~~~~ Retrieval-Augmented Generation\\
+RF ~~~~&--&~~~~ Random Forest\\
+RMSE ~~~~&--&~~~~ Root Mean Squared Error\\
+SARIMA ~~~~&--&~~~~ Seasonal Auto-Regressive Integrated Moving Average\\
+SHAP ~~~~&--&~~~~ SHapley Additive exPlanations\\
+SPI ~~~~&--&~~~~ Standardised Precipitation Index\\
+TFT ~~~~&--&~~~~ Temporal Fusion Transformer\\
+VPD ~~~~&--&~~~~ Vapour Pressure Deficit\\
+XGBoost ~~~~&--&~~~~ eXtreme Gradient Boosting\\
+\end{tabular}
+\newpage
+\section*{{\huge List of symbols}\hfill} \addcontentsline{toc}{chapter}{\textbf{List of symbols}}
+\vspace{1.2cm}
+\begin{tabular}{lll}
+$ y_t $ ~~~~&--&~~~~ Observed value of a weather variable on day $t$\\
+$ \hat{y}_t $ ~~~~&--&~~~~ Predicted value of a weather variable on day $t$\\
+$ \bar{y} $ ~~~~&--&~~~~ Mean of the observed values over the test period\\
+$ L $ ~~~~&--&~~~~ Lookback window length (45 days)\\
+$ H $ ~~~~&--&~~~~ Forecast horizon (3 days)\\
+$ R^2 $ ~~~~&--&~~~~ Coefficient of determination\\
+$ \mathcal{L}_\delta $ ~~~~&--&~~~~ Huber loss with threshold $\delta$\\
+$ p $ ~~~~&--&~~~~ Predicted probability of a rainy day (hurdle model)\\
+$ \tau $ ~~~~&--&~~~~ Rain-probability threshold (0.35)\\
+$ G = (V, E) $ ~~~~&--&~~~~ Knowledge graph with node set $V$ and edge set $E$\\
+\end{tabular}
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+Five districts in Maharashtra's traditional scarcity zone, Ahmednagar, Beed, Latur, Osmanabad and Solapur, suffer recurring droughts, delayed monsoons and long dry spells. For each of them the government already publishes a District Agriculture Contingency Plan that tells farmers and officials what to do, crop by crop, when the monsoon is late or a dry spell strikes. In practice these plans are 30 to 50 page PDF documents that must be read by hand, and nothing connects them to the weather that is actually unfolding, to the crop yield that can be expected, or to the number of people who will be affected.
+
+This thesis describes a decision-support system that closes this gap. For a chosen district and season (Kharif or Rabi) the system is designed to (i) forecast the weather with a model trained separately for each district, (ii) classify the season's condition against that district's own 26-year history, (iii) predict and explain crop yield with interpretable machine learning, (iv) translate the yield loss into human impact using Census data, and (v) retrieve the official contingency-plan actions from a knowledge graph and have a large language model (LLM) explain them in plain language. A strict guardrail applies: the LLM may only rephrase facts retrieved from the graph and numbers produced by the models, and every recommendation cites the page of the plan it came from.
+
+The work completed in the first phase (seventh semester) covers three of the ten pipeline stages and the operational backbone. The main forecasting model is a per-district two-stage hurdle model for daily rainfall, the variable that defines every drought condition in the plans. Because about 62\% of days are dry and rain amounts are highly skewed, the model first predicts whether it will rain and then how much, using gradient-boosted trees and only information available on the forecast day. It forecasts rainfall one to three days ahead with test $R^2$ of 0.15 to 0.29 at one day, falling to 0.07 to 0.15 at three days. A comparative study of an LSTM network, SARIMA, XGBoost and a Temporal Fusion Transformer supports this choice: the hurdle model gives better next-day rainfall forecasts than the LSTM in all five districts, while the LSTM forecasts smoother variables such as temperature, humidity and dew point well ($R^2$ 0.85 to 0.94). A knowledge graph of 833 nodes and 4,353 edges was built from the five contingency plans, the crop statistics and the weather history, together with a rule-based season labeller and a query interface that returns cited recommendations. An MLOps pipeline with data versioning, a model registry, a forecast API, scheduled data refresh and drift monitoring was also put in place. The thesis closes with the plan for the second phase: season aggregation, condition classification, yield prediction with SHAP explanations, human-impact estimation, district ranking and the guarded GraphRAG advisory layer.
+
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\chapter{Introduction}
+\input{chapters/introduction}
+\chapter{Literature Review}
+\input{chapters/chapter2}
+\chapter{Study Area and Data}
+\input{chapters/chapter3}
+\chapter{System Architecture and Methodology}
+\input{chapters/chapter4}
+\chapter{Weather Forecasting}
+\input{chapters/chapter5}
+\chapter{Knowledge Graph from the Contingency Plans}
+\input{chapters/chapter6}
+\chapter{MLOps Pipeline}
+\input{chapters/chapter7}
+\chapter{Conclusion and Scope for further Research}
+\input{chapters/conclusion}
+\appendix
+\chapter{Configuration, Schema and Interface Details}
+\input{chapters/appendix}
+
+%\addcontentsline{toc}{chapter}{\textbf{References}}
+\newpage
+\renewcommand{\bibname}{References}
+\bibliographystyle{ieeetr}
+\addcontentsline{toc}{chapter}{References}
+\bibliography{mybib}
+
+% The template's "List of Publications" page is kept below but disabled,
+% because no paper has been published from this project yet.
+% Uncomment it once a paper is submitted.
+%\chapter*{List of Publications \\ \large(Based on the Research Work)}
+%\addcontentsline{toc}{chapter}{List of Publications Based on the Research Work}
+%\textbf{\Large Papers Communicated}
+%\begin{enumerate}
+%	\item ...
+%\end{enumerate}
+
+\end{document}

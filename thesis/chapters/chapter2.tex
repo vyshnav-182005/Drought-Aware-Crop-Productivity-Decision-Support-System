@@ -1,0 +1,62 @@
+\label{chap.2}
+\section{Introduction}
+The system in this thesis draws on four bodies of work: forecasting daily weather (especially rainfall), predicting crop yield with machine learning, defining and measuring drought, and grounding language-model answers in structured knowledge. This chapter reviews each in turn, keeping the focus on what matters for a small-data, district-level decision-support system, and ends by stating the gap the project addresses.
+
+\section{Weather and rainfall forecasting}
+
+\subsection{Statistical time-series models}
+The classical approach to forecasting a weather series is the Box--Jenkins family of autoregressive integrated moving-average models and their seasonal extension, SARIMA \cite{box2015time}. They model the next value as a linear combination of past values and past errors, with seasonal terms for yearly cycles. Mulla et al.\ \cite{mulla2024sarimax} applied seasonal ARIMA with exogenous variables (SARIMAX) to monthly rainfall in Phaltan taluka, Maharashtra, and compared model orders directly on $R^2$ and RMSE; their better configuration reached an $R^2$ of 0.91 on monthly totals. Monthly totals are, however, much smoother than daily rainfall, and the study covers a single rain gauge, so it does not show whether one model order carries across districts with different rainfall regimes. SARIMA's linear structure also struggles with the abrupt on/off behaviour of daily rain.
+
+\subsection{Gradient-boosted trees}
+Gradient-boosted decision trees such as XGBoost \cite{chen2016xgboost} build an ensemble of shallow trees, each correcting the errors of the previous ones. They handle non-linear interactions and mixed feature types well and need little tuning, which makes them strong baselines on tabular data built from lagged and rolling-window weather features. Dehvari et al.\ \cite{dehvari2025forecasting} used XGBoost on zenith wet delay series derived from GNSS receivers to predict rainfall events one hour ahead across several stations. The short horizon and the need for GNSS-derived inputs limit how far the approach carries over to daily, district-level forecasting.
+
+\subsection{Recurrent neural networks}
+Long Short-Term Memory (LSTM) networks \cite{hochreiter1997long} are recurrent neural networks with gates that decide what to remember and what to forget, which lets them learn dependencies over many time steps. Bukhari and Ogudo \cite{bukhari2025forecasting} compared simple RNNs and LSTMs in single- and multi-variable settings on 24 years of daily India Meteorological Department data from three stations in northern India, forecasting temperature and rainfall. Their models forecast one day ahead from three input variables, with no added features or attention. In the present project an LSTM of this kind, extended to 11 variables, a 45-day lookback with engineered rolling features and a direct three-day horizon, is used as one of the comparative models.
+
+\subsection{Attention-based models}
+The Temporal Fusion Transformer (TFT) \cite{lim2021temporal} combines recurrent layers with multi-head attention and variable-selection networks to produce multi-horizon forecasts whose inputs and time steps can be inspected. It performs well on large multivariate datasets, but it has many parameters and needs substantial data and tuning, which is a concern when each district has only about 9,500 daily rows.
+
+\subsection{Rainfall as a zero-inflated variable}
+Daily rainfall in a semi-arid region is zero on the large majority of days, and highly skewed on the days it does rain. Models that predict it as one continuous quantity tend to spread small amounts of rain across dry days and to under-predict heavy events. Statisticians have long modelled such variables in two parts: first whether the event happens, then how large it is given that it happens. This is the idea behind the \emph{hurdle} and two-part models of econometrics \cite{cragg1971some,mullahy1986specification}, and behind classical daily-rainfall models that pair a wet/dry occurrence process with a separate amount distribution \cite{stern1984model}. The main forecasting model of this project follows the same structure, with gradient-boosted trees for both parts.
+
+\section{Crop-yield prediction with machine learning}
+Van Klompenburg et al.\ \cite{vanklompenburg2020crop} reviewed machine-learning studies of crop-yield prediction and found that temperature, rainfall and soil type are the most used features, and that random forests, gradient boosting, neural networks and linear regression are the most used models. Random forests \cite{breiman2001random} are popular because they cope with small, noisy datasets and give feature-importance estimates. Deep networks generally need far more samples than are available at district level. In this project each district-crop-season combination has only about 23 years of yield records, which rules out deep learning for the yield stage and favours tree ensembles with a linear baseline.
+
+A prediction alone does not help a district officer unless the reasons behind it are visible. SHAP (SHapley Additive exPlanations) \cite{lundberg2017unified} attributes each prediction to its input features using Shapley values from cooperative game theory, so that the contributions add up exactly to the difference between the prediction and the average prediction. It gives explanations of the form "the 21-day dry spell in August lowered the predicted soybean yield by 0.18 t/ha", which is the kind of statement the system aims to produce.
+
+\section{Drought definition and indices}
+Drought is usually divided into meteorological (lack of rain), agricultural (lack of soil moisture for crops), hydrological and socio-economic drought \cite{mishra2010review}. The most widely used meteorological index is the Standardised Precipitation Index (SPI) \cite{mckee1993relationship}, which fits a probability distribution to a location's long-term rainfall record and expresses the current period's rainfall as a number of standard deviations from that location's own normal. This is what makes SPI suitable here: it judges each district against its own history instead of a fixed threshold. The contingency plans themselves use agronomic definitions instead: a monsoon onset delayed by two to eight weeks, two consecutive rainless weeks during crop growth, or early withdrawal of the monsoon. The project uses both: the plans' definitions to label past seasons and to look up actions, and SPI/tercile thresholds in the planned condition-classification stage.
+
+\section{Knowledge graphs and retrieval-augmented generation}
+A knowledge graph represents facts as nodes (entities) connected by typed edges (relations) \cite{hogan2021knowledge}. Compared with a flat table, a graph answers multi-hop questions naturally, for example \emph{"which actions does the Beed plan recommend for crops grown on the soil types that also occur in Latur?"} Graphs are also easy to inspect, and every fact can keep a pointer to its source.
+
+Retrieval-augmented generation (RAG) \cite{lewis2020retrieval} reduces hallucination by retrieving relevant documents first and asking the language model to answer from them. GraphRAG approaches retrieve sub-graphs or graph-derived summaries instead of plain text chunks \cite{edge2024local}, and the wider literature on unifying LLMs and knowledge graphs \cite{pan2024unifying} argues that graphs supply the factual grounding and traceability that LLMs lack. For an advisory system this traceability matters as much as accuracy: a recommendation should be checkable against the official document.
+
+\section{Research gap}
+Table~\ref{tab:litgap} summarises the forecasting studies that most directly informed the model choices. Taken together with the literature on yield prediction, drought indices and knowledge-graph question answering, the review shows the following gap.
+
+\begin{enumerate}
+	\item Forecasting studies usually stop at the forecast. They do not carry it through to crop yield, human impact or recommended action.
+	\item Drought is often judged with a fixed threshold instead of against each district's own history and against the definitions the district's own plan uses.
+	\item The official contingency plans, which already encode expert agronomic knowledge for each district, have not been turned into a machine-readable form that a decision-support system can query.
+	\item LLM-based agricultural advisors rarely guarantee that every recommendation can be traced to an official source.
+\end{enumerate}
+
+This project addresses all four by linking district-specific forecasting, history-relative condition classification, explainable yield prediction, Census-based impact estimation and a knowledge graph built from the contingency plans, with an LLM restricted to explaining retrieved facts.
+
+\begin{table}[H]
+	\centering
+	\caption{Forecasting studies that informed the model choices}
+	\label{tab:litgap}
+	\small
+	\begin{tabularx}{\textwidth}{p{3.6cm}YY}
+		\toprule
+		\textbf{Study} & \textbf{Key contribution} & \textbf{Limitation for this project} \\
+		\midrule
+		Dehvari et al.\ 2025 \cite{dehvari2025forecasting} & XGBoost on GNSS zenith wet delay predicts rainfall events one hour ahead across several stations. & One-hour horizon; needs GNSS data; evaluated mainly in the eastern USA. \\
+		Bukhari \& Ogudo 2025 \cite{bukhari2025forecasting} & RNN vs.\ LSTM, single- and multi-variable, on 24 years of daily IMD data from three north-Indian stations. & One day ahead only; three input variables; no attention or engineered features. \\
+		Lim et al.\ 2021 \cite{lim2021temporal} & Temporal Fusion Transformer: attention-based, interpretable multi-horizon forecasting. & Complex; high computational cost; needs substantial data and tuning. \\
+		Mulla et al.\ 2024 \cite{mulla2024sarimax} & SARIMAX for monthly rainfall in Phaltan taluka, Maharashtra; $R^2$ 0.91 for the better order. & Single station and monthly totals; does not test whether one order generalises across districts. \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
